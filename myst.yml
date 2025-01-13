@@ -17,14 +17,13 @@ project:
     - file: section5.md
     - file: section6.md
     - file: section7.md
-    - title: Images
-      children:
-        - file: images\boxes.tex
-        - file: images\oveview.tex
-        - file: images\tikz-deneme.tex
+
     
 site:
   template: book-theme
-  # options:
+  options:
   #   favicon: favicon.ico
   #   logo: site_logo.png
+    logo_text: ELE3701A H2025
+  nav:
+    - title: ELE3701A
