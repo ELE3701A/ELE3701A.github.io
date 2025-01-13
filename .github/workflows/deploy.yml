@@ -25,10 +25,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.13'
-      - name: Install poetry
-        run: pip install poetry
-      - name: Install dependencies
-        run: poetry install
       - name: Build html
         run: poetry run myst build --html
       - name: Upload artifact
