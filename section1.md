@@ -12,9 +12,9 @@ première section présente le contenu du cours et donne des définitions
 
 ## Contenu du Cours
 
-1.  **Introduction**
+1.  **Introduction** (1 heure)
 
-2.  **Notions Préalables**
+2.  **Notions Préalables**  (7 heures)
 
     2.1.  Signaux
 
@@ -24,7 +24,7 @@ première section présente le contenu du cours et donne des définitions
 
     2.4.  Signaux aléatoires
 
-3.  **Numérisation**
+3.  **Numérisation** (4 heures)
 
     3.1.  Échantillonnage
 
@@ -32,7 +32,7 @@ première section présente le contenu du cours et donne des définitions
 
     3.3.  Multiplexage temporel
 
-4.  **Procédures de Transmission**
+4.  **Procédures de Transmission** (13 heures) 
 
     4.1.  Modulation d’amplitude
 
@@ -40,7 +40,7 @@ première section présente le contenu du cours et donne des définitions
 
     4.3.  Modulation numérique
 
-5.  **Supports de Transmission**
+5.  **Supports de Transmission** (4 heures)  
 
     5.1.  Distorsion
 
@@ -48,7 +48,7 @@ première section présente le contenu du cours et donne des définitions
 
     5.3.  Modèle statistique du canal
 
-6.  **Contrôle des Erreurs**
+6.  **Contrôle des Erreurs** (3 heures)
 
     6.1.  Introduction
 
@@ -56,11 +56,19 @@ première section présente le contenu du cours et donne des définitions
 
     6.3.  Codage convolutionnel
 
-7.  **Codage de Source**
+7.  **Codage de Source** (3 heures)
 
     7.1.  Introduction et entropie de Shannon
 
     7.2.  Codage de Huffman
+
+
+:::{warning} Contrôle : 2 heures
+Le contrôle périodique est planifié pour la **huitième semaine** et la durée de l'examen est de **deux heures**. C'est un examen à livre fermé et un aide-mémoire sera fourni.
+:::
+
+
+ 
 
 ## Objectifs d'apprentisage
 

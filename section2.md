@@ -41,6 +41,15 @@ allons examiner sont énumérés ci-dessous.
         temps discret $g[nT_E]$. Ici, $n$ est l’indice de temps,
         représentant le $n$ième échantillon.
 
+
+```{figure} images/signal-class-1.png
+:label: signal-class-1
+:align: center
+Signaux à temps continu et à temps discret (la période d'échantillonnage est de $T_E = 0.5$ unités de temps). 
+
+```
+
+
 2.  Signaux analogiques et numériques
 
     -   Un signal dont l’amplitude peut prendre n’importe quelle valeur
@@ -52,6 +61,13 @@ allons examiner sont énumérés ci-dessous.
     -   Un **signal numérique**, par contre, est un signal dont
         l’amplitude ne peut prendre qu’un nombre fini de valeurs.
 
+```{figure} images/signal-class-2.png
+:label: signal-class-2
+:align: center
+Signaux analogiques et numériques.
+
+```
+
 3.  Signaux périodiques et non périodiques.
 
     -   Un **signal périodique** se répète dans le temps ; il suffit
@@ -59,6 +75,14 @@ allons examiner sont énumérés ci-dessous.
         période, $T_0$, Pour un signal signal périodique :
         $$g(t) = g(t + T_0), \, \forall t$$
 
+    -   Un **signal non périodique** ne se répète pas dans le temps. 
+
+```{figure} images/signal-class-3.png
+:label: signal-class-3
+:align: center
+Signaux périodiques (où $T_0 = 6$ unités de temps) et non périodiques.  
+
+```
 
 
 4.  Signaux réels et complexes. 
@@ -66,6 +90,13 @@ allons examiner sont énumérés ci-dessous.
     -   Un **signal réel** prend ses valeurs dans l'ensemble des nombres réels, $g(t)\in \mathbb{R}$
 
     -   Un **signal complexe** prend ses valeurs dans l'ensemble des nombres complexes $g(t)\in \mathbb{C}$.
+
+```{figure} images/signal-class-4.png
+:label: signal-class-4
+:align: center
+Signaux réels et complexes.  Le signal réel est l'onde sinusoïdale $g(t) = \sin(t)$. Le signal complexe est $g(t) = e^{jt} = \cos(t) + j\sin(t)$, dont les parties réelle $( \cos(t)) $ et imaginaire $( \sin(t) )$ sont tracées séparément.
+```
+
  
 
 5.  Signaux déterministes et aléatoires.
@@ -77,7 +108,16 @@ allons examiner sont énumérés ci-dessous.
         donné $t$, $g(t)$ est une variable aléatoire, c’est-à-dire
         qu’elle est définie par une fonction de densité de probabilité.
 
-Toutes ces représentations sont du domaine temporel. Pour pouvoir
+
+```{figure} images/signal-class-5.png
+:label: signal-class-5
+:align: center
+Signaux déterministes et aléatoires. Le signal déterministe $ g(t) = \sin(t)$ est parfaitement prévisible à tout instant $ t $. Chaque valeur est fixée et définie.
+Le signal aléatoire est une superposition d'une onde sinusoïdale et d'un bruit gaussien aléatoire. La valeur de $g(t) $ à un instant donné est imprévisible et suit une distribution aléatoire (donc les valeurs sont imprévisibles).
+```
+ 
+
+Notez que toutes ces représentations sont du domaine temporel. Pour pouvoir
 comprendre le comportement spectral, nous devons également analyser les
 signaux dans le domaine fréquentiel. 
 
@@ -264,6 +304,14 @@ Définition: Impulsion de Dirac
 \end{cases}
 \quad \text{et} \quad \int_{-\infty}^{\infty} \delta(t) \, dt = 1.
 ```
+
+```{figure} images/dirac-t.png
+:label: dirac-t
+:align: center
+Impulsion de Dirac (en domaine temporel).
+```
+ 
+
 Propriétés: 
  
 - Multiplication par l'impulsion de Dirac 
@@ -276,6 +324,13 @@ $$\int_{-\infty}^{\infty} \phi(t)\delta(t-T) \, dt = \phi(T) $$
 
 - La transformée de Fourier de $ \delta(t) $ est une fonction constante dans le domaine fréquentiel, donc $\delta(t) \iff 1$,  $\forall f$
 
+
+```{figure} images/dirac-f.png
+:label: dirac-f
+:align: center
+Impulsion de Dirac (en domaine fréquentiel).
+```
+ 
 
 ### Train d'impulsions de Dirac (*Dirac impulse train*)
 (def-sinc)=
@@ -309,6 +364,11 @@ x(t) = \text{sinc}(t) =
 1, & \text{si } t = 0.
 \end{cases}
 ```
+```{figure} images/sinc-t.png
+:label: sinc-t
+:align: center
+Fonction sinc  (en domaine temporel).
+```
 Propriétés: 
  
 - La valeur moyenne :  $$\overline{x(t)}  = \frac{1}{2T} \int_{-T}^{T} \text{sinc}(t) \, dt,$$ et converge vers zéro lorsque \( T \to \infty \).
@@ -322,14 +382,18 @@ Propriétés:
 1, & \text{si } |f| \leq \frac{1}{2}, \\
 0, & \text{sinon}.
 \end{cases}$$
+```{figure} images/sinc-f.png
+:label: sinc-f
+:align: center
+Fonction sinc  (en domaine fréquentiel).
+```
 
+ 
 
 ### L’onde rectangulaire (*Rectangular pulse*)
 (def-rec)=
 Définition: La fonction rectangulaire
 : La fonction rectangulaire $ \text{rect}(t) $, définie sur l'intervalle  $ [-T_0/2, T_0/2] $ , avec une valeur constante  $  a  $ , est donnée par :
-
-$$$$
  ```{math}
 :label:rect
 g(t) =
@@ -338,6 +402,12 @@ a, & \text{si } -\frac{T_0}{2} \leq t \leq \frac{T_0}{2}, \\
 0, & \text{sinon}.
 \end{cases}
 ```
+```{figure} images/rect-t.png
+:label: rect-t
+:align: center
+Onde rectangulaire  (en domaine fréquentiel).
+```
+
 Propriétés: 
  
 - La valeur moyenne :  $$\overline{g(t)} = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} g(t) \, dt = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} a \, dt = a. $$
@@ -347,6 +417,11 @@ Propriétés:
 - La  puissance : $$P = \lim_{T \to \infty} \frac{1}{T} \int_{-T_0/2}^{T_0/2} |g(t)|^2 \, dt = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} a^2 \, dt = a^2.$$
 
 - La transformée de Fourier : $$ G(f) = \mathcal{F}\{g(t)\}  = a T_0 \text{sinc}(\pi f T_0).$$
+```{figure} images/rect-f.png
+:label: rect-f
+:align: center
+Onde rectangulaire  (en domaine temporel).
+```
 
 
 
@@ -394,6 +469,8 @@ Propriétés:
 - La transformée de Fourier : $$S(f) = \mathcal{F}\{s(t)\} = \frac{A_p}{2j} \exp(j\phi ) \delta(f - f_p) -  \frac{A_p}{2j} \exp(-j \phi)  \delta(f + f_p),$$
 
 
+## Systèmes
+
 
 (def-system)=
 Définition: Système
@@ -414,7 +491,7 @@ Représentation d`un système
 Un circuit électrique avec une source de tension en entrée et un courant dans une certaine branche est un système.
 :::
  
-###Systèmes
+
 
 **Définition:** La **largeur de bande** correspond à l’étendue des
 fréquences disponibles pour la transmission d’un signal. La bande
