@@ -16,51 +16,51 @@ première section présente le contenu du cours et donne des définitions
 
 2.  **Notions Préalables**
 
-    1.  Signaux
+    2.1.  Signaux
 
-    2.  Analyse de Fourier
+    2.2.  Analyse de Fourier
 
-    3.  Modulation linéaire
+    2.3.  Systèmes 
 
-    4.  Signaux aléatoires
+    2.4.  Signaux aléatoires
 
 3.  **Numérisation**
 
-    1.  Échantillonnage
+    3.1.  Échantillonnage
 
-    2.  Modulation par impulsions codées
+    3.2.  Modulation par impulsions codées
 
-    3.  Multiplexage temporel
+    3.3.  Multiplexage temporel
 
 4.  **Procédures de Transmission**
 
-    1.  Modulation linéaire
+    4.1.  Modulation d’amplitude
 
-    2.  Modulation d'angle
+    4.2.  Modulation d'angle
 
-    3.  Modulation numérique
+    4.3.  Modulation numérique
 
 5.  **Supports de Transmission**
 
-    1.  Distorsion
+    5.1.  Distorsion
 
-    2.  Canal de transmission
+    5.2.  Canal de transmission
 
-    3.  Modèle statistique du canal
+    5.3.  Modèle statistique du canal
 
 6.  **Contrôle des Erreurs**
 
-    1.  Introduction
+    6.1.  Introduction
 
-    2.  Codage de blocs
+    6.2.  Codage de blocs
 
-    3.  Codage convolutionnel
+    6.3.  Codage convolutionnel
 
 7.  **Codage de Source**
 
-    1.  Introduction et entropie de Shannon
+    7.1.  Introduction et entropie de Shannon
 
-    2.  Codage de Huffman
+    7.2.  Codage de Huffman
 
 ## Objectifs d'apprentisage
 
@@ -69,45 +69,42 @@ informations efficacement tout en minimisant l'utilisation des
 ressources telles que la largeur de bande, la puissance et le coût. Ce
 cours se concentre sur :
 
-1.  Identification des éléments fondamentaux d'un lien de communication
+O1.  Identification des éléments fondamentaux d'un lien de communication
     point à point **(Section-1)**
 
-2.  Application des outils d'analyse spectrale pour résoudre des
+O2.  Application des outils d'analyse spectrale pour résoudre des
     problèmes liés aux procédures de transmission **(Section-2)**
 
-3.  Numérisation des signaux. Comprendre l'échantillonnage, la
+O3.  Numérisation des signaux. Comprendre l'échantillonnage, la
     quantification, et les conversions analogique-numérique
     **(Section-3)**
 
-4.  Proposition des techniques de modulation appropriées en fonction des
+O4.  Proposition des techniques de modulation appropriées en fonction des
     caractéristiques du canal et du type d'information **(Section-4)**
 
-5.  Modélisation d'un canal de transmission et explication des
+O5.  Modélisation d'un canal de transmission et explication des
     imperfections associées **(Section-5)**
 
-6.  Utilisation des techniques de contrôle des erreurs pour garantir la
+O6.  Utilisation des techniques de contrôle des erreurs pour garantir la
     fiabilité des transmissions **(Section-6)**
 
-7.  Choix des techniques de codage de source adaptées à la compression
+O7.  Choix des techniques de codage de source adaptées à la compression
     des informations **(Section-7)**
 
-8.  Conception de systèmes de communication complets, intégrant ces
+O8.  Conception de systèmes de communication complets, intégrant ces
     concepts de manière pratique. **Toutes les sections et travaux
     pratiques.**
 
 ## Éléments d'un système de communication
 
-(def-system)=
-Definition: Système
-: *Un **système** est une entité qui prend un ou plusieurs
-signaux d'entrée et produit un ou plusieurs signaux de sortie. Chaque
-système possède donc **une entrée**, **une sortie** et **une fonction de
-transfert**.*
+
+
+
 
 Un système de communication établit le pont de communication entre
 l'émetteur et le récepteur. Pour établir ce pont de communication entre
 l'émetteur et le récepteur, il faut d'abord un message à envoyer. Ce
-message provient de la source d'information, et vise à être récupérée à
+message provient de la source d'information, et vise à être récupéré à
 la destination.
 
 Donc, un système de communication se compose de cinq éléments
@@ -135,7 +132,7 @@ Donc, un système de communication se compose de cinq éléments
 ```
 
 Notez que chaque élément possède des signaux d'entrée et de sortie,
-comme l'indique la figure. Chaque bloc peut être considéré comme un
+comme l'indique la figure. Chaque élément peut être considéré comme un
 système distinct. Vous trouverez ci-dessous les explications détaillées
 de chaque élément.
 
@@ -147,44 +144,47 @@ distinctions en fonction de l'application particulière.
 :::
 
 ### Source
-
-Definition: Source
+(def-source)=
+Définition: Source
 : *En télécommunications, une source est l'origine des
-signaux de message à transmettre, telles que des données numériques, de
+signaux de message à transmettre, tels que des données numériques, de
 la voix, des images ou des vidéos.*
-: -   **Entrée :** Aucune
-: -   **Sortie :** Signal de message
+: -   **entrée :** Aucune
+: -   **sortie :** Signal de message
 
 La nature de ces signaux détermine leur traitement initial. Le signal de
 message à la sortie de la source peut être analogique ou numérique. Une
 **source continue** (*continous source*) génère des signaux de messages
-analogiques, c'est-à-dire le signal à la sortie prend des valeurs
+analogiques, c'est-à-dire que le signal à la sortie prend des valeurs
 continues en amplitude et dans le temps. Une **source discrète**
 (*discrete source*) génère des signaux numériques, qui prend des valeurs
-continues en amplitude et est discret dans le temps.
+continues en amplitude et est discrète dans le temps.
 
 
 
-:::{important} Exemple Pratique
+:::{important} Exemple pratique
 * **Source continue** : La voix captée en temps réel par un micro-phone est un signal analogique.
 
-* **Source discrète** : Cette voix, après échantillonnage et quantifi-cation, devient une suite de valeurs numériques discrètes (fichier WAV ou MP3).
+* **Source discrète** : Cette voix, après échantillonnage et quantification, devient une suite de valeurs numériques discrètes (fichier WAV ou MP3).
 :::
 
 ### Émetteur (*Transmitter*)
+(def-tx)=
 Définition: Émetteur
 : *L'émetteur est un composant essentiel qui prépare les données de la source pour les transmettre via un canal. Selon la nature des signaux de message et le type de communication, un émetteur peut être classé en deux types principaux; **communications analogiques** et **communications numériques**.*
-: -   **Entrée :** Signal de message
-: -   **Sortie :** Signal émis
+: -   **entrée :** Signal de message
+: -   **sortie :** Signal émis
 
+(def-tx-a)=
 Définition: Émetteur pour communications analogiques
 : *Un **émetteur pour communications analogiques** traite des signaux continus, 
-tels que des signaux électriques, acoustiques ou lumineux, qui varient de manière continue dans le temps et l’amplitude. La fonction fondamentale est appelée la 
+tels que des signaux électriques, acoustiques ou lumineux, qui varient de manière continue dans le temps et l’amplitude. La fonction fondamentale est 
 **modulation analogique**.
-Avec modulations les signaux générés  par une source analogique (par exemple, un microphone) sont converties en signaux modulés analogiques pour être transmises.*
-: - **Entrée :** Signal de message (analogique)
-: - **Sortie :** Signal émis (analogique)
+Avec modulations les signaux générés  par une source analogique (par exemple, un microphone) sont convertis en signaux modulés analogiques pour être transmis.*
+: - **entrée :** Signal de message (analogique)
+: - **sortie :** Signal émis (analogique)
 
+(def-tx-d)=
 Définition: Émetteur pour communications numériques
 : *Un émetteur pour communications numériques traite des signaux discrets
 où les données sont codées sous forme de bits (0 et 1). Ces bits sont
@@ -193,21 +193,23 @@ le **codage de source** (pour la compréhension), le **codage de canal**
 (pour aider à récupérer les erreurs qui seront induites par le canal) et
 la **modulation numérique** (pour aider à transférer les signaux sur de
 longues distances).*
-: - **Entrée :** Signal de message (numérique)
-: - **Sortie :** Signal émis (numérique)
+: - **entrée :** Signal de message (numérique)
+: - **sortie :** Signal émis (numérique)
 
+(def-source-coder)=
 Définition: Codage de source
 : *Le **codage de source** (*source coding*) est utilisé
 pour compresser les données dans le plus petit nombre de bits. Elle
 supprime les bits inutiles. L'objectif est d'utiliser un nombre réduit
-de bits pour représenter le même message.
-: - **Entrée :** Signal de message (numériques, binaires)
-: - **Sortie :** Signal de message compréssé (numériques, binaires)
+de bits pour représenter le même message.*
+: - **entrée :** Signal de message (numériques, binaires)
+: - **sortie :** Signal de message compressé (numériques, binaires)
 :::{warning} Attention
 Au cours de notre discussion, l'entrée et la
 sortie du codeur de source sont binaires.
 :::
 
+(def-channel-coder)=
 Définition: Code de canal
 : *Le **codage de canal** (*channel coding*) est utilisé
 pour la détection ou la correction des erreurs de bit. Dans un codeur de
@@ -216,13 +218,14 @@ bits de correction d'erreurs et sont inclus selon un code particulier
 qui détermine ses règles de calcul. En utilisant ces bits
 supplémentaires, le récepteur peut être en mesure de corriger l'erreur
 de bit.* 
-: - **Entrée :** Signal de message (numériques, binaires)
-: - **Sortie :** Signal de message doté de parités (numériques, binaires)
+: - **entrée :** Signal de message (numériques, binaires)
+: - **sortie :** Signal de message doté de parités (numériques, binaires)
 :::{warning} Attention
 Au cours de notre discussion, l'entrée et la
 sortie de codeur de canal sont binaires.
 :::
 
+(def-mod-dig)=
 Definition: Modulation numérique
 : *Ensuite, les bits à la sortie du codeur de canal seront
 modulés par le modulateur. Ce système est nommé **modulation
@@ -234,8 +237,8 @@ utilisée pour la transmission efficace de données sur de longues
 distances. Les signaux cosinus sont utilisés comme ondes porteuses.
 Les signaux cosinus sont
 utilisés comme ondes porteuses. Les ondes cosinus et sinus sont des fonctions
-propres de syst`emes linéaires invariants dans le temps. Les messages peuvent
-être incluses dans l’amplitude, la phase ou la fréquence de l’onde porteuse.
+propres de syst`èmes linéaires invariants dans le temps. Les messages peuvent
+être inclus dans l’amplitude, la phase ou la fréquence de l’onde porteuse.
 
 Si la source est discrète, nous pouvons directement utiliser un codeur
 de source. Si la source génère des signaux analogiques, il faut utiliser
@@ -247,10 +250,10 @@ Définition: Convertisseur analogique-numérique
 discret, pour qu'il soit traité et transmis efficacement (exemple:
 lorsqu'un son est enregistré pour un podcast, il est transformé en
 signal numérique).*
-: - **Entrée :** Signal de message (analogique)
-: - **Sortie :** Signal de message (numérique)
+: - **entrée :** Signal de message (analogique)
+: - **sortie :** Signal de message (numérique)
 
-:::{important} Exemple Pratique
+:::{important} Exemple pratique
 * Émetteur pour Communications Analogiques
   * Radio analogique (AM, FM).
   * Télévision analogique.
@@ -268,9 +271,9 @@ Définition: Multiplexeur
 plusieurs utilisateurs en un seul signal pour une transmission efficace sur un
 canal commun. Il joue un rôle crucial dans l’optimisation de l’utilisation des
 ressources*
-: - Entrée : Signaux émis de plusieurs utilisateurs
-: - Sortie : Un seul signal émis (combiné)
-:::{important} Exemple Pratique
+: - entrée : Signaux émis de plusieurs utilisateurs
+: - sortie : Un seul signal émis (combiné)
+:::{important} Exemple pratique
 - Communications par fibre optique utilisant le multiplexage en
 longueur d’onde (WDM; Wavelength Division Multiplexing).
 - Les réseaux sans fil (Wi-Fi, 4G/5G) et les transmissions
@@ -283,10 +286,10 @@ Multiplexing)
 
 Définition: Canal
 : *Le **canal** (channel) est le support physique par lequel le signal est transmis entre l'émetteur et le récepteur. Il peut introduire du bruit et des distorsions affectant la qualité de la transmission.*
-: - **Entrée :** Signal émis
-: - **Sortie :** Signal reçu
+: - **entrée :** Signal émis
+: - **sortie :** Signal reçu
 
-:::{important} Exemple Pratique
+:::{important} Exemple pratique
 * Une fibre optique pour Internet haut débit (faible atténuation et capacité élevée).
 * Les ondes radio pour les communications sans fil, comme le Wi-Fi ou les réseaux cellulaires.
 :::
@@ -297,24 +300,24 @@ Définition: Démultiplexeur
 de plusieurs utilisateurs en plusieurs flux individuels. Il est utilisé en complément
 du multiplexeur pour reconstituer les signaux d’origine une fois la transmission
 terminée.*
-: - **Entrée :** Un seul signal reçu
-: - **Sortie :** Signaux reçus de plusieurs utilisateurs
+: - **entrée :** Un seul signal reçu
+: - **sortie :** Signaux reçus de plusieurs utilisateurs
 
 ### Récepteur (*Receiver*)
 
 Définition: Récepteur
-: *Le **récepteur** récupère et traite le signal reçu pour
+: *Le **récepteur** (receiver) récupère et traite le signal reçu pour
 restaurer les informations originales. Il joue alors un rôle clé en
 récupérant le signal, en corrigeant les erreurs et en reconstruisant les
-messages originals.*
-: -   **Entrée :** Signal reçu
-: -   **Sortie :** Signal de message éstime
+messages originaux.*
+: -   **entrée :** Signal reçu
+: -   **sortie :** Signal de message estimé
 
 Au récepteur, les fonctions d'émetteur sont répétées dans l'ordre
 inverse. Il doit donc être configuré en fonction de l'émetteur
 analogique ou numérique sélectionné. L'objectif est de reproduire le
 plus correctement possible le signal du message à la destination (donc
-nous volulons : Signal de message éstime $\approx$ Signal de message )
+nous voulons : Signal de message estimé $\approx$ Signal de message )
 
 
 
@@ -325,7 +328,7 @@ Définition: Destination
 informations sont utilisées. Cela peut être un utilisateur humain ou un
 autre système.*
 
-:::{important} Exemple Pratique
+:::{important} Exemple pratique
 * Une personne regardant une vidéo sur YouTube.
 * Un serveur recevant un requête HTTP d'un navigateur Web.
 :::
@@ -359,19 +362,19 @@ signal de se propager jusqu'au récepteur sans être complètement dégradé
 par le bruit ou l'atténuation.
 
 Une puissance plus élevée améliore le **rapport signal-bruit**
-(*Signal-to-noise-ratio*; SNR), ce qui entraîne une meilleure qualité du
+(*Signal-to-noise-ratio*; SNR), ce qui entraine une meilleure qualité du
 signal et un taux d'erreurs réduit. En plus, une puissance accrue permet
 aux systèmes de communication, comme les tours cellulaires ou les
 satellites, de couvrir de plus grandes zones.
 
-:::{important} Exemple Pratique
+:::{important} Exemple pratique
 * Dans les réseaux cellulaires, les stations de base nécessitent une puissance importante pour maintenir la connectivité avec les utilisateurs éloignés de l'antenne.
 * Les satellites en orbite géostationnaire utilisent une forte puissance pour transmettre des signaux sur de longues distances jusqu'à la Terre, tout en surmontant les pertes atmosphériques.
 * L’efficacité énergétique est cruciale pour les dispositifs alimentés par batterie, comme les capteurs, qui doivent transmettre des données sur de longues périodes sans recharge fréquente.
 :::
 
 :::{warning} Attention
- Une consommation de puissance élevée peut entraîner des
+ Une consommation de puissance élevée peut entrainer des
 coûts opérationnels importants et un impact environnemental accru. De
 plus, les appareils alimentés par batterie nécessitent une gestion
 rigoureuse de l'énergie pour prolonger leur durée de vie.
@@ -389,17 +392,17 @@ débit de données plus élevé. Une largeur de bande suffisante garantit
 que le signal transmis n'est pas déformé ou limité par une allocation de
 fréquence insuffisante.
 
-:::{important} Exemple Pratique
+:::{important} Exemple pratique
 * Une largeur de bande accrue permet des transmissions de données rapides, soutenant des applications comme le streaming, la réalité virtuelle et les véhicules autonomes.
-* Une grande largeur de bande est essentielle pour transmettre plusieurs chaînes TV ou des services Internet à haut débit via satellite.
+* Une grande largeur de bande est essentielle pour transmettre plusieurs chaines TV ou des services Internet à haut débit via satellite.
 * Les systèmes téléphoniques PSTN allouent une largeur de bande d’environ 4 kHz pour assurer l'intelligibilité de la voix.
 :::
 
 :::{warning} Attention
- La largeur de bande est une ressource limitée et coût
+ La largeur de bande est une ressource limitée et cout
 élevé, et l'attribution du spectre doit équilibrer les besoins de
 différents services (radio, télévision, mobile). Une demande accrue de
-bande passante peut entraîner une congestion dans les bandes de
+bande passante peut entrainer une congestion dans les bandes de
 fréquences très utilisées.
 :::
 
@@ -415,7 +418,7 @@ la puissance nécessaire pour atteindre un débit de données spécifique.
 ## Résumé
 
 En résumé, les systèmes de communication modernes reposent sur des
-élements bien définies, allant de la source à la destination et protégés
+éléments bien définis, allant de la source à la destination et protégés
 par des mécanismes de correction des erreurs. Chacune de ces étapes est
 essentielle pour assurer une communication efficace et fiable, malgré
 les contraintes imposées par les caractéristiques physiques des canaux
