@@ -169,8 +169,10 @@ L'homogénéité et la superposition garantissent **la linéarité** de la trans
 
 
  
-**Attention:** La transformée de Fourier exprime la composition
+:::{warning} Attention
+La transformée de Fourier exprime la composition
 fréquentielle d’un signal par une fonction de densité. Ce concept est essentiel, car nous utiliserons la transformation de Fourier pour calculer la largeur de bande d'un signal. 
+:::
 
 ## Propriétés d’un signal 
 
@@ -217,9 +219,12 @@ E_g = \int_{-\infty}^{\infty} |g(t)|^2 dt  \hspace{1cm}  \textrm{Joules}
 ```
 :::
 
-
+:::{warning} Attention
 Notez que, selon le **Théorème de Parseval**  
 $$\int_{-\infty}^{\infty} |g(t)|^2 \, dt = \int_{-\infty}^{\infty} |G(f)|^2 \, df$$
+ Donc pour calculer l'énergie d'un signal on utilise le domaine qui est simple à calculer l'expression  d'énergie.
+ :::
+
 
 
  
@@ -287,6 +292,68 @@ et pour le cas normalise, $R=1$, on obtient $|g(t)|^2 $.  En classe, nous nous i
 :::
 
  
+
+
+
+
+### Largeur de bande
+
+(def-bandwith)=
+Définition: Largeur de bande 
+: La **largeur de bande** correspond à l’étendue des
+fréquences disponibles pour la transmission d’un signal. La largeur de bande d’un signal est une mesure de l’étendue de fréquences contenues
+dans le signal. En termes simples, elle représente la différence entre
+les fréquences les plus élevées et les plus basses et significatives dans
+le spectre du signal.
+
+:::{note} Exemple  illustratif :  
+Si $|G(f)|^2$ représente la densité spectrale de puissance du signal, la
+largeur de bande, $B$ est définie comme l’étendue de fréquences $f$ pour
+lesquelles $|G(f)|^2$ est significatif (généralement au-dessus d’un
+certain seuil, comme 3 dB en dessous de la valeur maximale). Le critère
+de sélection $B$ dépend de la tolérance d’erreur dans une application
+particulière. Nous pouvons par exemple choisir $B$ comme étant la
+largeur de bande qui contient 95% de l’énergie du signal.
+```{figure} images/bw1.png
+:label: BW1
+:align: center
+La figure montre la largeur de bande d’un signal, $B=f_\textrm{max}-f_\textrm{min}$
+```
+:::
+
+
+
+:::{warning} Attention
+ La largeur de bande doit toujours être définie
+uniquement pour les fréquences positives.
+:::
+
+
+Un signal peut être classé comme **bande de base** ou **bande passante** selon sa concentration dans le domaine fréquentiel.
+
+(def-baseband)=
+Définition: Signal bande de base  (*baseband*)
+: Un **signal bande de base** est caractérisé par un contenu fréquentiel concentré autour de $0$ Hz.  
+```{figure} images/bw2.png
+:label: BW2
+:align: center
+Réponse fréquentielle d'un signal en bande de base autour de $f_p$, et la largeur de bande est de $B$ Hz. 
+```
+
+(def-passband)=
+Définition: Signal bande passante (*passband*)
+: Un **signal bande passante** est généralement obtenu après une modulation, c'est-à-dire après multiplication du signal bande de base par une onde porteuse, telle qu'une sinusoïde $cos(2\pi f_p t)$. Le contenu fréquentiel d'un signal bande passante est  concentré autour de la fréquence porteuse, $f_p$ Hz. 
+```{figure} images/bw3.png
+:label: BW3
+:align: center
+Réponse fréquentielle d'un signal en bande passante où  la largeur de bande est de  $B=f_\textrm{max}-f_\textrm{min}$
+```
+
+
+
+**Attention:** Dans le contexte des systèmes de communication, nous nous
+intéressons plus particulièrement à la puissance et à la largeur de
+bande des signaux.
 
 
 
@@ -495,7 +562,7 @@ Un circuit électrique avec une source de tension en entrée et un courant dans 
  
 Un système peut être **linéaire** ou **non linéaire**.
 
-### Système linéaire 
+## Système linéaire 
 
 Un système $\mathcal{T(\cdot)}$ est linéaire s'il respecte les propriétés suivantes :
 
@@ -508,7 +575,7 @@ $$
 Notez que la transformée de Fourier peut être interprétée comme un système linéaire.
 
 
-#### Système linéaire invariant dans le temps (*Linear time invariant*; LTI) 
+### Système linéaire invariant dans le temps (*Linear time invariant*; LTI) 
 
 Un système est **linéaire invariant dans le temps** (LTI) si les propriétés de linéarité et d'invariance dans le temps sont satisfaites. Ce système est défini simplement par sa **réponse impulsionnelle**, $h(t)$, ou sa **réponse fréquentielle** $H(F)$ où $$h(t) \iff H(f) $$.
 
@@ -522,7 +589,7 @@ $$y(t) = x(t) * h(t) = \int_{-\infty}^{\infty} x(\tau) h(t - \tau) \, d\tau$$.
     \label{fig:LTI}
 \end{figure}
 
- ```{figure} images/LTI.png
+ ```{figure} images/system-gen-lti.png
 :label: fig:LTI
 :align: center
 Transmission d'un signal à travers un système linéaire invariant dans le temps (LTI)
@@ -530,7 +597,7 @@ Transmission d'un signal à travers un système linéaire invariant dans le temp
 ```
 
 
-#### Système non linéaire 
+## Système non linéaire 
   Si un système ne respecte pas l'une ou l'autre des propriétés d'homogénéité ou de superposition, il est non linéaire.Leur réponse peut varier de manière non proportionnelle ou non additive en fonction des entrées. 
 
 
@@ -553,26 +620,30 @@ Donc ce système  est non linéaire car il ne respecte pas les deux propriétés
 :::
 
 
-**Définition:** La **largeur de bande** correspond à l’étendue des
-fréquences disponibles pour la transmission d’un signal. La bande
-passante d’un signal est une mesure de l’étendue de fréquences contenues
-dans le signal. En termes simples, elle représente la différence entre
-les fréquences les plus élevées et les plus basses et significatives dans
-le spectre du signal.
+:::{note} Exemple  illustratif : **Modulation**
+La modulation est le processus par lequel une onde portesue 
+$c(t) = A_p \cos(2 \pi f_p t)$
+est multiplié par un signal de message $ m(t)$. Cela permet d’intégrer l’information du message dans une onde porteuse adaptée à la transmission.
 
-Si $|G(f)|^2$ représente la densité spectrale de puissance du signal, la
-largeur de bande, $B$ est définie comme l’étendue de fréquences $f$ pour
-lesquelles $|G(f)|^2$ est significatif (généralement au-dessus d’un
-certain seuil, comme 3 dB en dessous de la valeur maximale). Le critère
-de sélection $B$ dépend de la tolérance d’erreur dans une application
-particulière. Nous pouvons par exemple choisir $B$ comme étant la
-largeur de bande qui contient 95% de l’énergie du signal.
+Pour une modulation d'amplitude (AM), le signal modulé s'écrit :
+$$s(t) = [A_p + m(t)] \cos(2\pi f_m t),$$
+où $ A_pc $ est l’amplitude de la porteuse et $ f_p $ sa fréquence.
 
-**Attention :** La largeur de bande doit toujours être définie
-uniquement pour les fréquences positives.
+Dans ce cas, le signal d’information $ m(t) $ module l’amplitude de l’onde porteuse $\cos(2\pi f_p t) $. Soit  $m(t)$ a un  largeur de bande $ B $ Hz avec une réponse fréquentielle $M(f)$. La reponse  fréquentielle du signal modulé sera
+$$  
+S(f) = \frac{A_p}{2} \delta(f - f_c) + \frac{A_p}{2} \delta(f + f_p) +\frac{1}{2} \left[ M(f + f_p) + M(f + f_p) \right].
+$$
+**Donc la lergeur de bande du signal modulé est de $2B$ Hz.**
+ ```{figure} images/mod1.png
+:label: fig:mod1
+:align: center
+Une illustration de la modification de la largeur de bande et de l'amplitude
 
-**Attention:** Dans le contexte des systèmes de communication, nous nous
-intéressons plus particulièrement à la puissance et à la largeur de
-bande des signaux.
+```
+:::
+
+
+
+ 
 
 

@@ -10,11 +10,11 @@ Ce livre en ligne contient les notes de cours pour ELE3701A,  Éléments de tél
 
 **Préparé par :**
 
-**Contenu :** Gunes Karabulut Kurt
+- **Contenu :** Gunes Karabulut Kurt
 
-**Programmation :** Adam Osmani 
+- **Programmation :** Adam Osmani 
 
-**Exemples interactifs :** Adam Osmani, Mohamed Anis  Mekkaoui 
+- **Exemples interactifs :** Adam Osmani, Mohamed Anis  Mekkaoui 
 
 Pour toute question/recommandation, veuillez contacter :  ELE3701Apolymtl@gmail.com  
 
