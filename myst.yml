@@ -22,7 +22,8 @@ site:
 
   options:
   #   favicon: favicon.ico
-  #   logo: site_logo.png
+    logo: images/logo_polymtl.png
+    logo_dark: images/logo_polymtl_dark.png
     logo_text: ELE3701A H2025
   nav:
     - title: ELE3701A
