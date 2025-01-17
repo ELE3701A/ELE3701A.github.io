@@ -1,4 +1,4 @@
-# Section 2
+# Section 2 - Notions fondamentales
 
 Cette section présente les concepts fondamentaux du traitement des
 signaux, essentiels pour comprendre et analyser les systèmes de
@@ -15,7 +15,7 @@ les moyennes statistiques et le théorème de la limite centrale,
 établissant ainsi une base solide pour l’étude des signaux dans des
 environnements variés.
 
-## Signaux
+## Signal
  
 
 (def-signal)=
@@ -129,7 +129,8 @@ représenter les signaux, même pour les signaux périodiques
 (def-FT)=
 Definition: Transformée de Fourier 
 :  La transformée de Fourier d’un signal $g(t)$ est
-représentée par $g(t) \iff G(f)$.
+représentée par $G(f)$, et
+$$g(t) \iff G(f)$$.
 
 :::{hint} Transformation 
 ```{math}
@@ -149,14 +150,14 @@ g(t) = \int_{-\infty}^{\infty} G(f)e^{j2\pi ft} \, df
 Propriétés :
 
  
-- **homogénéité** de la transformée de Fourier stipule que la transformée de Fourier d'un signal multiplié par une constante scalaire est égale à la transformée de Fourier du signal, également multiplié par cette constante. Si $g(t)$ est un signal avec $g(t) \iff G(f)$ et $a$ est une constante scalaire, :
+1.  **homogénéité** de la transformée de Fourier stipule que la transformée de Fourier d'un signal multiplié par une constante scalaire est égale à la transformée de Fourier du signal, également multiplié par cette constante. Si $g(t)$ est un signal avec $g(t) \iff G(f)$ et $a$ est une constante scalaire, :
 $$
 \mathcal{F}\{a \cdot g(t)\} = a \cdot \mathcal{F}\{g(t)\}= aG(f)
 $$
 Cela montre que l'échelle d'amplitude dans le domaine temporel est directement reflétée dans le domaine fréquentiel.
 
 
-- **superposition** de la transformée de Fourier découle directement de la linéarité. Si un signal $g(t)$ est composé de plusieurs composantes, telles que $g(t) = g_1(t) + g_2(t) + \cdots +g _n(t)$, avec $g_i(t) \iff G_i(f)$, $i \in \{1,2,\ldots, n\}$  sa transformée de Fourier est donnée par :
+2. **superposition** de la transformée de Fourier découle directement de la linéarité. Si un signal $g(t)$ est composé de plusieurs composantes, telles que $g(t) = g_1(t) + g_2(t) + \cdots +g _n(t)$, avec $g_i(t) \iff G_i(f)$, $i \in \{1,2,\ldots, n\}$  sa transformée de Fourier est donnée par :
 $$\mathcal{F}\{g(t)\} = \mathcal{F}\{g_1(t)\} + \mathcal{F}\{g_2(t)\} + \cdots + \mathcal{F}\{g_n(t)\} =\sum_{i=1}^nG_i(f).
 $$
 
@@ -179,7 +180,7 @@ fréquentielle d’un signal par une fonction de densité. Ce concept est essent
 ### Valeur moyenne
 
 :::{hint} Valeur moyenne d’un signal non périodiques
-La **valeur moyenne  d’un signal complexé non périodique**, $g(t)$,   est $\overline{g(t)}$ ou  
+La **valeur moyenne  d’un signal complexé non périodique**, $g(t)$,   est $\overline{g(t)}$ où  
 ```{math}
 :label:energy
 \overline{g(t)} = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} g(t) \, dt \hspace{1cm}  \textrm{Volts}
@@ -209,7 +210,7 @@ $$\overline{g_1(t)+g_2(t)}=\overline{g_1(t)}+\overline{g_2(t).} $$
 ### Énergie
 
 :::{hint} Énergie
-L’**énergie d’un signal complexé**, $g(t)$,   est $E_g$ ou  
+L’**énergie d’un signal complexé**, $g(t)$,   est $E_g$ où  
 ```{math}
 :label:energy
 E_g = \int_{-\infty}^{\infty} |g(t)|^2 dt  \hspace{1cm}  \textrm{Joules}
@@ -217,7 +218,7 @@ E_g = \int_{-\infty}^{\infty} |g(t)|^2 dt  \hspace{1cm}  \textrm{Joules}
 :::
 
 
-Notez que, selon le **théorème de Parseval**  
+Notez que, selon le **Théorème de Parseval**  
 $$\int_{-\infty}^{\infty} |g(t)|^2 \, dt = \int_{-\infty}^{\infty} |G(f)|^2 \, df$$
 
 
@@ -269,7 +270,7 @@ $$   [20 \times \log_{10}( RMS_g)] \, \text{dBW ou } [30 + 20 \times \log_{10}( 
 :::
 
 
-:::{note} Informations supplémentaires pour  Travail Pratique - 1
+:::{note} Informations supplémentaires pour  **Travail Pratique - 1**
 ```{figure} images/circuit.png
 :label: TP1
 :align: center
@@ -335,20 +336,20 @@ Impulsion de Dirac (en domaine fréquentiel).
 ### Train d'impulsions de Dirac (*Dirac impulse train*)
 (def-sinc)=
 Definition: Train d'impulsions de Dirac
-: La fonction train d'impulsions de Dirac, notée $ \Delta_T(t) $, est définie comme une somme infinie d'impulsions de Dirac espacées de $T$ secondes : 
+: La fonction train d'impulsions de Dirac, notée $ \delta_T(t) $, est définie comme une somme infinie d'impulsions de Dirac espacées de $T$ secondes : 
  ```{math}
 :label:train
-\Delta_T(t) = \sum_{n=-\infty}^{\infty} \delta(t - nT)
+\delta_T(t) = \sum_{n=-\infty}^{\infty} \delta(t - nT)
 ```
 Propriétés: 
  
-- La valeur moyenne :  $$\overline{ \Delta_T(t)} = \frac{1}{T}$$
+- La valeur moyenne :  $$\overline{ \delta_T(t)} = \frac{1}{T}$$
 
 - L’énergie : infinie
 
 - La  puissance :  $$P_D = \frac{1}{T}$$
 
-- La transformée de Fourier : $$\mathcal{F}\{\Delta_T(t)\} = \frac{1}{T} \sum_{k=-\infty}^{\infty} \delta\left(f - k\frac{1}{T}\right)$$
+- La transformée de Fourier : $$\mathcal{F}\{\delta_T(t)\} = \frac{1}{T} \sum_{k=-\infty}^{\infty} \delta\left(f - k\frac{1}{T}\right)$$
 
 
 
@@ -469,15 +470,16 @@ Propriétés:
 - La transformée de Fourier : $$S(f) = \mathcal{F}\{s(t)\} = \frac{A_p}{2j} \exp(j\phi ) \delta(f - f_p) -  \frac{A_p}{2j} \exp(-j \phi)  \delta(f + f_p),$$
 
 
-## Systèmes
+## Système
 
 
 (def-system)=
 Définition: Système
 : Du point de vue d'un ingénieur en communication, un **système** est une loi qui attribue des signaux de sortie à divers signaux d'entrée.  
-Le point le plus important dans la définition d'un système est que sa sortie doit être définie de manière unique pour toute entrée légitime.
-Chaque
-système possède donc **une entrée** ($x(t)$) **une sortie** $(y(t))$ et **une fonction de
+Le point le plus important dans la définition d'un système est que sa sortie doit être définie de manière unique pour toutes les entrées légitimes.
+
+
+Chaque système possède **une entrée** ($x(t)$) **une sortie** $(y(t))$ et **une fonction de
 transfert** $\left(\mathcal{T(\cdot)}\right)$, ou $y(t)=\mathcal{T}(x(t))$.
 
 ```{figure} images/system-gen.png
@@ -491,6 +493,64 @@ Représentation d`un système
 Un circuit électrique avec une source de tension en entrée et un courant dans une certaine branche est un système.
 :::
  
+Un système peut être **linéaire** ou **non linéaire**.
+
+### Système linéaire 
+
+Un système $\mathcal{T(\cdot)}$ est linéaire s'il respecte les propriétés suivantes :
+
+1.    **homogénéité** : si une entrée $x(t)$ produit une sortie $y(t)$, i.e.,$y(t)=\mathcal{T}(x(t))$,  la sortie de $ax(t)$  pour un scalaire $a$ produit $ay(t)$. 
+ 
+2. **superposition** : si un signal $x(t)$ est composé de plusieurs composantes, telles que $$x(t) = x_1(t) + x_2(t) + \cdots +x _n(t),$$ où $y_i(t) = \mathcal{T} (x_i(t))$, $i \in \{1,2,\ldots, n\}$,    
+$$y = \mathcal{T}\{x_1(t)\} + \mathcal{T}\{x_2(t)\} + \cdots + \mathcal{T}\{x_n(t)\} =\sum_{i=1}^ny_i(t).
+$$
+
+Notez que la transformée de Fourier peut être interprétée comme un système linéaire.
+
+
+#### Système linéaire invariant dans le temps (*Linear time invariant*; LTI) 
+
+Un système est **linéaire invariant dans le temps** (LTI) si les propriétés de linéarité et d'invariance dans le temps sont satisfaites. Ce système est défini simplement par sa **réponse impulsionnelle**, $h(t)$, ou sa **réponse fréquentielle** $H(F)$ où $$h(t) \iff H(f) $$.
+
+La sortie $y(t) $ est obtenue par la **convolution** de l'entrée $x(t) $ avec la réponse impulsionnelle $ h(t) $ où 
+$$y(t) = x(t) * h(t) = \int_{-\infty}^{\infty} x(\tau) h(t - \tau) \, d\tau$$.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{systeme_LTI.png}
+    \caption{}
+    \label{fig:LTI}
+\end{figure}
+
+ ```{figure} images/LTI.png
+:label: fig:LTI
+:align: center
+Transmission d'un signal à travers un système linéaire invariant dans le temps (LTI)
+
+```
+
+
+#### Système non linéaire 
+  Si un système ne respecte pas l'une ou l'autre des propriétés d'homogénéité ou de superposition, il est non linéaire.Leur réponse peut varier de manière non proportionnelle ou non additive en fonction des entrées. 
+
+
+
+
+
+:::{note} Exemple  illustratif 
+
+Soit un système défini par la relation suivante : $ y(t) = x^2(t) $. 
+Pour homogénéité,  si une entrée $  x(t)  $  produit une sortie  $ y(t)  $ , alors une entrée multipliée par une constante  $ a  $  devrait produire une sortie multipliée par cette même constante $  a$, mais
+$
+y_{\text{scaled}}(t) =   a^2 \cdot x^2(t) \neq x^2(t).
+$
+De plus, pour la superposition si $ x_1(t)$ et $ x_2(t)$ produisent respectivement $ y_1(t) $ et $y_2(t)$, alors la réponse à la somme $x_1(t) + x_2(t)$ devrait être $ y_1(t) + y_2(t) $. Cependant, dans notre cas :
+$
+y(t) = (x_1(t) + x_2(t))^2 = x_1^2(t) + 2x_1(t)x_2(t) + x_2^2(t)
+$
+Donc ce système  est non linéaire car il ne respecte pas les deux propriétés.
+
+:::
 
 
 **Définition:** La **largeur de bande** correspond à l’étendue des
