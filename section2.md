@@ -351,10 +351,11 @@ Réponse fréquentielle d'un signal en bande passante où  la largeur de bande e
 
 
 
-**Attention:** Dans le contexte des systèmes de communication, nous nous
+:::{warning} Attention
+Dans le contexte des systèmes de communication, nous nous
 intéressons plus particulièrement à la puissance et à la largeur de
 bande des signaux.
-
+:::
 
 
 ## Signaux utiles
@@ -582,12 +583,6 @@ Un système est **linéaire invariant dans le temps** (LTI) si les propriétés 
 La sortie $y(t) $ est obtenue par la **convolution** de l'entrée $x(t) $ avec la réponse impulsionnelle $ h(t) $ où 
 $$y(t) = x(t) * h(t) = \int_{-\infty}^{\infty} x(\tau) h(t - \tau) \, d\tau$$.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{systeme_LTI.png}
-    \caption{}
-    \label{fig:LTI}
-\end{figure}
 
  ```{figure} images/system-gen-lti.png
 :label: fig:LTI
@@ -595,6 +590,46 @@ $$y(t) = x(t) * h(t) = \int_{-\infty}^{\infty} x(\tau) h(t - \tau) \, d\tau$$.
 Transmission d'un signal à travers un système linéaire invariant dans le temps (LTI)
 
 ```
+
+
+
+:::{note} Exemple  illustratif : **Filtres : passe-bas, passe-bande et passe-haut** 
+
+Un **filtre**, un dispositif qui sélectionne ou atténue certaines fréquences d’un signal, est un système LTI. Il existe différents types de filtres en fonction de leur **bande passante**.  Notez que nous utilisons ici le terme bande passante (au lieu de largeur de bande) car il indique les fréquences permises de laisser passer.
+
+
+ - Un filtre **passe-bas** laisse passer les fréquences inférieures à une fréquence de coupure \( f_c \) et atténue les fréquences supérieures. Sa réponse fréquentielle est typiquement donnée par :
+$$
+H(f) = 
+\begin{cases} 
+1, & |f| \leq f_c, \\
+0, & |f| > f_c.
+\end{cases}
+$$
+avec la **bande passante :** $[0, f_c]$.
+
+ 
+ - Un filtre **passe-bande** (ou bande passante) laisse passer une bande de fréquences entre $ f_{\text{min}} $ et $ f_{\text{max}} $, et atténue les autres fréquences. Sa réponse fréquentielle est :
+$$
+H(f) = 
+\begin{cases} 
+1, & f_{\text{min}} \leq |f| \leq f_{\text{max}}, \\
+0, & \text{ailleurs}.
+\end{cases}
+$$
+avec la **bande passante :** $[f_{\text{min}}, f_{\text{max}}]$.
+
+ 
+ - Un filtre **passe-haut** laisse passer les fréquences supérieures à une fréquence de coupure $f_c $ et atténue les fréquences inférieures. Sa réponse fréquentielle est :
+$$
+H(f) = 
+\begin{cases} 
+1, & |f| \geq f_c, \\
+0, & |f| < f_c.
+\end{cases}
+$$
+avec la **bande passante :** $[f_c, \infty[$.
+:::
 
 
 ## Système non linéaire 
@@ -620,18 +655,18 @@ Donc ce système  est non linéaire car il ne respecte pas les deux propriétés
 :::
 
 
-:::{note} Exemple  illustratif : **Modulation**
+### Modulation - un système non linéaire
 La modulation est le processus par lequel une onde portesue 
 $c(t) = A_p \cos(2 \pi f_p t)$
 est multiplié par un signal de message $ m(t)$. Cela permet d’intégrer l’information du message dans une onde porteuse adaptée à la transmission.
 
 Pour une modulation d'amplitude (AM), le signal modulé s'écrit :
-$$s(t) = [A_p + m(t)] \cos(2\pi f_m t),$$
-où $ A_pc $ est l’amplitude de la porteuse et $ f_p $ sa fréquence.
+$$\psi(t) = [A_p + m(t)] \cos(2\pi f_m t),$$
+où $ A_p $ est l’amplitude de la porteuse et $ f_p $ sa fréquence.
 
 Dans ce cas, le signal d’information $ m(t) $ module l’amplitude de l’onde porteuse $\cos(2\pi f_p t) $. Soit  $m(t)$ a un  largeur de bande $ B $ Hz avec une réponse fréquentielle $M(f)$. La reponse  fréquentielle du signal modulé sera
 $$  
-S(f) = \frac{A_p}{2} \delta(f - f_c) + \frac{A_p}{2} \delta(f + f_p) +\frac{1}{2} \left[ M(f + f_p) + M(f + f_p) \right].
+\Psi(f) = \frac{A_p}{2} \delta(f - f_c) + \frac{A_p}{2} \delta(f + f_p) +\frac{1}{2} \left[ M(f + f_p) + M(f + f_p) \right].
 $$
 **Donc la lergeur de bande du signal modulé est de $2B$ Hz.**
  ```{figure} images/mod1.png
@@ -640,9 +675,15 @@ $$
 Une illustration de la modification de la largeur de bande et de l'amplitude
 
 ```
+
+:::{warning} Attention
+ Lorsqu'un signal est modulé, son énergie change en raison de l'ajout de la porteuse et du déplacement spectral.
 :::
 
 
+## Signaux aléatoires
+
+en cours de préparation
 
  
 
