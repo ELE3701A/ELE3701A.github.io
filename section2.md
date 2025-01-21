@@ -130,7 +130,7 @@ représenter les signaux, même pour les signaux périodiques
 Definition: Transformée de Fourier 
 :  La transformée de Fourier d’un signal $g(t)$ est
 représentée par $G(f)$, et
-$$g(t) \iff G(f)$$.
+$$g(t) \iff G(f)$$
 
 :::{hint} Transformation 
 ```{math}
@@ -440,7 +440,7 @@ Fonction sinc  (en domaine temporel).
 ```
 Propriétés: 
  
-- La valeur moyenne :  $$\overline{x(t)}  = \frac{1}{2T} \int_{-T}^{T} \text{sinc}(t) \, dt,$$ et converge vers zéro lorsque \( T \to \infty \).
+- La valeur moyenne :  $$\overline{x(t)}  = \frac{1}{2T} \int_{-T}^{T} \text{sinc}(t) \, dt,$$ et converge vers zéro lorsque $ T \to \infty $.
 
 - L’énergie :  $$E_x = \int_{-T}^{T} |\text{sinc}(t)|^2 \, dt,$$ qui augmente indéfiniment lorsque $T \to \infty $.
 
@@ -461,7 +461,7 @@ Fonction sinc  (en domaine fréquentiel).
 
 ### L’onde rectangulaire (*Rectangular pulse*)
 (def-rec)=
-Définition: La fonction rectangulaire
+Définition: L’onde rectangulaire
 : La fonction rectangulaire $ \text{rect}(t) $, définie sur l'intervalle  $ [-T_0/2, T_0/2] $ , avec une valeur constante  $  a  $ , est donnée par :
  ```{math}
 :label:rect
@@ -503,8 +503,7 @@ Définition: Ondes porteuses
 cosinus et sinus comme ondes porteuses. Leur fréquence fondamentale est
 appelée la fréquence porteuse.
 
-Un cosinus avec fréquence $f_p $ et amplitude $A_p$ est défini comme $c(t) = A_p \cos(2\pi f_p t + \phi)$ où
-où :   
+Un cosinus avec fréquence $f_p $ et amplitude $A_p$ est défini comme $c(t) = A_p \cos(2\pi f_p t + \phi)$ où :   
 
    - $A_p$ est l'amplitude,
 
@@ -561,9 +560,31 @@ Représentation d`un système
 Un circuit électrique avec une source de tension en entrée et un courant dans une certaine branche est un système.
 :::
  
-Un système peut être **linéaire** ou **non linéaire**.
+Un système peut être **variant** ou  **invariant** dans le temps. De plus, un système peut être **linéaire** ou **non linéaire**. leurs explications sont données ci-dessous. 
 
-## Système linéaire 
+
+## Système invariant dans le temps (*Time Invariant System*) 
+Un système est **invariant dans le temps** si sa réponse à une entrée  ne change pas lorsque l'entrée est décalée dans le temps. Si l'on considère un système $\mathcal{T}(\cdot)$ avec une entrée $x(t)$ et une sortie $y(t)$, (i.e. $y(t)=\mathcal{T}(x(t))$), le système est invariant dans le temps si 
+```{math}
+:label: time-invariance
+y(t-t_0) = \mathcal{T}(x(t- t_0))
+```
+
+
+## Système variant dans le temps (*Time Varying System*) 
+
+Le système est **variant dans le temps** quand l'équation {eq}`time-invariance`  n'est pas applicable.
+ 
+ :::{note} Exemples  illustratifs
+- Le système $y(t) = 2x(t)$  est invariant dans le temps, car pour l'entrée $x(t-t0)$  la sorite est $y(t-t_0)$.
+- Le système $y(t) = t \cdot x(t)$  est variant dans le temps,  car pour l'entrée $x(t-t0)$  la sorite est $y(t-t_0) \neq  (t-t_0)x(t-t_0)   $.
+ :::
+ 
+
+
+
+
+## Système linéaire (*Linear System*)
 
 Un système $\mathcal{T(\cdot)}$ est linéaire s'il respecte les propriétés suivantes :
 
@@ -598,7 +619,7 @@ Transmission d'un signal à travers un système linéaire invariant dans le temp
 Un **filtre**, un dispositif qui sélectionne ou atténue certaines fréquences d’un signal, est un système LTI. Il existe différents types de filtres en fonction de leur **bande passante**.  Notez que nous utilisons ici le terme bande passante (au lieu de largeur de bande) car il indique les fréquences permises de laisser passer.
 
 
- - Un filtre **passe-bas** laisse passer les fréquences inférieures à une fréquence de coupure \( f_c \) et atténue les fréquences supérieures. Sa réponse fréquentielle est typiquement donnée par :
+ - Un filtre **passe-bas** laisse passer les fréquences inférieures à une fréquence de coupure $ f_c$ et atténue les fréquences supérieures. Sa réponse fréquentielle est typiquement donnée par :
 $$
 H(f) = 
 \begin{cases} 
@@ -632,7 +653,8 @@ avec la **bande passante :** $[f_c, \infty[$.
 :::
 
 
-## Système non linéaire 
+## Système non linéaire (*Nonlinear System*)
+
   Si un système ne respecte pas l'une ou l'autre des propriétés d'homogénéité ou de superposition, il est non linéaire.Leur réponse peut varier de manière non proportionnelle ou non additive en fonction des entrées. 
 
 
@@ -661,14 +683,14 @@ $c(t) = A_p \cos(2 \pi f_p t)$
 est multiplié par un signal de message $ m(t)$. Cela permet d’intégrer l’information du message dans une onde porteuse adaptée à la transmission.
 
 Pour une modulation d'amplitude (AM), le signal modulé s'écrit :
-$$\psi(t) = [A_p + m(t)] \cos(2\pi f_m t),$$
+$$\psi(t) = [A_p + m(t)] \cos(2\pi f_p t),$$
 où $ A_p $ est l’amplitude de la porteuse et $ f_p $ sa fréquence.
 
 Dans ce cas, le signal d’information $ m(t) $ module l’amplitude de l’onde porteuse $\cos(2\pi f_p t) $. Soit  $m(t)$ a un  largeur de bande $ B $ Hz avec une réponse fréquentielle $M(f)$. La reponse  fréquentielle du signal modulé sera
 $$  
-\Psi(f) = \frac{A_p}{2} \delta(f - f_c) + \frac{A_p}{2} \delta(f + f_p) +\frac{1}{2} \left[ M(f + f_p) + M(f + f_p) \right].
+\Psi(f) = \frac{A_p}{2} \delta(f - f_p) + \frac{A_p}{2} \delta(f + f_p) +\frac{1}{2} \left[ M(f - f_p) + M(f + f_p) \right].
 $$
-**Donc la lergeur de bande du signal modulé est de $2B$ Hz.**
+**Donc la largeur de bande du signal modulé est de $2B$ Hz.**
  ```{figure} images/mod1.png
 :label: fig:mod1
 :align: center
@@ -683,7 +705,7 @@ Une illustration de la modification de la largeur de bande et de l'amplitude
 
 ## Signaux aléatoires
 
-en cours de préparation
+en préparation
 
  
 
