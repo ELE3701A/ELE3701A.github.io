@@ -3,8 +3,7 @@
 Cette section présente les concepts fondamentaux du traitement des
 signaux, essentiels pour comprendre et analyser les systèmes de
 communication. Elle aborde les définitions, classifications et
-opérations de base des signaux, tout en mettant en avant des exemples
-pratiques. L’analyse de Fourier y est développée pour explorer la
+opérations de base des signaux. L’analyse de Fourier y est développée pour explorer la
 décomposition des signaux en composantes fréquentielles. Les principes de modulation
 d’amplitude et les systèmes linéaires invariants dans le temps (LTI)
 sont également discutés, avec un accent sur des notions clés telles que
@@ -19,7 +18,7 @@ environnements variés.
  
 
 (def-signal)=
-Definition: Signal 
+Définition: Signal 
 : Un **signal** est une fonction qui transmet des
 informations sur un phénomène.
 
@@ -87,17 +86,46 @@ Signaux périodiques (où $T_0 = 6$ unités de temps) et non périodiques.
 
 4.  Signaux réels et complexes. 
 
-    -   Un **signal réel** prend ses valeurs dans l'ensemble des nombres réels, $g(t)\in \mathbb{R}$
+    -   Un **signal réel** prend ses valeurs dans l'ensemble des nombres réels, $g_R(t)\in \mathbb{R}$
 
-    -   Un **signal complexe** prend ses valeurs dans l'ensemble des nombres complexes $g(t)\in \mathbb{C}$.
+    -   Un **signal complexe** prend ses valeurs dans l'ensemble des nombres complexes $g_C(t)\in \mathbb{C}$.
 
 ```{figure} images/signal-class-4.png
 :label: signal-class-4
 :align: center
-Signaux réels et complexes.  Le signal réel est l'onde sinusoïdale $g(t) = \sin(t)$. Le signal complexe est $g(t) = e^{jt} = \cos(t) + j\sin(t)$, dont les parties réelle $( \cos(t)) $ et imaginaire $( \sin(t) )$ sont tracées séparément.
+Signaux réels et complexes.  Le signal réel est l'onde sinusoïdale $g_R(t) = \sin(t)$. Le signal complexe est $g_C(t) = e^{jt} = \cos(t) + j\sin(t)$, dont les parties réelle $( \cos(t)) $ et imaginaire $( \sin(t) )$ sont tracées séparément.
 ```
 
- 
+ :::{hint} Transformations des signaux réels et complexes : 
+
+- Représentation complexe
+Le signal complexe $g_c(t)$ est composé d'une partie réelle $g_R(t)$ et d'une partie imaginaire $g_I(t)$, telles que :
+$$
+g_c(t) = g_R(t) + j g_I(t),
+$$
+où $j = \sqrt{-1}$.
+
+-   Partie réelle $g_R(t)$  :
+    $$
+    g_R(t) = |g_c(t)| \cos(\angle g_c(t)).
+    $$
+
+-  Partie imaginaire $g_I(t)$ : 
+    $$
+    g_I(t) = |g_c(t)| \sin(\angle g_c(t)).
+    $$
+
+
+-  Amplitude du signal complexe
+$$
+|g_c(t)| = \sqrt{g_R^2(t) + g_I^2(t)}.
+$$
+
+- Phase du signal complexe :
+$$
+\angle g_c(t) = \arctan\left(\frac{g_I(t)}{g_R(t)}\right).
+$$
+:::
 
 5.  Signaux déterministes et aléatoires.
 
@@ -127,7 +155,7 @@ Dans ce cours, nous utiliserons la transformée de Fourier pour
 représenter les signaux, même pour les signaux périodiques
 
 (def-FT)=
-Definition: Transformée de Fourier 
+Définition: Transformée de Fourier 
 :  La transformée de Fourier d’un signal $g(t)$ est
 représentée par $G(f)$, et
 $$g(t) \iff G(f)$$
@@ -150,7 +178,7 @@ g(t) = \int_{-\infty}^{\infty} G(f)e^{j2\pi ft} \, df
 Propriétés :
 
  
-1.  **homogénéité** de la transformée de Fourier stipule que la transformée de Fourier d'un signal multiplié par une constante scalaire est égale à la transformée de Fourier du signal, également multiplié par cette constante. Si $g(t)$ est un signal avec $g(t) \iff G(f)$ et $a$ est une constante scalaire, :
+1.  **homogénéité** de la transformée de Fourier stipule que la transformée de Fourier d'un signal multiplié par un constant scalaire est égale à la transformée de Fourier du signal, également multiplié par cette constante. Si $g(t)$ est un signal avec $g(t) \iff G(f)$ et $a$ est un constant scalaire, :
 $$
 \mathcal{F}\{a \cdot g(t)\} = a \cdot \mathcal{F}\{g(t)\}= aG(f)
 $$
@@ -266,7 +294,7 @@ La **tension efficace** (*root mean square*; RMS) d’un
 signal périodiques  $g_P(t)$ est définie par
 ```{math}
 :label:power
-    RMS_g=   \sqrt{P_g} =  \frac{1}{T} \int_{-T_0/2}^{T_0/2} |g_P(t)|^2 \ dt     \hspace{1cm} \textrm{Volts}
+    RMS_g=   \sqrt{P_g} =  \sqrt{\frac{1}{T} \int_{-T_0/2}^{T_0/2} |g_P(t)|^2 \ dt }    \hspace{1cm} \textrm{Volts}
 ```
 :::
 :::{warning} Attention
@@ -275,7 +303,7 @@ $$   [20 \times \log_{10}( RMS_g)] \, \text{dBW ou } [30 + 20 \times \log_{10}( 
 :::
 
 
-:::{note} Informations supplémentaires pour  **Travail Pratique - 1**
+:::{note} Informations supplémentaires pour  **Travail pratique - 1**
 ```{figure} images/circuit.png
 :label: TP1
 :align: center
@@ -312,7 +340,7 @@ largeur de bande, $B$ est définie comme l’étendue de fréquences $f$ pour
 lesquelles $|G(f)|^2$ est significatif (généralement au-dessus d’un
 certain seuil, comme 3 dB en dessous de la valeur maximale). Le critère
 de sélection $B$ dépend de la tolérance d’erreur dans une application
-particulière. Nous pouvons par exemple choisir $B$ comme étant la
+particulière. Nous pouvons par $e choisir $B$ comme étant la
 largeur de bande qui contient 95% de l’énergie du signal.
 ```{figure} images/bw1.png
 :label: BW1
@@ -403,7 +431,7 @@ Impulsion de Dirac (en domaine fréquentiel).
 
 ### Train d'impulsions de Dirac (*Dirac impulse train*)
 (def-sinc)=
-Definition: Train d'impulsions de Dirac
+Définition: Train d'impulsions de Dirac
 : La fonction train d'impulsions de Dirac, notée $ \delta_T(t) $, est définie comme une somme infinie d'impulsions de Dirac espacées de $T$ secondes : 
  ```{math}
 :label:train
@@ -423,7 +451,7 @@ Propriétés:
 
 ### Fonction sinc (*Sinc function*)
 (def-sinc)=
-Definition: Fonction sinc 
+Définition: Fonction sinc 
 : La fonction $\textit{sinc}(t)$ est définie comme suit
  ```{math}
 :label:sinc
@@ -556,7 +584,7 @@ Représentation d`un système
 
 ```
 
-:::{important} Exemple pratique
+:::{important} Exemple pratique : 
 Un circuit électrique avec une source de tension en entrée et un courant dans une certaine branche est un système.
 :::
  
@@ -575,7 +603,7 @@ y(t-t_0) = \mathcal{T}(x(t- t_0))
 
 Le système est **variant dans le temps** quand l'équation {eq}`time-invariance`  n'est pas applicable.
  
- :::{note} Exemples  illustratifs
+ :::{note} Exemples illustratifs : 
 - Le système $y(t) = 2x(t)$  est invariant dans le temps, car pour l'entrée $x(t-t0)$  la sorite est $y(t-t_0)$.
 - Le système $y(t) = t \cdot x(t)$  est variant dans le temps,  car pour l'entrée $x(t-t0)$  la sorite est $y(t-t_0) \neq  (t-t_0)x(t-t_0)   $.
  :::
@@ -614,7 +642,7 @@ Transmission d'un signal à travers un système linéaire invariant dans le temp
 
 
 
-:::{note} Exemple  illustratif : **Filtres : passe-bas, passe-bande et passe-haut** 
+:::{note} Exemple illustratif : **Filtres : passe-bas, passe-bande et passe-haut** 
 
 Un **filtre**, un dispositif qui sélectionne ou atténue certaines fréquences d’un signal, est un système LTI. Il existe différents types de filtres en fonction de leur **bande passante**.  Notez que nous utilisons ici le terme bande passante (au lieu de largeur de bande) car il indique les fréquences permises de laisser passer.
 
@@ -661,7 +689,7 @@ avec la **bande passante :** $[f_c, \infty[$.
 
 
 
-:::{note} Exemple  illustratif 
+:::{note} Exemple  illustratif :    
 
 Soit un système défini par la relation suivante : $ y(t) = x^2(t) $. 
 Pour homogénéité,  si une entrée $  x(t)  $  produit une sortie  $ y(t)  $ , alors une entrée multipliée par une constante  $ a  $  devrait produire une sortie multipliée par cette même constante $  a$, mais
@@ -703,10 +731,399 @@ Une illustration de la modification de la largeur de bande et de l'amplitude
 :::
 
 
-## Signaux aléatoires
+## Probabilité 
 
-en préparation
+### Probabilité et la règle de Bayes 
+Les définitions ci-dessous forment la base de la théorie des probabilités, utilisée dans de nombreux domaines comme les statistiques, l'apprentissage automatique et les communications. Elles permettent de quantifier les incertitudes et d'effectuer des prédictions basées sur des observations.  Nous les utiliserons principalement pour calculer l'énergie et la puissance des signaux.
+
+Soit $N$ le nombre total d'événements dans un espace d'échantillonnage. Les notions clés associées à la probabilité sont expliquées ci-dessous :
+
+- Un événement $A$ correspond à un ensemble d'issues spécifiques parmi les $N$ issues possibles. 
+Le nombre de fois où l'événement $A$ se réalise est noté comme $N(A)$, qui indique **la réalisation** de $A$. 
+
+- La **probabilité** d'un événement $A$ est définie comme la limite, lorsque $N$ tend vers l'infini, du rapport entre $N(A)$ et $N$ :
+$$
+P(A) = \lim_{N \to \infty} \frac{N(A)}{N},
+$$
+avec 
+$$
+0 \leq P(A) \leq 1.
+$$
+Cela signifie que la probabilité est une mesure entre 0 et 1 de la fréquence relative de réalisation de $A$.
+
+- La **probabilité conditionnelle** de $A$ sachant que $B$ est réalisé est donnée par :
+$$
+P(A \mid B) = \frac{P(A \cap B)}{P(B)},
+$$
+où $P(A \cap B)$ représente la probabilité de la conjonction des événements $A$ et $B$, et $P(B) > 0$.
+
+- **La règle de Bayes** nous permet de calculer la probabilité conditionnelle de $A$ sachant $B$ en inversant la condition :
+$$
+P(A \mid B) = \frac{P(B \mid A) P(A)}{P(B)}.
+$$
+Cette règle est particulièrement utile dans les problèmes où il est plus facile de calculer $P(B \mid A)$ que $P(A \mid B)$ directement.
+ 
+ 
 
  
+ 
+### Variables aléatoires
+
+Une **variable aléatoire** nous permet de modéliser des événements aléatoires avec une règle d'association de valeurs. La fonction de distribution cumulative est un outil clé pour analyser les probabilités associées à ces variables, en respectant des propriétés fondamentales comme la continuité et la monotonie.
+
+(def-Randvariable)=
+Définition: Variable aléatoire 
+: Une **variable aléatoire** résulte de l'application d'une règle par laquelle une valeur est assignée à un événement. 
+
+:::{note} Exemple  illustratif :  
+Soit $X$, une variable aléatoire définie comme étant le résultat obtenu en lançant un dé. 
+- Dans ce cas, $X \in \{1, 2, 3, 4, 5, 6\}$.
+:::
+
+
+
+
+(def-CDF)=
+Définition: Fonction de distribution cumulative  
+: Fonction de distribution cumulative (*Cumulative Distribution Function*; CDF)}
+La fonction de distribution cumulative (ou CDF, pour Cumulative Distribution Function) est définie comme  :
+$$
+F_X(x) = P(X \leq x),
+$$
+où $F_X(x)$ représente la probabilité que la variable aléatoire $X$ soit inférieure ou égale à une valeur donnée $x$.
+
+Propriétés :
+
+1. $0 \leq F_X(x) \leq 1$, pour tout $x$.
+
+2.  $F_X(\infty) = 1$.
+    
+ 3.    $F_X(-\infty) = 0$.
+  
+  4. $F_X(x_1) \leq F_X(x_2)$, pour $x_1 \leq x_2$ (c'est-à-dire, $F_X(x)$ est une fonction non décroissante).
+  
+
+
+(def-PDF)=
+Définition: Fonction de densité de probabilité
+: La **fonction de densité de probabilité** (*Probability Density Function*; PDF) caractérise la distribution des probabilités pour une variable aléatoire continue. La PDF d'une variable aléatoire $X$ est définie comme étant la dérivée de la fonction de distribution cumulative (CDF) $F_X(x)$ :
+$$
+p_X(x) = \frac{dF_X(x)}{dx}.
+$$
+
+ 
+
+Propriétés :
+
+1.  $p_X(x) \geq 0$, pour tout $x$. \\
+          
+2. L'intégrale de $p_X(x)$ sur tout l'espace est égale à 1 :
+    $$
+    \int_{-\infty}^{\infty} p_X(x) \, dx = 1.
+    $$
+   
+3.  La CDF $F_X(x)$ peut être exprimée comme l'intégrale de la PDF :
+    $$
+    F_X(x) = \int_{-\infty}^{x} p_X(\alpha) \, d\alpha.
+    $$
+
+
+
+### Les moyennes statistiques
+
+Les moyennes statistiques sont des outils fondamentaux pour décrire et analyser les propriétés d'une variable aléatoire. Ces outils sont essentiels pour caractériser le comportement statistique des systèmes aléatoires. 
+
+1. **La valeur moyenne** (ou espérance ) d'une variable aléatoire $X$ est donnée par :
+$$
+\overline{X} = E[X] = \int_{-\infty}^\infty x \, p_X(x) \, dx,
+$$
+où  $E[X]$ représente l'espérance de $X$,  $p_X(x)$ est sa PDF. Cette moyenne représente la valeur centrale attendue de $X$.
+
+2. Si une fonction $g(X)$ est appliquée à une variable aléatoire $X$, **la moyenne de cette fonction** $g(X)$ est donnée par :
+$$
+E[g(X)] = \int_{-\infty}^\infty g(x) \, p_X(x) \, dx.
+$$
+Cela permet de calculer l'espérance de transformations non linéaires de $X$.
+
+3. **La variance** mesure la dispersion d'une variable aléatoire autour de sa moyenne. Elle est définie par :
+$$
+\sigma_X^2 = E[(X - \overline{X})^2] = \int_{-\infty}^\infty (x - \overline{X})^2 \, p_X(x) \, dx,
+$$
+où $\sigma_X^2$ est la variance de $X$, et $\overline{X}$ est la valeur moyenne de $X$.
+
+ 
+
+ 
+
+### Distribution gaussienne (normal)
+
+
+
+La distribution gaussienne (ou loi normale) est l'une des distributions les plus importantes en probabilité et statistiques.
+
+Propriétés : 
+
+- Fonction de densité de probabilité (PDF) d'une variable aléatoire $X$ suivant une distribution gaussienne est donnée par :
+$$
+p_X(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}},
+$$
+où  $\mu$ est la moyenne (ou valeur moyenne) de la distribution,  $\sigma^2$ est la variance, et $\sigma$ est l'écart type (standard deviation).
+
+ ```{figure} images/gaussian.png
+:label: fig:gaussiam
+:align: center
+Une distribution gaussienne avec une moyenne $\mu$ et une variance $\sigma^2=4$.
+```
+
+
+%%%% Insert Gaussian distribution here
+
+- Pour une variable aléatoire $X$ suivant une distribution gaussienne, la probabilité que $X$ soit supérieure à une valeur $a$ :
+    $$
+    P(X > a) = \int_a^{\infty} \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}} dx = Q\left(\frac{a - \mu}{\sigma}\right),
+    $$
+    où $Q(z)$ est la fonction Q, définie par :
+    $$
+    Q(a) = \int_a^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx.
+    $$
+- La probabilité que $X$ soit inférieure ou égale à une valeur $a$ :
+    $$
+    P(X \leq a) = \int_{-\infty}^a \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}} dx = 1 - Q\left(\frac{a - \mu}{\sigma}\right).
+    $$
+ 
+ 
+
+:::{note} Théorème de la limite centrale
+
+ Le théorème de la limite centrale illustre pourquoi la distribution normale est omniprésente dans les applications pratiques, car elle décrit le comportement asymptotique des sommes de variables aléatoires indépendantes.
+
+Soit $X_1, X_2, \dots, X_n$ une suite de variables aléatoires indépendantes, définies sur le même espace de probabilité, et suivant la même distribution.
+
+Définissons :
+$$
+V = X_1 + X_2 + \dots + X_n.
+$$
+
+Selon le théorème de la limite centrale, lorsque $n$ tend vers l'infini, la distribution de la somme $V$ tend vers une distribution gaussienne, quelle que soit la distribution d'origine des $X_i$, à condition que la moyenne et la variance de chaque $X_i$ soient finies.
+
+La densité de probabilité de $V$ est donnée par :
+$$
+p_V(v) = \frac{1}{\sigma_V \sqrt{2\pi}} e^{-\frac{(v - \mu_V)^2}{2\sigma_V^2}},
+$$
+où  $\mu_V = n \cdot \mu$ est la moyenne de la somme, et $\sigma_V^2 = n \cdot \sigma^2$ est la variance de la somme.
+
+
+Le théorème montre que la distribution gaussienne joue un rôle clé dans l'étude des processus aléatoires :
+ -  Même si les variables aléatoires de départ ($X_i$) ne sont pas gaussiennes, la somme de ces variables tend vers une distribution gaussienne.
+- Le théorème de la limite centrale explique pourquoi la distribution du bruit thermique dans les systèmes de communication peut être modélisée par une distribution gaussienne, car ce bruit résulte de la somme des mouvements aléatoires indépendants des électrons au niveau microscopique.
+
+ :::
+
+
+
+
+
+## Signaux aléatoires
+(def-Randsignal)=
+Définition: Signal  aléatoire 
+: Un **signal aléatoire** est une réalisation particulière ou une trajectoire d’un processus aléatoire.
+ 
+
+ (def-Randsignal)=
+Définition: Processus  aléatoire 
+:  Un **processus aléatoire** peut être défini simplement comme un ensemble de variables aléatoires. 
+On dit d’un processus aléatoire qu’il est stationnaire au sens strict lorsque les moyennes statistiques d’ensemble ne changent pas dans le temps. Lorsqu’on ne considère que les deux premiers moments, on parlera de stationnarité au sens large. 
+
+Un processus aléatoire est **ergodique** lorsque les moyennes statistiques d’ensemble sont égales aux moyennes statistiques dans le temps de chacune des variables qui le composent. 
+
+
+:::{note} Exemple  illustratif :  
+Considérons cent personnes lançant simultanément un dé de façon répétitive (et honnête). 
+- Le processus ainsi constitué est assurément stationnaire car d’une répétition à l’autre les conditions sont les mêmes. Le processus est également ergodique car une personne jouant plusieurs fois, ou plusieurs personnes jouant une fois sont des événements aléatoires équivalents. 
+:::
+
+ 
+### Autocorrélation
+
+
+**L’autocorrélation** d’un processus aléatoire $x(t)$ mesure la similitude entre les valeurs du processus à deux instants différents, séparés par un décalage $\tau$. 
+Pour le décalage temporel $\tau$, elle est définie par l’expression suivante :
+$$
+R_X(\tau) = E[x(t)x(t + \tau)].
+$$
+Cette équation  analyse la corrélation temporelle des valeurs du processus.
+
+ ```{figure} images/autocorr.png
+:label: fig:psd
+:align: center
+Une illustration de l'autocorrélation d'une réalisation d'un signal aléatoire
+
+```
+
+
+
+### Spectre de densité de puissance 
+
+Le **spectre de densité de puissance** (*power spectral density*; PSD) est un outil clé pour analyser la répartition de la puissance d'un signal dans le domaine fréquentiel.
+
+La puissance moyenne d'un signal aléatore peut être exprimée e à l'aide de la fonction de densité de puissance $S_g(f) $, définie comme :
+$$
+P_g =  \lim_{T \to \infty} \frac{E_g}{T} = \int_{-\infty}^\infty \lim_{T \to \infty}  \frac{|G(f)|^2}{T} = \int_{-\infty}^\infty S_g(f) \, df,
+$$
+où $S_g(f) $ est le spectre de densité de puissance obtenu en prenant la limite lorsque $T \to \infty $. Notez que   $|G(f)|^2/T $ représente la densité spectrale de puissance. 
+\end{itemize}
+
+
+
+
+La puissance moyenne du signal dans une bande de fréquence spécifique $[f_1, f_2] $ est donnée par :
+$$
+P_{[f_1, f_2]} = {\textcolor{red}2} \times \int_{f_1}^{f_2} S_g(f) \, df.
+$$
+
+ ```{figure} images/psd.png
+:label: fig:psd
+:align: center
+Une illustration de la puissance moyenne du signal dans la bande $[f_1, f_2] $
+
+```
+
+
+
+%\4. Cas des signaux périodiques
+%Pour un signal périodique $g(t) $ de période $T_0 $, le spectre de densité de puissance est donné par :
+%$$
+%S_g(f) = \sum_{n=-\infty}^\infty |D_n|^2 \delta\left(f - \frac{n}{T_0}\right),
+%$$
+%où :
+%\begin{itemize}
+%    \item $D_n $ représente les coefficients de Fourier du signal périodique,
+%    \item $\delta(f) $ est la fonction delta de Dirac.
+%\end{itemize}
+
+ 
+
+
+
+
+:::{warning} Attention
+- En intégrant $ S_g(f)$  sur une plage de fréquences donnée, on peut calculer la puissance dans cette plage. 
+
+- La largeur de bande est déterminée en identifiant la plage de fréquences contenant une proportion significative de la puissance du signal. Ces outils sont essentiels pour l’analyse, la conception, et l’optimisation des systèmes de communication et des applications de traitement du signal.
+:::
+
+
+
+
+
+
+
+
+### Relation entre autocorrélation et spectre de densité de puissance
+L’autocorrélation et le spectre de densité de puissance   d’un signal aléatoire sont reliés par une transformée de Fourier :
+$$
+R_g(\tau) \iff S_g(f),
+$$
+où $R_g(\tau) $ est la fonction d’autocorrélation dans le domaine temporel et  $S_g(f) $ est le spectre de densité de puissance dans le domaine fréquentiel.
+
+
+Cette relation signifie que :
+- La transformée de Fourier de la fonction d’autocorrélation donne le spectre de densité de puissance.
+- La transformée inverse du spectre de densité de puissance donne la fonction d’autocorrélation.
+
+
+
+
+
+:::{warning} Attention
+ 
+Pour les signaux aléatoires, l'autocorrélation et le spectre de densité de puissance permettent de :
+
+-  Quantifier la dépendance temporelle des signaux via la fonction d’autocorrélation $R_X(\tau) $,
+-  Analyser la répartition de l’énergie ou de la puissance des signaux dans le domaine fréquentiel à l’aide de $S_g(f) $.
+ 
+  
+:::
+
+
+
+
+:::{note} Exemple  illustratif :  
+Dans ce cas, seule une proportion donnée (par exemple 90 % ou 99 %) de la puissance totale est considérée. La largeur de bande est déterminée en trouvant l’intervalle $[f_1, f_2] $ tel que :
+$$
+2 \times \int_{f_1}^{f_2} S_g(f) \, df = \alpha P_g,
+$$
+où $ \alpha $ est la proportion désirée (e.g. $\alpha = 0.99 $ pour 99 %).
+:::
+
+
+### Filtrage d’un signal aléatoire
+
+
+
+Lorsqu’un signal aléatoire traverse un système linéaire invariant dans le temps (LTI), le comportement du signal en sortie peut être analysé à l’aide des propriétés du système, caractérisé par sa réponse impulsionnelle $ h(t) $  ou sa réponse fréquentielle $ H(f) $.
+
+Soit le spectre de densité de puissance d’entrée représenté par $ S_x(f)$, et le système est caractérisé par $h(t)$, la réponse impulsionnelle (ou $ H(f) $, la réponse fréquentielle)
+
+Le spectre de densité de puissance en sortie est donné par :
+$$
+S_y(f) = S_x(f) |H(f)|^2.
+$$
+
+
+:::{note} Exemple  illustratif :  
+Considérons un signal aléatoire avec un spectre de densité de puissance d’entrée donné par :
+$$
+S_x(f) =
+\begin{cases}
+10, & \text{si } |f| \leq 100 \, \text{Hz}, \\
+0, & \text{sinon}.
+\end{cases}
+$$
+
+Le signal passe à travers un filtre passe-bas idéal caractérisé par sa réponse fréquentielle :
+$$
+H(f) =
+\begin{cases}
+2, & \text{si } |f| \leq 50 \, \text{Hz}, \\
+0, & \text{sinon}.
+\end{cases}
+$$
+
+ü
+Le spectre de densité de puissance en sortie est donné par :
+$$
+S_y(f) =
+\begin{cases}
+40, & \text{si } |f| \leq 50 \, \text{Hz}, \\
+0, & \text{sinon}.
+\end{cases}
+$$
+
+
+La puissance totale en sortie peut être calculée en intégrant $ S_y(f) $ sur toutes les fréquences :
+$$
+P_y = \int_{-\infty}^\infty S_y(f) \, df = 2 \times \int_{0}^{50} 40 \, df  = 40 \cdot 100 = 4000 \, \text{W}.
+$$
+
+##Resumé
+Dans cette section, nous abordons **O2 ** *application des outils d’analyse spectrale pour résoudre des problèmes liés aux procédures de transmission*. L’analyse spectrale joue un rôle fondamental dans la conception et l’optimisation des systèmes de communication. En représentant les signaux dans le domaine fréquentiel, les ingénieur.e.s peuvent mieux comprendre le contenu spectral et le comportement des signaux transmis. Cette approche facilite l’identification des éléments essentiels tels que la bande passante, la distribution de puissance et le contenu fréquentiel. Les outils spectraux permettent également de concevoir des filtres efficaces pour éliminer les fréquences indésirables, allouer les ressources de manière optimale et réduire les interferences. Ces techniques sont indispensables pour garantir une transmission fiable et efficace des signaux dans les réseaux de communication modernes.
+
+ %todo 1. SNRdB conversion
+ %todo 2. enegry formulunu ver
+ %todo 3. Table of Fourier transform - linearity
+ %todo 4. Euler Formula e^{j\theta} = \cos\theta + j\sin\theta 
+ %todo 5. Modulasyon sekil koy
+ %todı 6. Sinyal sekillerini kendin ciz
+ %todo 7. Mohamedin kodlarina bak
+ %todo 8. Demodulasyon sekli koy
+ %todo 9. Phase aciklamasi koy
+ %todo 10. FDMA ekle
+ %todo 11. Module sinyal enerjisi ekle
+ %todo 12. Butun sekilleri degistir
+ %todo 13. cosinus enerji hesabini ekle
+ %todo 14. aide mémoire - kontrol et
+ %todo 15. 
+
 
 

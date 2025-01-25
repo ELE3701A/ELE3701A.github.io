@@ -19,7 +19,9 @@ l'émetteur et le récepteur, il faut d'abord avoir un message à envoyer. Ce
 message provient de la source d'information, et vise à être récupéré à
 la destination. L'objectif de cette section est d'identifier  des éléments fondamentaux d'un lien de communication
     point à point  (**O1**).
-Un système de communication se compose de cinq éléments
+
+
+Un système de communication se compose de cinq éléments
 (sous-systèmes) fondamentaux :
 
 1.  la source
@@ -74,10 +76,14 @@ continues en amplitude et est discrète dans le temps.
 
 
 
-:::{important} Exemple pratique
-* **Source continue** : La voix captée en temps réel par un micro-phone est un signal analogique.
+### Exemple d'une source continue :
+- **Voix humaine** : 
 
-* **Source discrète** : Cette voix, après échantillonnage et quantification, devient une suite de valeurs numériques discrètes (fichier WAV ou MP3).
+ 
+:::{important} Exemple pratique
+* **Source continue** : Lorsque nous parlons, les vibrations des cordes vocales et les mouvements des lèvres produisent des ondes sonores analogiques, qui varient de manière continue en amplitude et en temps.
+
+* **Source discrète** : Un microphone convertit la voix en un signal électrique continu, mais un enregistreur numérique effectue un **échantillonnage** (prélève des valeurs à intervalles réguliers, par exemple 44 100 Hz pour un CD audio) et une **quantification** (arrondis les amplitudes à des valeurs discrètes). Le signal devient une séquence de nombres discrets pouvant être stockée ou traitée par un ordinateur.
 :::
 
 ### Émetteur (*Transmitter*)
@@ -146,10 +152,7 @@ numérique** (digital modulation).*
 Ici, le signal à transmettre est modulé par **une onde
 porteuse** (*carrier wave, a.k.a. carrier*). Une onde porteuse est
 utilisée pour la transmission efficace de données sur de longues
-distances. Les signaux cosinus sont utilisés comme ondes porteuses.
-Les signaux cosinus sont
-utilisés comme ondes porteuses. Les ondes cosinus et sinus sont des fonctions
-propres de syst`èmes linéaires invariants dans le temps. Les messages peuvent
+distances. Les signaux cosinus sont utilisés comme ondes porteuses. Les ondes cosinus et sinus sont des fonctions propres de systèmes linéaires invariants dans le temps. Les messages peuvent
 être inclus dans l’amplitude, la phase ou la fréquence de l’onde porteuse.
 
 Si la source est discrète, nous pouvons directement utiliser un codeur
@@ -166,12 +169,12 @@ signal numérique).*
 : - **sortie :** Signal de message (numérique)
 
 :::{important} Exemple pratique
-* Émetteur pour Communications Analogiques
+* Émetteur pour communications analogiques
   * Radio analogique (AM, FM).
   * Télévision analogique.
   * Téléphonie fixe classique (PSTN).
 
-* Émetteur pour Communications Numériques:
+* Émetteur pour communications numériques:
   * Téléphonie mobile (4G, 5G).
   * Wi-Fi, Bluetooth.
   * Télévision numérique (DVB-T).
@@ -242,7 +245,7 @@ autre système.*
 
 :::{important} Exemple pratique
 * Une personne regardant une vidéo sur YouTube.
-* Un serveur recevant un requête HTTP d'un navigateur Web.
+* Un serveur recevant une requête HTTP d'un navigateur Web.
 :::
 
 ## Ressources de communication : Puissance (*Power*) et Largeur de Bande (*Bandwith*)
@@ -287,7 +290,7 @@ satellites, de couvrir de plus grandes zones.
 
 :::{warning} Attention
  Une consommation de puissance élevée peut entrainer des
-coûts opérationnels importants et un impact environnemental accru. De
+couts opérationnels importants et un impact environnemental accru. De
 plus, les appareils alimentés par batterie nécessitent une gestion
 rigoureuse de l'énergie pour prolonger leur durée de vie.
 :::
