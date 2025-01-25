@@ -24,7 +24,7 @@ Informations sur le cours disponibles sur le site:  https://moodle.polymtl.ca/co
 
 1.  **Introduction** (1 heure)
 
-2.  **Notions Préalables**  (7 heures)
+2.  **Notions fondamentales**  (7 heures)
 
     2.1.  Signaux
 
@@ -42,7 +42,7 @@ Informations sur le cours disponibles sur le site:  https://moodle.polymtl.ca/co
 
     3.3.  Multiplexage temporel
 
-4.  **Procédures de Transmission** (13 heures) 
+4.  **Procédures de transmission** (13 heures) 
 
     4.1.  Modulation d’amplitude
 
@@ -50,7 +50,7 @@ Informations sur le cours disponibles sur le site:  https://moodle.polymtl.ca/co
 
     4.3.  Modulation numérique
 
-5.  **Supports de Transmission** (4 heures)  
+5.  **Supports de transmission** (4 heures)  
 
     5.1.  Distorsion
 
@@ -58,7 +58,7 @@ Informations sur le cours disponibles sur le site:  https://moodle.polymtl.ca/co
 
     5.3.  Modèle statistique du canal
 
-6.  **Contrôle des Erreurs** (3 heures)
+6.  **Contrôle des erreurs** (3 heures)
 
     6.1.  Introduction
 
@@ -66,7 +66,7 @@ Informations sur le cours disponibles sur le site:  https://moodle.polymtl.ca/co
 
     6.3.  Codage convolutionnel
 
-7.  **Codage de Source** (3 heures)
+7.  **Codage de source** (3 heures)
 
     7.1.  Introduction et entropie de Shannon
 

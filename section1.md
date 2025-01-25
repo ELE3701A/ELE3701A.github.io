@@ -340,3 +340,5 @@ les contraintes imposées par les caractéristiques physiques des canaux
 et les besoins en ressources limitées. Ces bases permettent d'aborder
 les défis plus complexes liés à la conception de réseaux et de systèmes
 avancés.
+
+

@@ -1109,6 +1109,10 @@ $$
 ##Resumé
 Dans cette section, nous abordons **O2 ** *application des outils d’analyse spectrale pour résoudre des problèmes liés aux procédures de transmission*. L’analyse spectrale joue un rôle fondamental dans la conception et l’optimisation des systèmes de communication. En représentant les signaux dans le domaine fréquentiel, les ingénieur.e.s peuvent mieux comprendre le contenu spectral et le comportement des signaux transmis. Cette approche facilite l’identification des éléments essentiels tels que la bande passante, la distribution de puissance et le contenu fréquentiel. Les outils spectraux permettent également de concevoir des filtres efficaces pour éliminer les fréquences indésirables, allouer les ressources de manière optimale et réduire les interferences. Ces techniques sont indispensables pour garantir une transmission fiable et efficace des signaux dans les réseaux de communication modernes.
 
+%Power spectral density - kutusu ekle
+%  pdf downloading ekle
+% folding ekle
+%phython kodu ekle
  %todo 1. SNRdB conversion
  %todo 2. enegry formulunu ver
  %todo 3. Table of Fourier transform - linearity
@@ -1123,7 +1127,9 @@ Dans cette section, nous abordons **O2 ** *application des outils d’analyse sp
  %todo 12. Butun sekilleri degistir
  %todo 13. cosinus enerji hesabini ekle
  %todo 14. aide mémoire - kontrol et
- %todo 15. 
+ %todo 15. Fourier transform lable ekle
+ %todo 16. Giristeki konularla baglantisini kontrol et
+ %todo 17. tikz bak
 
 
 
