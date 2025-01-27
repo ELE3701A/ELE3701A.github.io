@@ -1,18 +1,17 @@
-# Section 2 - Notions fondamentales
+---
 
-Cette section présente les concepts fondamentaux du traitement des
-signaux, essentiels pour comprendre et analyser les systèmes de
-communication. Elle aborde les définitions, classifications et
-opérations de base des signaux. L’analyse de Fourier y est développée pour explorer la
-décomposition des signaux en composantes fréquentielles. Les principes de modulation
-d’amplitude et les systèmes linéaires invariants dans le temps (LTI)
-sont également discutés, avec un accent sur des notions clés telles que
-la largeur de bande, la densité spectrale de puissance,
-l’autocorrélation et les filtres. Enfin, la section introduit les
-signaux aléatoires, en se concentrant sur les distributions gaussiennes,
-les moyennes statistiques et le théorème de la limite centrale,
-établissant ainsi une base solide pour l’étude des signaux dans des
-environnements variés.
+exports:
+  - format: pdf
+    template: plain_latex
+    output: ./exports/section2.pdf
+downloads:
+  - file: ./exports/section2.pdf
+    title: PDF
+title: Section 2 - Notions fondamentales
+abstract: |
+  Cette section présente les concepts fondamentaux du traitement des signaux, essentiels pour comprendre et analyser les systèmes de communication. Elle aborde les définitions, classifications et opérations de base des signaux. L’analyse de Fourier y est développée pour explorer la décomposition des signaux en composantes fréquentielles. Les principes de modulation d’amplitude et les systèmes linéaires invariants dans le temps (LTI) sont également discutés, avec un accent sur des notions clés telles que la largeur de bande, la densité spectrale de puissance, l’autocorrélation et les filtres. Enfin, la section introduit les signaux aléatoires, en se concentrant sur les distributions gaussiennes, les moyennes statistiques et le théorème de la limite centrale, établissant ainsi une base solide pour l’étude des signaux dans des environnements variés.
+
+---
 
 ## Signal
  

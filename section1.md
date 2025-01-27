@@ -1,17 +1,19 @@
-# Section 1 - Éléments d'un système de communication
+---
 
+exports:
+  - format: pdf
+    template: plain_latex
+    output: ./exports/section1.pdf
+downloads:
+  - file: ./exports/section1.pdf
+    title: PDF
+title: Section 1 - Éléments d'un système de communication
+abstract: |
+  Dans le domaine des télécommunications, la transmission efficace et fiable des données est essentielle. Chaque système de communication vise à transmettre des informations d'une source à une destination via diverses étapes de traitement et un support physique. Comprendre ces étapes et leurs rôles dans l'optimisation des performances est fondamental pour concevoir des systèmes modernes. **ELE3701A - Éléments de télécommunications**, explore ces concepts en profondeur. Cette première section présente le contenu du cours et donne des définitions étayées par des exemples pratiques.
 
+---
 
-
-Dans le domaine des télécommunications, la transmission efficace et
-fiable des données est essentielle. Chaque système de communication vise
-à transmettre des informations d'une source à une destination via
-diverses étapes de traitement et un support physique. Comprendre ces
-étapes et leurs rôles dans l'optimisation des performances est
-fondamental pour concevoir des systèmes modernes. **ELE3701A - Éléments
-de télécommunications**, explore ces concepts en profondeur. Cette
-première section présente le contenu du cours et donne des définitions
-étayées par des exemples pratiques.
+## Introduction
 
 Un système de communication établit le pont de communication entre
 l'émetteur et le récepteur. Pour établir ce pont de communication entre
