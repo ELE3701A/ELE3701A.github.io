@@ -571,21 +571,23 @@ Le signal est défini comme $ g(t) = A \cos(2\pi f_p t)$ où $A$  est l'amplitud
 La transformée de Fourier du signal $ g(t) $  est 
 $$  A\cos(2\pi f_p t)  \iff \frac{A}{2} \left[ \delta(f - f_p) + \delta(f + f_p) \right]$$ 
 Donc, la transformée de Fourier montre deux impulsions à  $f = f_p $ et $ f = -f_p $. Ainsi, la largeur de bande passante est effectivement 0 Hz, autour de $f_p$.
+
+
 Son énergie pour une périod  de $ T_0 = \frac{1}{f_p}$ est définie par 
 $$
-E_g = \int_{-T_0/2}^{T_0/2} A^2 \cos^2(2\pi f_p t) \, dt
+E_g = \int_{-T_0/2}^{T_0/2} A^2 \cos^2(2\pi f_p t) \, dt 
 $$
 
 En utilisant l'identité trigonométrique $ \cos^2(x) = \frac{1}{2} (1 + \cos(2x)) $, on obtient 
 $$
-E_g = \int_{-T_0/2}^{T_0/2} \frac{A^2}{2} \, dt = \frac{A^2}{2} T_0
+E_g = \int_{-T_0/2}^{T_0/2} \frac{A^2}{2} \, dt = \frac{A^2}{2} T_0  \, \,  \, \, \,\textrm{Joules}
 $$
-car l'intégrale de $ \cos(4\pi f_p t) $ sur toute la durée est nulle car $ \cos(4\pi f_p t) $ oscille symétriquement.. 
+car l'intégrale de $ \cos(4\pi f_p t) $ sur toute la durée est nulle car $ \cos(4\pi f_p t) $ oscille symétriquement. 
 
 
 Sa puissance  est donnée par 
 $$
-P_g = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} g^2(t) \, dt = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} \frac{A^2}{2} \, dt = \frac{A^2}{2}
+P_g = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} g^2(t) \, dt = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} \frac{A^2}{2} \, dt = \frac{A^2}{2} \, \,  \, \, \,\textrm{Watts}
 $$
 :::
 
@@ -840,7 +842,7 @@ $$
 
 Propriétés :
 
-1.  $p_X(x) \geq 0$, pour tout $x$. \\
+1.  $p_X(x) \geq 0$, pour tout $x$. 
           
 2. L'intégrale de $p_X(x)$ sur tout l'espace est égale à 1 :
     $$
@@ -878,7 +880,26 @@ où $\sigma_X^2$ est la variance de $X$, et $\overline{X}$ est la valeur moyenne
 
  
 
- 
+ #### Puissance d'une variable aléatoire  
+
+La **puissance d'une variable aléatoire** $X$, définie comme 
+$$
+P_X = E[X^2]
+$$
+
+:::{note} Exemple  illustratif : 
+Considérons une variable aléatoire $ X $ avec deux valeurs possibles :
+-  $X = -2 $ Volts avec une probabilité $ P(X = -2) = 0,4 $
+-  $ X = 3 $ Volts avec une probabilité $ P(X = 3) = 0,6 $ 
+
+Donc, sa PDF est $$p_X(x) =0,4 \cdot \delta(x+2) + 0,6 \cdot \delta(x-3)$$
+
+La puissance de $ X $ est donnée par 
+$$
+P_X = {E}[X^2] = (0,4 \cdot 4) + (0,6 \cdot 9) = 1,6 + 5,4 = 7 \,\,\, \textrm{Watts}
+$$
+:::
+
 
 ### Distribution gaussienne (normal)
 
@@ -996,7 +1017,6 @@ $$
 P_g =  \lim_{T \to \infty} \frac{E_g}{T} = \int_{-\infty}^\infty \lim_{T \to \infty}  \frac{|G(f)|^2}{T} = \int_{-\infty}^\infty S_g(f) \, df,
 $$
 où $S_g(f) $ est le spectre de densité de puissance obtenu en prenant la limite lorsque $T \to \infty $. Notez que   $|G(f)|^2/T $ représente la densité spectrale de puissance. 
-\end{itemize}
 
 
 
@@ -1139,6 +1159,17 @@ P_y = \int_{-\infty}^\infty S_y(f) \, df = 2 \times \int_{0}^{50} 40 \, df  = 40
 $$
 :::
 
+
+:::{tip} Recueil de problèmes
+Testez votre compréhension en résolvant les problèmes de la **Section 2**.
+:::
+
+
+
+
+ 
+
+
 ## Resumé
 Dans cette section, nous abordons **O2** *application des outils d’analyse spectrale pour résoudre des problèmes liés aux procédures de transmission*. L’analyse spectrale joue un rôle fondamental dans la conception et l’optimisation des systèmes de communication. En représentant les signaux dans le domaine fréquentiel, les ingénieur.e.s peuvent mieux comprendre le contenu spectral et le comportement des signaux transmis. Cette approche facilite l’identification des éléments essentiels tels que la bande passante, la distribution de puissance et le contenu fréquentiel. Les outils spectraux permettent également de concevoir des filtres efficaces pour éliminer les fréquences indésirables, allouer les ressources de manière optimale et réduire les interferences. Ces techniques sont indispensables pour garantir une transmission fiable et efficace des signaux dans les réseaux de communication modernes.
 
@@ -1158,7 +1189,6 @@ Dans cette section, nous abordons **O2** *application des outils d’analyse spe
  %todo 10. FDMA ekle
  %todo 11. Module sinyal enerjisi ekle
  %todo 12. Butun sekilleri degistir
- %todo 13. cosinus enerji hesabini ekle
  %todo 14. aide mémoire - kontrol et
  %todo 15. Fourier transform lable ekle
  %todo 16. Giristeki konularla baglantisini kontrol et

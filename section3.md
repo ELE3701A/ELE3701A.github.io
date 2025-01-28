@@ -8,4 +8,17 @@ Enfin, la section conclut par une étude du multiplexage temporel, une technique
 
 Ensemble, ces notions établissent une base solide pour comprendre la numérisation et son rôle central dans les télécommunications modernes.
 
-## 
+## Échantillonnage et quantification
+
+La **numérisation** implique la transformation d'un signal du temps continu au temps discret (échantillonnage), puis en valeurs discrètes (quantification).
+
+
+(def-)=
+Définition: Échantillonnage  
+: L’**échantillonnage** est la lecture d’un signal, $m(t)$ à intervalles réguliers, $T_E$ seconds. Donc on utilise une fréquence d'échantionnage de $f_E$ Hz. La problématique principale liée à l’échantillonnage **sans perdre d’information**.  Cela nous permet d'utiliser l'interpolation et de reconstituer le signal original. Nous représenterons le signal échantillonné comme $m_E(t)$ 
+
+ 
+(def-quantification)=
+Définition: Quantification
+: La **quantification** est la lecture d'un signal  avec une précision finie. Une conséquence importante de ce processus est l'ajout du  bruit de quantification.
+
