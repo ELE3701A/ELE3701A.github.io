@@ -9,7 +9,7 @@ downloads:
     title: PDF
 title: Section 2 - Notions fondamentales
 abstract: |
-  Cette section présente les concepts fondamentaux du traitement des signaux, essentiels pour comprendre et analyser les systèmes de communication. Elle aborde les définitions, classifications et opérations de base des signaux. L’analyse de Fourier y est développée pour explorer la décomposition des signaux en composantes fréquentielles. Les principes de modulation d’amplitude et les systèmes linéaires invariants dans le temps (LTI) sont également discutés, avec un accent sur des notions clés telles que la largeur de bande, la densité spectrale de puissance, l’autocorrélation et les filtres. Enfin, la section introduit les signaux aléatoires, en se concentrant sur les distributions gaussiennes, les moyennes statistiques et le théorème de la limite centrale, établissant ainsi une base solide pour l’étude des signaux dans des environnements variés.
+  Cette section présente les concepts fondamentaux du traitement des signaux, essentiels pour comprendre et analyser les systèmes de communication. Elle aborde les définitions, classifications et opérations de base des signaux. L’analyse de Fourier y est développée pour explorer la décomposition des signaux en composantes fréquentielles. Les principes de modulation d’amplitude et les systèmes linéaires invariants dans le temps (LTI) sont également discutés, avec un accent sur des notions clés telles que la largeur de bande, la densité spectrale de puissance, l’autocorrélation et les filtres. Enfin, la section introduit les signaux aléatoires, en se concentrant sur les distributions gaussiennes, les moyennes statistiques et le théorème de la limite centrale, établissant ainsi une base solide pour l’étude des signaux dans des environnements variés. 
 
 ---
 
@@ -564,6 +564,32 @@ Propriétés:
 - La transformée de Fourier : $$S(f) = \mathcal{F}\{s(t)\} = \frac{A_p}{2j} \exp(j\phi ) \delta(f - f_p) -  \frac{A_p}{2j} \exp(-j \phi)  \delta(f + f_p),$$
 
 
+:::{note} Exemple  illustratif :
+Le signal est défini comme $ g(t) = A \cos(2\pi f_p t)$ où $A$  est l'amplitude du signal, et $f_p$ est la fréquence porteuse (en Hz). 
+
+
+La transformée de Fourier du signal $ g(t) $  est 
+$$  A\cos(2\pi f_p t)  \iff \frac{A}{2} \left[ \delta(f - f_p) + \delta(f + f_p) \right]$$ 
+Donc, la transformée de Fourier montre deux impulsions à  $f = f_p $ et $ f = -f_p $. Ainsi, la largeur de bande passante est effectivement 0 Hz, autour de $f_p$.
+Son énergie pour une périod  de $ T_0 = \frac{1}{f_p}$ est définie par 
+$$
+E_g = \int_{-T_0/2}^{T_0/2} A^2 \cos^2(2\pi f_p t) \, dt
+$$
+
+En utilisant l'identité trigonométrique $ \cos^2(x) = \frac{1}{2} (1 + \cos(2x)) $, on obtient 
+$$
+E_g = \int_{-T_0/2}^{T_0/2} \frac{A^2}{2} \, dt = \frac{A^2}{2} T_0
+$$
+car l'intégrale de $ \cos(4\pi f_p t) $ sur toute la durée est nulle car $ \cos(4\pi f_p t) $ oscille symétriquement.. 
+
+
+Sa puissance  est donnée par 
+$$
+P_g = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} g^2(t) \, dt = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} \frac{A^2}{2} \, dt = \frac{A^2}{2}
+$$
+:::
+
+
 ## Système
 
 
@@ -590,7 +616,7 @@ Un circuit électrique avec une source de tension en entrée et un courant dans 
 Un système peut être **variant** ou  **invariant** dans le temps. De plus, un système peut être **linéaire** ou **non linéaire**. leurs explications sont données ci-dessous. 
 
 
-## Système invariant dans le temps (*Time Invariant System*) 
+### Système invariant dans le temps (*Time Invariant System*) 
 Un système est **invariant dans le temps** si sa réponse à une entrée  ne change pas lorsque l'entrée est décalée dans le temps. Si l'on considère un système $\mathcal{T}(\cdot)$ avec une entrée $x(t)$ et une sortie $y(t)$, (i.e. $y(t)=\mathcal{T}(x(t))$), le système est invariant dans le temps si 
 ```{math}
 :label: time-invariance
@@ -598,7 +624,7 @@ y(t-t_0) = \mathcal{T}(x(t- t_0))
 ```
 
 
-## Système variant dans le temps (*Time Varying System*) 
+### Système variant dans le temps (*Time Varying System*) 
 
 Le système est **variant dans le temps** quand l'équation {eq}`time-invariance`  n'est pas applicable.
  
@@ -611,7 +637,7 @@ Le système est **variant dans le temps** quand l'équation {eq}`time-invariance
 
 
 
-## Système linéaire (*Linear System*)
+### Système linéaire (*Linear System*)
 
 Un système $\mathcal{T(\cdot)}$ est linéaire s'il respecte les propriétés suivantes :
 
@@ -624,7 +650,7 @@ $$
 Notez que la transformée de Fourier peut être interprétée comme un système linéaire.
 
 
-### Système linéaire invariant dans le temps (*Linear time invariant*; LTI) 
+#### Système linéaire invariant dans le temps (*Linear time invariant*; LTI) 
 
 Un système est **linéaire invariant dans le temps** (LTI) si les propriétés de linéarité et d'invariance dans le temps sont satisfaites. Ce système est défini simplement par sa **réponse impulsionnelle**, $h(t)$, ou sa **réponse fréquentielle** $H(F)$ où $$h(t) \iff H(f) $$.
 
@@ -680,7 +706,7 @@ avec la **bande passante :** $[f_c, \infty[$.
 :::
 
 
-## Système non linéaire (*Nonlinear System*)
+### Système non linéaire (*Nonlinear System*)
 
   Si un système ne respecte pas l'une ou l'autre des propriétés d'homogénéité ou de superposition, il est non linéaire.Leur réponse peut varier de manière non proportionnelle ou non additive en fonction des entrées. 
 
@@ -704,7 +730,7 @@ Donc ce système  est non linéaire car il ne respecte pas les deux propriétés
 :::
 
 
-### Modulation - un système non linéaire
+#### Modulation - un système non linéaire
 La modulation est le processus par lequel une onde portesue 
 $c(t) = A_p \cos(2 \pi f_p t)$
 est multiplié par un signal de message $ m(t)$. Cela permet d’intégrer l’information du message dans une onde porteuse adaptée à la transmission.
@@ -1069,6 +1095,13 @@ $$
 S_y(f) = S_x(f) |H(f)|^2.
 $$
 
+ ```{figure} images/psd-filtering.png
+:label: fig:psd-filtering
+:align: center
+La sortie d'un système LTI pour une entrée $x(t)$ avec un spectre de densité de puissance de  $S_x(f)$. 
+```
+
+
 
 :::{note} Exemple  illustratif :  
 Considérons un signal aléatoire avec un spectre de densité de puissance d’entrée donné par :
@@ -1089,7 +1122,7 @@ H(f) =
 \end{cases}
 $$
 
-ü
+
 Le spectre de densité de puissance en sortie est donné par :
 $$
 S_y(f) =
@@ -1104,9 +1137,10 @@ La puissance totale en sortie peut être calculée en intégrant $ S_y(f) $ sur 
 $$
 P_y = \int_{-\infty}^\infty S_y(f) \, df = 2 \times \int_{0}^{50} 40 \, df  = 40 \cdot 100 = 4000 \, \text{W}.
 $$
+:::
 
-##Resumé
-Dans cette section, nous abordons **O2 ** *application des outils d’analyse spectrale pour résoudre des problèmes liés aux procédures de transmission*. L’analyse spectrale joue un rôle fondamental dans la conception et l’optimisation des systèmes de communication. En représentant les signaux dans le domaine fréquentiel, les ingénieur.e.s peuvent mieux comprendre le contenu spectral et le comportement des signaux transmis. Cette approche facilite l’identification des éléments essentiels tels que la bande passante, la distribution de puissance et le contenu fréquentiel. Les outils spectraux permettent également de concevoir des filtres efficaces pour éliminer les fréquences indésirables, allouer les ressources de manière optimale et réduire les interferences. Ces techniques sont indispensables pour garantir une transmission fiable et efficace des signaux dans les réseaux de communication modernes.
+## Resumé
+Dans cette section, nous abordons **O2** *application des outils d’analyse spectrale pour résoudre des problèmes liés aux procédures de transmission*. L’analyse spectrale joue un rôle fondamental dans la conception et l’optimisation des systèmes de communication. En représentant les signaux dans le domaine fréquentiel, les ingénieur.e.s peuvent mieux comprendre le contenu spectral et le comportement des signaux transmis. Cette approche facilite l’identification des éléments essentiels tels que la bande passante, la distribution de puissance et le contenu fréquentiel. Les outils spectraux permettent également de concevoir des filtres efficaces pour éliminer les fréquences indésirables, allouer les ressources de manière optimale et réduire les interferences. Ces techniques sont indispensables pour garantir une transmission fiable et efficace des signaux dans les réseaux de communication modernes.
 
 %Power spectral density - kutusu ekle
 %  pdf downloading ekle
