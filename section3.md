@@ -1,12 +1,20 @@
-# Section 3 - Numérisation 
+---
 
-Cette section explore les bases de la numérisation des signaux, une étape clé dans les systèmes de communication modernes. Elle introduit tout d’abord les principes fondamentaux de l’échantillonnage, qui permettent de convertir un signal continu en une série d’échantillons discrets, garantissant ainsi une représentation fidèle selon le théorème de Nyquist-Shannon. Les applications pratiques de l’échantillonnage, notamment le calcul du débit maximal d’information et les modulations analogiques d’impulsions, y sont abordées.
+exports:
+  - format: pdf
+    template: plain_latex
+    output: ./exports/section3.pdf
+downloads:
+  - file: ./exports/section3.pdf
+    title: PDF
+title: Section 3 - Numérisation 
+abstract: |
+ Cette section explore les bases de la numérisation des signaux, une étape clé dans les systèmes de communication modernes. Elle introduit tout d’abord les principes fondamentaux de l’échantillonnage, qui permettent de convertir un signal continu en une série d’échantillons discrets, garantissant ainsi une représentation fidèle selon le théorème de Nyquist-Shannon. Les applications pratiques de l’échantillonnage, notamment le calcul du débit maximal d’information et les modulations analogiques d’impulsions, y sont abordées. Ensuite, la section s’intéresse à la modulation par impulsions codées (*Pulse Code Modulation*; PCM), un processus crucial pour la transmission numérique des signaux. Les concepts de codage et de quantification sont détaillés pour expliquer comment les niveaux d’amplitude sont discrétisés en valeurs numériques. Enfin, la section conclut par une étude du multiplexage temporel, une technique permettant de partager efficacement un canal de communication entre plusieurs utilisateurs. Les principes de base et le format des trames sont explorés pour illustrer son importance dans les systèmes à grande échelle.
 
-Ensuite, la section s’intéresse à la modulation par impulsions codées (*Pulse Code Modulation*; PCM), un processus crucial pour la transmission numérique des signaux. Les concepts de codage et de quantification sont détaillés pour expliquer comment les niveaux d’amplitude sont discrétisés en valeurs numériques.
+---
 
-Enfin, la section conclut par une étude du multiplexage temporel, une technique permettant de partager efficacement un canal de communication entre plusieurs utilisateurs. Les principes de base et le format des trames sont explorés pour illustrer son importance dans les systèmes à grande échelle.
+ 
 
-Ensemble, ces notions établissent une base solide pour comprendre la numérisation et son rôle central dans les télécommunications modernes.
 
 ## Numérisation
 
@@ -260,7 +268,7 @@ Cela signifie que, dans un **canal idéal**, un débit binaire maximum de $2B_T$
 
 #### Largeur de Bande de Transmission - PCM Binaire
 
-Pour un **PCM binaire**, chaque échantillon est quantifié en utilisant $L$ niveaux de quantification, chaque échantillon est codé sur $N$bits**.  Si le signal analogique $ m(t)$ est **limité en fréquence** à $ B $ Hz, **le théorème de Nyquist** impose un minimum de $ 2B $ échantillons/sec** pour une reconstruction parfaite.  Comme chaque échantillon est représenté par $ N $bits, le **débit binaire total** est :
+Pour un **PCM binaire**, chaque échantillon est quantifié en utilisant $L$ niveaux de quantification, chaque échantillon est codé sur $N$ bits.  Si le signal analogique $ m(t)$ est **limité en fréquence** à $ B $ Hz, **le théorème de Nyquist** impose un minimum de $ 2B $ échantillons/sec pour une reconstruction parfaite.  Comme chaque échantillon est représenté par $ N $bits, le **débit binaire total** est :
   $$
   R_b = 2NB \quad \text{bits/sec}
   $$
@@ -276,14 +284,14 @@ et donc la **largeur de bande minimale** nécessaire pour la transmission de la 
 
 
 :::{warning} Attention
-L’**efficacité spectrale** est un facteur clé dans la conception des systèmes de transmission numérique. Elle permet d’optimiser le **debit de transmission** tout en minimisant l’**utilisation de la largeur de bande**. Plus le **nombre de bits \( N \)** est élevé, plus la **largeur de bande $B_T$ nécessaire pour la transmission du signal est importante.
+L’**efficacité spectrale** est un facteur clé dans la conception des systèmes de transmission numérique. Elle permet d’optimiser le **debit de transmission** tout en minimisant l’**utilisation de la largeur de bande**. Plus le nombre de bits $ N$ est élevé, plus la  largeur de bande $B_T$ nécessaire pour la transmission du signal est importante.
  :::
 
 
 
 
 
-##  Multiplexage temporel
+##  Multiplexage temporel (*Time Division Multiplexing*)
 
  
 (def-TDM)=
@@ -296,9 +304,9 @@ Le **système T1**, utilisé en télécommunications, applique le multiplexage t
    - 24 canaux vocaux sont échantillonnés **en séquence** à un taux de 8 kHz.
 2. Multiplexage PAM  
    - Après échantillonnage, la sortie représente un signal PAM où chaque échantillon est multiplexé par répartition temporelle.
-3. Quantification et Codage
+3. Quantification et codage (*line coding*)
    - Chaque échantillon est quantifié et converti en un mot de 8 bits par un convertisseur analogique-numérique (ADC). La sortie est  une séquence binaire.
-4. Transmission du Signal Numérique**  
+4. Transmission du signal numérique 
    - Le signal numérisé et multiplexé est ensuite transmis sur une ligne dédiée.
 
 
@@ -327,13 +335,13 @@ Définition: Trame
 :::{important} Exemple pratique : Structure de la Trame dans un Système T1
 Dans un **système T1**, l’organisation des données suit ces étapes :
 
-1. **Chaque canal est échantillonné** et converti en un **mot de code** de **8 bits**.
-2. **Une trame** contient **un mot de code pour chaque canal**.
-3. La **structure de la trame** est donc :
+1. Chaque canal est échantillonné et converti en un **mot de code** de **8 bits**.
+2. Une trame contient **un mot de code pour chaque canal**.
+3. La structure de la trame est donc :
    $$
    24 \times 8 = 192 \text{ bits}
    $$
-   Ainsi, une trame **transporte 192 bits d’information**.
+   Ainsi, une trame transporte 192 bits d’information.
 
 
 Le **taux de trame** est de :
@@ -347,9 +355,25 @@ Chaque trame a une durée de :
 $$
 T_{\text{trame}} = \frac{1}{8000} = 125 \ \mu s
 $$
-
-- Chaque canal vocal est échantillonné à 8 kHz, donc un nouvel échantillon est pris toutes les 125 µs. Le système doit donc transmettre une trame complète chaque 125 µspour garantir la synchronisation et la qualité du signal.
-
-
-Le **format de trame du système T1** est conçu pour garantir une **transmission efficace des canaux vocaux** tout en maintenant une **synchronisation temporelle stricte**. 
+Chaque canal vocal est échantillonné à 8 kHz, donc un nouvel échantillon est pris toutes les 125 µs. Le système doit donc transmettre une trame complète chaque 125 µspour garantir la synchronisation et la qualité du signal.
 :::
+
+
+ 
+
+
+ Dans un système de TDM (comme le  T1), les données sont transmises en  trames successives. Pour que le récepteur puisse identifier correctement les données et éviter tout décalage, il doit connaître la position de chaque trame.
+Pour cette raison, un **bit de cadrage** (*framing bit*) est ajouté au début de chaque trame. Ce  bit permettre au récepteur de détecter le début de chaque trame. Donc il sert de repère temporel et assure la  synchronisation  entre l’émetteur et le récepteur.
+
+:::{important} Exemple pratique : Taille Totale de la Trame avec Cadrage
+Avec ce bit supplémentaire, la taille totale de la trame devient :
+
+$$
+192 \text{ bits} + 1 \text{ bit de cadrage} = 193 \text{ bits par trame}
+$$
+:::
+
+
+## Resumé
+
+Cette section traite de **O3** *Numérisation des signaux : Comprendre l’échantillonnage, la quantification, et les conversions analogique-numérique*, qui concerne la numérisation des signaux, englobant l’échantillonnage, la quantification et les conversions analogique-numérique. La numérisation repose sur plusieurs paramètres influençant la qualité et l’efficacité de la transmission. L’échantillonnage est caractérisé par sa fréquence $f_E$, qui doit être au moins égale à $2B$ pour éviter l’aliasing, conformément au théorème de Nyquist, ainsi que par la période d’échantillonnage $T_E = \frac{1}{f_E}$. La quantification implique l’approximation de chaque échantillon à un niveau discret parmi $L$ niveaux possibles, où le nombre de bits par échantillon est déterminé par $n = \log_2 L$, générant un bruit de quantification . La PCM convertit ces échantillons en séquences binaires, définissant un débit binaire $R_b = 2nB$, qui détermine la bande passante requise $B_T = \frac{R_b}{\eta_{\text{spectrale}}}$, avec une limite maximale de $2$ bits/sec/Hz selon Nyquist. Le multiplexage temporel (TDM) regroupe les canaux des utilisateurs dans une trame unique, comprenant des bits de cadrage essentiel pour assurer la synchronisation entre l’émetteur et le récepteur. Une conception optimisée de ces paramètres permet d’assurer une transmission efficace et adaptée aux contraintes de bande passante d'un canal.

@@ -447,7 +447,7 @@ Propriétés:
 
 - La transformée de Fourier : $$\mathcal{F}\{\delta_T(t)\} = \frac{1}{T} \sum_{k=-\infty}^{\infty} \delta\left(f - k\frac{1}{T}\right)$$
 
-Check [](train)!!
+
 
 ### Fonction sinc (*Sinc function*)
 (def-sinc)=
