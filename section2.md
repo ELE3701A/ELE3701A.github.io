@@ -428,6 +428,7 @@ Impulsion de Dirac (en domaine fréquentiel).
 ```
  
 
+
 ### Train d'impulsions de Dirac (*Dirac impulse train*)
 (def-sinc)=
 Définition: Train d'impulsions de Dirac
@@ -446,7 +447,7 @@ Propriétés:
 
 - La transformée de Fourier : $$\mathcal{F}\{\delta_T(t)\} = \frac{1}{T} \sum_{k=-\infty}^{\infty} \delta\left(f - k\frac{1}{T}\right)$$
 
-
+Check [](train)!!
 
 ### Fonction sinc (*Sinc function*)
 (def-sinc)=
@@ -1160,10 +1161,6 @@ $$
 :::
 
 
-:::{tip} Recueil de problèmes
-Testez votre compréhension en résolvant les problèmes de la **Section 2**.
-:::
-
 
 
 
@@ -1172,6 +1169,14 @@ Testez votre compréhension en résolvant les problèmes de la **Section 2**.
 
 ## Resumé
 Dans cette section, nous abordons **O2** *application des outils d’analyse spectrale pour résoudre des problèmes liés aux procédures de transmission*. L’analyse spectrale joue un rôle fondamental dans la conception et l’optimisation des systèmes de communication. En représentant les signaux dans le domaine fréquentiel, les ingénieur.e.s peuvent mieux comprendre le contenu spectral et le comportement des signaux transmis. Cette approche facilite l’identification des éléments essentiels tels que la bande passante, la distribution de puissance et le contenu fréquentiel. Les outils spectraux permettent également de concevoir des filtres efficaces pour éliminer les fréquences indésirables, allouer les ressources de manière optimale et réduire les interferences. Ces techniques sont indispensables pour garantir une transmission fiable et efficace des signaux dans les réseaux de communication modernes.
+
+
+:::{tip} Recueil de problèmes
+Testez votre compréhension en résolvant les problèmes de la **Section 2**.
+:::
+
+
+
 
 %Power spectral density - kutusu ekle
 %  pdf downloading ekle
