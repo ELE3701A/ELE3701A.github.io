@@ -284,3 +284,72 @@ L’**efficacité spectrale** est un facteur clé dans la conception des systèm
 
 
 ##  Multiplexage temporel
+
+ 
+(def-TDM)=
+Définition: Multiplexage temporel 
+: Le **multiplexage temporel** (*Time Division Multiplexing*; TDM) est une technique permettant de **combiner plusieurs signaux utilisateurs** en un seul flux (*flow*) de transmission en allouant des intervalles de temps distincts à chaque signal.
+
+:::{important} Exemple pratique : Système T1 de BELL
+Le **système T1**, utilisé en télécommunications, applique le multiplexage temporel pour transmettre plusieurs canaux vocaux sur une seule ligne. Les principales étapes sont : 
+1. Échantillonnage des canaux (pour chaqe utilisateur)
+   - 24 canaux vocaux sont échantillonnés **en séquence** à un taux de 8 kHz.
+2. Multiplexage PAM  
+   - Après échantillonnage, la sortie représente un signal PAM où chaque échantillon est multiplexé par répartition temporelle.
+3. Quantification et Codage
+   - Chaque échantillon est quantifié et converti en un mot de 8 bits par un convertisseur analogique-numérique (ADC). La sortie est  une séquence binaire.
+4. Transmission du Signal Numérique**  
+   - Le signal numérisé et multiplexé est ensuite transmis sur une ligne dédiée.
+
+
+Le calcul pour le débit binaire total du système T1 : 
+- Nombre de canaux : $ 24 $
+- Fréquence d’échantillonnage par canal :$ f_E = 8 $ kHz
+- Nombre de bits par échantillon : $ N = 8 $
+
+Le **débit binaire total** $ R_b $ est donné par :
+$$
+R_b = \text{Nombre de canaux} \times \text{Fréquence d’échantillonnage} \times \text{Bits par échantillon}
+$$
+$$
+R_b = 24 \times 8 \times 10^3 \times 8 = 1.536 \text{ Mbps}
+$$
+::: 
+
+
+### Format de la Trame  
+
+(def-Frame)=
+Définition: Trame
+:  Une **trame** (*frame*) est un segment contenant un **mot de code (échantillon)** pour chacun des  canaux dans un système.
+
+
+:::{important} Exemple pratique : Structure de la Trame dans un Système T1
+Dans un **système T1**, l’organisation des données suit ces étapes :
+
+1. **Chaque canal est échantillonné** et converti en un **mot de code** de **8 bits**.
+2. **Une trame** contient **un mot de code pour chaque canal**.
+3. La **structure de la trame** est donc :
+   $$
+   24 \times 8 = 192 \text{ bits}
+   $$
+   Ainsi, une trame **transporte 192 bits d’information**.
+
+
+Le **taux de trame** est de :
+$$
+8000 \text{ trames/sec}
+$$
+Cela correspond à la *fréquence d’échantillonnage* des signaux audio téléphoniques de 8 kHz.
+
+
+Chaque trame a une durée de :
+$$
+T_{\text{trame}} = \frac{1}{8000} = 125 \ \mu s
+$$
+
+- Chaque canal vocal est échantillonné à 8 kHz, donc un nouvel échantillon est pris toutes les 125 µs. Le système doit donc transmettre une trame complète chaque 125 µspour garantir la synchronisation et la qualité du signal.
+
+
+Le **format de trame du système T1** est conçu pour garantir une **transmission efficace des canaux vocaux** tout en maintenant une **synchronisation temporelle stricte**. 
+:::
