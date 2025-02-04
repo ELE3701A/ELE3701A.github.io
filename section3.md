@@ -91,6 +91,15 @@ Le **taux de Nyquist** ($ 2B $) est définie comme la fréquence minimale d'éch
 Définition: chevauchement (*aliasing*) 
 : Nous devons nous conformer aux critères de Nquist, sinon nous observons un effet de **chevauchement**.   Le chevauchement se produit lorsqu'un signal est échantillonné à une fréquence **inférieure** au **taux de Nyquist** ($f_E < 2B$). Ce chevauchement entraîne une **distorsion irréversible** du signal, où différentes fréquences deviennent indiscernables.
 
+```{figure} images/aliasing.png
+:label: aliasing
+:align: center
+Une illustration du chevauchement (aliasing) $($f_E < 2B) $
+```
+
+
+
+
 :::{warning} Attention
 Comment éviter le chevauchement :
 1. **Augmenter la fréquence d’échantillonnage** pour que $f_E > 2B$. Mais notez que échantillonnage au-dessus du taux de Nyquist réduira l'efficacité spectrale (certaines bandes ne sont pas utilisées).
