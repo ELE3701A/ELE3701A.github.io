@@ -22,11 +22,25 @@ La **numérisation** implique la transformation d'un signal du temps continu au 
 Sa performance  généralement indiquée par la fréquence d’échantillonnage et le nombre de bits par échantillon.
 Le processus inverse, qui consiste à convertir un signal numérique en un signal continu, est effectué par un **convertisseur numérique-analogique** (*digital-to-analog converter*, DAC). 
 
+```{figure} images/overview.png
+:label: Overview-DAC
+:align: center
+Schéma du processus de numérisation et de reconstruction d’un signal. Le signal analogique de message est d’abord converti en signal numérique via une conversion analogique-numérique (A/N), qui comprend l’échantillonnage à une période $T_E $ et la quantification définie par $ \Delta, N, Q(\cdot) $. Le signal numérisé est ensuite reconverti en signal analogique par une conversion numérique-analogique (N/A), où une interpolation est appliquée à l’aide de la fonction $p(t)$ pour reconstruire une approximation du signal d’origine.
+```
+
+
 ### Échantillonnage (*Sampling*)
 
 (def-chantillonnage)=
 Définition: Échantillonnage  
 : L’**échantillonnage** est la lecture d’un signal, $m(t)$ à intervalles réguliers, $T_E$ seconds ($T_E$ est la période d’échantillonnage). Donc on utilise une fréquence d'échantionnage de $f_E$ Hz. La problématique principale liée à l’échantillonnage **sans perdre d’information**.  Cela nous permet d'utiliser l'interpolation et de reconstituer le signal original. Nous représenterons le signal échantillonné comme $m_E(t)$.
+
+```{figure} images/sampling.png
+:label: sampling
+:align: center
+ Schéma du processus d’échantillonnage d’un signal. Le signal analogique $m(t)$ est multiplié par un **train d’impulsions** $ \delta_{T_E}(t) $, représentant une suite de deltas de Dirac espacés de $T_E$. Cette opération produit le signal échantillonné $ m_E(t) $, qui conserve les valeurs de $m(t)$ aux instants d’échantillonnage. Ce processus est la première étape de la conversion analogique-numérique (A/N), garantissant une représentati on discrète du signal original.
+```
+
 
 
 Soit $m(t)$ un signal limité (dans le domaine des fréquences) à $B$ Hz. Le signal échantillonné est :
@@ -41,6 +55,21 @@ la transformée de Fourier de $g_E(t)$ peut être écrite comme
 $$
 M_E(f) = M(f) * \frac{1}{T_E} \sum_{n=-\infty}^{\infty} \delta(f - n f_E) = \frac{1}{T_E} \sum_{n=-\infty}^{\infty} M(f - n f_E)
 $$
+
+
+```{figure} images/sampling-before.png
+:label: sampling-before
+:align: center
+Un exemple de signal de message à bande limitée, $B$ Hz.
+```
+
+
+```{figure} images/sampling-after.png
+:label: sampling-after
+:align: center
+La version échantillonnée du signal dans le domaine fréquentiel devient périodique avec une fréquence  $f_E $, qui est la fréquence d'échantillonnage. **Remarque :** Tant que $f_E > 2B $, il n’y a pas de recouvrement (aliasing). Les copies peuvent rester non chevauchantes.
+```
+
 
 :::{warning} Attention
 Notez que le spectre du signal d’origine devient périodique après échantillonnage avec une période de $f_E =\frac{1}{T_E}$.
@@ -60,7 +89,7 @@ Le **taux de Nyquist** ($ 2B $) est définie comme la fréquence minimale d'éch
  
 (def-chantillonnage)=
 Définition: chevauchement (*aliasing*) 
-: Nous devons nous conformer aux critères de Nquist, sinon nous observons un effet de **chevauchement**.   Le chevauchement se produit lorsqu'un signal est échantillonné à une fréquence **inférieure** au **taux de Nyquist** ($f_E < 2B$). Ce chevauchement entraîne une **distorsion*irréversible** du signal, où différentes fréquences deviennent indiscernables.
+: Nous devons nous conformer aux critères de Nquist, sinon nous observons un effet de **chevauchement**.   Le chevauchement se produit lorsqu'un signal est échantillonné à une fréquence **inférieure** au **taux de Nyquist** ($f_E < 2B$). Ce chevauchement entraîne une **distorsion irréversible** du signal, où différentes fréquences deviennent indiscernables.
 
 :::{warning} Attention
 Comment éviter le chevauchement :
@@ -91,10 +120,25 @@ $$
 %- $ \text{sinc}(\pi x) = \frac{\sin(\pi x)}{\pi x} $ est la fonction de cardinal de Whittaker-Shannon utilisée pour l’interpolation.
  
 
+ ```{figure} images/reconstuctruction-ideal.png
+:label: reconstuctruction-ideal
+:align: center
+Un **filtre passe-bas idéal** est utilisé pour extraire la bande originale de largeur $2B$, éliminant ainsi les répliques spectrales et permettant la reconstruction du signal initial.
+```
+
+
 #### Reconstruction pratique (interpolation) 
 
 
 L’**interpolation** est le processus de reconstruction d'un signal continu à partir de ses échantillons discrets en utilisant un **filtre passe-bas** ayant une réponse impulsionnelle $p(t)$.
+
+
+```{figure} images/reconstuction-pratique.png
+:label: reconstuction-pratique
+:align: center
+Modèle équivalent de reconstruction d’un signal échantillonné. Le signal échantillonné $ m_E(t)$est filtré par un **filtre passe-bas** ayant une réponse impulsionnelle $ p(t) $ et une réponse en fréquence $ P(f) $. Ce filtrage permet d’éliminer les répliques spectrales indésirables et de reconstruire une approximation du signal original, notée $ \tilde{m}(t) $. Cette approche constitue une **reconstruction pratique** du signal après l’étape d’échantillonnage.
+```
+
 
 Lorsque nous ne pouvons pas créer un filtre idéal, nous pouvons utiliser un filtre pratique avec une réponse impulsionnelle p(t)p(t) qui a une durée finie dans le temps, permettant une reconstruction approximative tout en réduisant la complexité de mise en œuvre. L'interpolation peut être vue comme un filtrage de convolution du signal échantillonné $m_E(t)$ avec un **filtre passe-bas non-idéal** avec une  **réponse impulsionnelle** du filtre passe-bas $ p(t) $, qui permet de lisser les échantillons et de reconstruire un signal continu :
 $$
@@ -123,6 +167,13 @@ T_E e^{-j 2\pi f t_0}, & |f| < B
 \end{cases}
 $$
 où $\textcolor{red}{t_0}$ est un délai qui assure la causalité du filtre conçu. Notez que nous nous concentrons uniquement sur la largeur de bande du message. 
+
+
+ ```{figure} images/equalization.png
+:label: equalization
+:align: center
+Schéma du processus d’égalisation appliqué au signal reconstruit. Le signal $ \tilde{m}(t) $, obtenu après interpolation, est traité par un **égaliseur** ayant une réponse impulsionnelle $ e(t) $ et une réponse en fréquence $ E(f) $. L’objectif de ce filtrage est de compenser les distorsions introduites par le processus de transmission et de reconstruction, produisant ainsi un signal égalisé $\bar{ \bar{m}}(t) $, plus fidèle au signal d'origine.
+```
 :::
 
 
@@ -139,17 +190,43 @@ Définition: Quantification
 : La **quantification** est la lecture d'un signal analogique avec une précision finie. Une conséquence importante de ce processus est l'ajout du  bruit de quantification. La quantification est utilisée après l'échantillonnage dans le processus de numérisation d'un signal.  Nous représenterons le signal après la quantification comme $m_E(t)$ 
 
 
-
 La quantification est un système  qui transforme un signal d’entrée analogique  à temps continu  en un signal de sortie numérique à temps continu, en l'arrondissant à l’un des niveaux prédéfinis. Elle peut être représentée par une fonction de quantification
 $$
 y = Q(x)
 $$
 
 :::{note} Exemple  illustratif :  
-- **Quantification Uniforme** :     Lorsque les niveaux de quantification sont **équidistants**, on parle de **quantification uniforme**. L'intervalle entre chaque niveau est appelé **pas de quantification** (*quantization step*) $ \Delta $ .
+- Nombre de niveaux de quantification : \( 2^3 = 8 \)
+- Marge de fonctionnement : de -4V à +4V
+- Pas de quantification (\(\Delta\)) : 
+$$
+  \Delta = \frac{\text{plage de quantification}}{\text{nombre de niveaux}} = \frac{4 - (-4)}{8} = \frac{8}{8} = 1V
+  $$
+  Ainsi, chaque niveau est espacé de 1V.
 
--  **Quantification Non Uniforme** :      Utilisée lorsque certaines plages de valeurs doivent être plus précises (ex : **compandage en télécommunications**).
+ 
+Le signal est quantifié aux valeurs suivantes :
+- Entrée \([-4V, -3.5V]\) → Quantifié à **-3.5V**
+- Entrée \([-3.5V, -2.5V]\) → Quantifié à **-2.5V**
+- Entrée \([-2.5V, -1.5V]\) → Quantifié à **-1.5V**
+- Entrée \([-1.5V, -0.5V]\) → Quantifié à **-0.5V**
+- Entrée \([-0.5V, +0.5V]\) → Quantifié à **+0.5V**
+- Entrée \([+0.5V, +1.5V]\) → Quantifié à **+1.5V**
+- Entrée \([+1.5V, +2.5V]\) → Quantifié à **+2.5V**
+- Entrée \([+2.5V, +3.5V]\) → Quantifié à **+3.5V**
+
+Toute valeur comprise dans un intervalle est arrondie au niveau de quantification le plus proche. Ce processus entraîne une **erreur de quantification**, qui dépend directement du pas de quantification $\Delta$.
+ ```{figure} images/quantification-ex.png
+:label: quantification-ex
+:align: center
+Illustration du processus de quantification utilisant **3 bits**, générant $2^3 = 8$ niveaux de quantification dans une plage de **-4V à +4V**. L'intervalle de quantification est $\Delta = 1V$.   Chaque valeur d’entrée $ m(nT_s) $ est arrondie au niveau de quantification le plus proche, produisant le signal quantifié $ \widetilde{m}(nT_s) $. Cette quantification entraîne une **erreur de quantification**, qui dépend du pas de quantification $\Delta = 1V $.
+
+```
 :::
+
+
+
+ 
 
 
 
@@ -186,6 +263,14 @@ $$
 \quad \sigma_Q^2 = \frac{m_p^2}{3L^2}
 $$
 
+
+```{figure} images/quantification-model.png
+:label: quantification-model
+:align: center
+L'erreur est ajoutée au signal discrétisé, ce qui donne le signal quantifié $ \hat{m}(nT_E)$, utilisé pour la transmission ou le traitement numérique. La quantification introduit une **distorsion**, dont l'impact dépend du pas de quantification $ \Delta $ et du nombre de bits utilisés $N$.
+```
+
+
  
 Le **rapport signal sur bruit de quantification** (*signal-to-quantization-noise ratio*; SQNR) est une mesure de la qualité du signal après quantification. Il est défini par :
 $$
@@ -194,6 +279,17 @@ $$
 
 Le bruit de quantification est un facteur critique dans la conversion analogique-numérique, et il doit être minimisé pour assurer une haute fidélité du signal converti. Notez qu'un nombre de niveaux de quantification $L$ plus élevé réduit le bruit de quantification, mais mous avons besoin de plus de bits  pour représenter les échantillons ($N \times \textrm{le nombre total d'échantillons}$). 
 
+#### Types de fonctions de quantification
+Il existe deux types de fonctions de quantification.
+- **Quantification Uniforme** :     Lorsque les niveaux de quantification sont **équidistants**, on parle de **quantification uniforme**. L'intervalle entre chaque niveau est appelé **pas de quantification** (*quantization step*) $ \Delta $ .
+
+-  **Quantification Non Uniforme** :      Utilisée lorsque certaines plages de valeurs doivent être plus précises (ex : **compandage en télécommunications**).
+
+ ```{figure} images/quantification-comparison.png
+:label: quantification-comparison
+:align: center
+Exemples pour deux types de fonctions de quantification. Dans la quantification uniforme (à gauche), les niveaux sont répartis de manière égale sur toute la plage de signal, tandis que dans la quantification non uniforme (à droite), les niveaux sont plus denses pour les faibles amplitudes, réduisant ainsi l’erreur de quantification pour les signaux de faible intensité. Cette approche est couramment utilisée pour améliorer le rapport signal/bruit dans les systèmes de communication.
+```
 
 
 ### Applications: Modulations analogiques d’impulsions  
@@ -205,6 +301,14 @@ $$
 \sum_{n=-\infty}^{\infty} p(t - nT_E)
 $$
 où $p(t)$ est la **forme de l’impulsion** utilisée. 
+
+ ```{figure} images/applications-def.png
+:label: applications-def
+:align: center
+Illustration du processus d’échantillonnage à l’aide d’un train d’impulsions $p(t).  
+```
+
+
 Ces impulsions serviront à coder le signal en utilisant différentes méthodes de modulation telles que :
   - **PAM (Pulse Amplitude Modulation)** : Modulation en amplitude des impulsions. L'amplitude des impulsions change. 
   - **PWM (Pulse Width Modulation)** : Modulation de durée. La position des impulsions est la même, leur durée change.
@@ -213,7 +317,11 @@ Ces impulsions serviront à coder le signal en utilisant différentes méthodes 
   
 
 
-
+```{figure} images/applications-type.png
+:label: applications-type
+:align: center
+Une illustration de la PAM, PWM et PPM. (Voir: Exemples Intéractifs: Numérisation)
+```
 
 
 ## Modulation par impulsions codées (*Pulse Code Modulation*; PCM)
@@ -225,9 +333,15 @@ Modulation par impulsions codées (PCM) est un système pratique d'échantillonn
 La **modulation par impulsions codées (PCM - Pulse Code Modulation)** est une technique de numérisation utilisée pour convertir un **signal analogique** en un **signal numérique**. Elle se déroule en trois étapes principales :
 1. **Échantillonnage** : Le signal analogique est prélevé à intervalles réguliers.
 2. **Quantification** : Chaque échantillon est arrondi à l’un des $  L $  iveaux disponibles.
-3. **Codage** : Les niveaux quantifiés sont convertis en **mots binaires**.
+3. **Codage en ligne** (*line coding*): Les niveaux quantifiés sont convertis en **mots binaires**.
 
  
+  ```{figure} images/PCM.png
+:label: PCM
+:align: center
+Schéma du processus de modulation par codage d'impulsions (PCM). Le signal analogique est d'abord échantillonné avec une période  $T_E$, puis quantifié en utilisant $ \Delta, N, Q(\cdot) $. Ensuite, un codage de ligne est appliqué à la séquence numérique via une fonction de codage $ p(t)$, influençant l’efficacité spectrale $ \eta_{\text{spectrale-binaire}} $. En sortie, un signal modulé en bande de base (autour de $0$ Hz)  est obtenu, caractérisé par un débit binaire $ R_b$ et une largeur de bande $B_T $.
+
+```
 La quantification est une étape essentielle du système **PCM**, où chaque échantillon $ m(nT_E) $ du signal $ m(t) $  est **approximé** par l’un des $ L $  niveaux de quantification et  
 $$
   \Delta = \frac{2m_p}{L}
@@ -240,8 +354,17 @@ L = 8
 $$
 et le nombre de bits nécessaires pour coder chaque échantillon est :
 $$
-N = \log_2(L) = \log_2(8) = 4 \text{ bits}.
+N = \log_2(L) = \log_2(8) = 3 \text{ bits}.
 $$
+ ```{figure} images/PCM-ex.png
+:label: PCM-ex
+:align: center
+
+```
+
+
+
+
 :::
 
 À la sortie du système PCM, nous avons un **signal binaire** caractérisé par deux **paramètres de conception** :
@@ -359,18 +482,32 @@ Chaque canal vocal est échantillonné à 8 kHz, donc un nouvel échantillon est
 :::
 
 
- 
+ ```{figure} images/TDM.png
+:label: TDM
+:align: center
+Un exemple de multiplexage temporel (TDM) avec deux utilisateurs. Si chaque utilisateur transmet à un débit de $ R_b $ bits/seconde, alors la trame TDM doit être transmise à un débit de $ 2R_b$  bits/seconde. Cela est nécessaire pour préserver l'intégrité des données de chaque utilisateur et garantir que toutes les informations sont transmises sans perte.
+```
+
 
 
  Dans un système de TDM (comme le  T1), les données sont transmises en  trames successives. Pour que le récepteur puisse identifier correctement les données et éviter tout décalage, il doit connaître la position de chaque trame.
 Pour cette raison, un **bit de cadrage** (*framing bit*) est ajouté au début de chaque trame. Ce  bit permettre au récepteur de détecter le début de chaque trame. Donc il sert de repère temporel et assure la  synchronisation  entre l’émetteur et le récepteur.
 
-:::{important} Exemple pratique : Taille Totale de la Trame avec Cadrage
+:::{important} Exemple pratique : Taille totale de la trame avec bit de cadrage
 Avec ce bit supplémentaire, la taille totale de la trame devient :
 
 $$
 192 \text{ bits} + 1 \text{ bit de cadrage} = 193 \text{ bits par trame}
 $$
+
+ ```{figure} images/Trame-T1.png
+:label: Trame-T1
+:align: center
+Une illustration d'une trame T1.
+```
+
+
+
 :::
 
 
