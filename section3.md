@@ -105,7 +105,6 @@ Comment éviter le chevauchement :
 1. **Augmenter la fréquence d’échantillonnage** pour que $f_E > 2B$. Mais notez que échantillonnage au-dessus du taux de Nyquist réduira l'efficacité spectrale (certaines bandes ne sont pas utilisées).
 
 
-2. **Appliquer un anti-chevauchment** avant l’échantillonnage pour éliminer les composantes fréquentielles supérieures à $B$ (i.e. pour limiter la largeur de bande de $g(t)$.
 :::
  
 
