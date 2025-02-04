@@ -94,7 +94,7 @@ Définition: chevauchement (*aliasing*)
 ```{figure} images/aliasing.png
 :label: aliasing
 :align: center
-Une illustration du chevauchement (aliasing) $($f_E < 2B) $
+Une illustration du chevauchement (aliasing) $(f_E < 2B) $
 ```
 
 
@@ -196,7 +196,7 @@ Schéma du processus d’égalisation appliqué au signal reconstruit. Le signal
 
 (def-quantification)=
 Définition: Quantification
-: La **quantification** est la lecture d'un signal analogique avec une précision finie. Une conséquence importante de ce processus est l'ajout du  bruit de quantification. La quantification est utilisée après l'échantillonnage dans le processus de numérisation d'un signal.  Nous représenterons le signal après la quantification comme $m_E(t)$ 
+: La **quantification** est la lecture d'un signal analogique avec une précision finie. Une conséquence importante de ce processus est l'ajout du  bruit de quantification. La quantification est utilisée après l'échantillonnage dans le processus de numérisation d'un signal.  Nous représenterons le signal après la quantification comme $\hat{m}(t)$ 
 
 
 La quantification est un système  qui transforme un signal d’entrée analogique  à temps continu  en un signal de sortie numérique à temps continu, en l'arrondissant à l’un des niveaux prédéfinis. Elle peut être représentée par une fonction de quantification
@@ -523,3 +523,5 @@ Une illustration d'une trame T1.
 ## Resumé
 
 Cette section traite de **O3** *Numérisation des signaux : Comprendre l’échantillonnage, la quantification, et les conversions analogique-numérique*, qui concerne la numérisation des signaux, englobant l’échantillonnage, la quantification et les conversions analogique-numérique. La numérisation repose sur plusieurs paramètres influençant la qualité et l’efficacité de la transmission. L’échantillonnage est caractérisé par sa fréquence $f_E$, qui doit être au moins égale à $2B$ pour éviter l’aliasing, conformément au théorème de Nyquist, ainsi que par la période d’échantillonnage $T_E = \frac{1}{f_E}$. La quantification implique l’approximation de chaque échantillon à un niveau discret parmi $L$ niveaux possibles, où le nombre de bits par échantillon est déterminé par $n = \log_2 L$, générant un bruit de quantification . La PCM convertit ces échantillons en séquences binaires, définissant un débit binaire $R_b = 2nB$, qui détermine la bande passante requise $B_T = \frac{R_b}{\eta_{\text{spectrale}}}$, avec une limite maximale de $2$ bits/sec/Hz selon Nyquist. Le multiplexage temporel (TDM) regroupe les canaux des utilisateurs dans une trame unique, comprenant des bits de cadrage essentiel pour assurer la synchronisation entre l’émetteur et le récepteur. Une conception optimisée de ces paramètres permet d’assurer une transmission efficace et adaptée aux contraintes de bande passante d'un canal.
+
+%Yapilacaklar - DS1 ornegi ekle (son slaytta)
