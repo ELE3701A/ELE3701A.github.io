@@ -33,7 +33,7 @@ Schéma du processus de numérisation et de reconstruction d’un signal. Le sig
 
 (def-chantillonnage)=
 Définition: Échantillonnage  
-: L’**échantillonnage** est la lecture d’un signal, $m(t)$ à intervalles réguliers, $T_E$ seconds ($T_E$ est la période d’échantillonnage). Donc on utilise une fréquence d'échantionnage de $f_E$ Hz. La problématique principale liée à l’échantillonnage **sans perdre d’information**.  Cela nous permet d'utiliser l'interpolation et de reconstituer le signal original. Nous représenterons le signal échantillonné comme $m_E(t)$.
+: L’**échantillonnage** est la lecture d’un signal, $m(t)$ à intervalles réguliers, $T_E$ seconds ($T_E$ est la période d’échantillonnage). Donc on utilise une fréquence d'échantionnage de $f_E$ Hz. La problématique principale est liée à l’échantillonnage **sans perdre d’information**.  Cela nous permet d'utiliser l'interpolation et de reconstituer le signal original. Nous représenterons le signal échantillonné comme $m_E(t)$.
 
 ```{figure} images/sampling.png
 :label: sampling
@@ -146,7 +146,7 @@ Modèle équivalent de reconstruction d’un signal échantillonné. Le signal �
 ```
 
 
-Lorsque nous ne pouvons pas créer un filtre idéal, nous pouvons utiliser un filtre pratique avec une réponse impulsionnelle p(t)p(t) qui a une durée finie dans le temps, permettant une reconstruction approximative tout en réduisant la complexité de mise en œuvre. L'interpolation peut être vue comme un filtrage de convolution du signal échantillonné $m_E(t)$ avec un **filtre passe-bas non-idéal** avec une  **réponse impulsionnelle** du filtre passe-bas $ p(t) $, qui permet de lisser les échantillons et de reconstruire un signal continu :
+Lorsque nous ne pouvons pas créer un filtre idéal, nous pouvons utiliser un filtre pratique avec une réponse impulsionnelle $p(t)$ qui a une durée finie dans le temps, permettant une reconstruction approximative tout en réduisant la complexité de mise en œuvre. L'interpolation peut être vue comme un filtrage de convolution du signal échantillonné $m_E(t)$ avec un **filtre passe-bas non-idéal** avec une  **réponse impulsionnelle** du filtre passe-bas $ p(t) $, qui permet de lisser les échantillons et de reconstruire un signal continu :
 $$
  \widetilde{m}(t) = m_E(t) * p(t) = \sum_{n=-\infty}^{\infty} m(nT_E) p(t - nT_E)
 $$
@@ -185,7 +185,7 @@ Schéma du système de reconstruction avec une impulsion rectangulaire $p(t)$ de
  
 
 :::{warning}  Comment peut-on éliminer l'effet de $ p(t)$ ?
-L'effet de $ p(t)$ peut être éliminé en appliquant un **égaliseur** (*equalizer*). L’égaliseur est l’équivalent d’un filtre passe bas ayant une fonction de transfert inverse  (ou annule $ p(t)$).   
+L'effet de $ p(t)$ peut être éliminé en appliquant un **égaliseur** (*equalizer*). L’égaliseur est l’équivalent d’un filtre passe bas ayant une fonction de transfert inverse  (qui annule $ p(t)$).   
 Soit \( E(f) \) la **réponse en fréquence de l'égaliseur**. Notre objectif de conception est d'obtenir 
 $$
 E(f) P(f) =
@@ -341,7 +341,7 @@ Exemples pour deux types de fonctions de quantification. Dans la quantification 
 
 
 
-La **modulation analogique d’impulsions** est une technique utilisée pour transmettre un **signal analogique** en modulant une série d’impulsions discrètes. Cette technique est largement employée en télécommunications et en traitement du signal. On utilise un signa de message qui porte l’information, $m(t)$ et une série d’impulsions (*pulses*) est utilisée pour moduler le signal, $p(t)$. Le train d’impulsions est est représentée par
+La **modulation analogique d’impulsions** est une technique utilisée pour transmettre un **signal analogique** en modulant une série d’impulsions discrètes. Cette technique est largement employée en télécommunications et en traitement du signal. On utilise un signal de message qui porte l’information, $m(t)$ et une série d’impulsions (*pulses*) est utilisée pour moduler le signal, $p(t)$. Le train d’impulsions est  représentée par
 $$
 \sum_{n=-\infty}^{\infty} p(t - nT_E)
 $$
@@ -377,7 +377,7 @@ Modulation par impulsions codées (PCM) est un système pratique d'échantillonn
  
 La **modulation par impulsions codées (PCM - Pulse Code Modulation)** est une technique de numérisation utilisée pour convertir un **signal analogique** en un **signal numérique**. Elle se déroule en trois étapes principales :
 1. **Échantillonnage** : Le signal analogique est prélevé à intervalles réguliers.
-2. **Quantification** : Chaque échantillon est arrondi à l’un des $  L $  iveaux disponibles.
+2. **Quantification** : Chaque échantillon est arrondi à l’un des $  L $  niveaux disponibles.
 3. **Codage de ligne** (*line coding*): Les niveaux quantifiés sont convertis en **mots binaires**.
 
  

@@ -352,11 +352,11 @@ $$
 \eta_{\text{efficacité-énergétique-AM}} = \frac{E[|m(t)|^2]}{\frac{1}{2} A^2 + \frac{1}{2} E[|m(t)|^2]}
 $$
 
-En factorisant $ E[|m(t)|^2] $:
-$$
-\eta_{\text{efficacité-énergétique-AM}} = \frac{2 \mu^2}{1 + \mu^2}
-$$
-où $ \mu = \frac{m_p}{A} $ est l'indice de modulation.
+%En factorisant $ E[|m(t)|^2] $:
+%$$
+%\eta_{\text{efficacité-énergétique-AM}} = \frac{2 \mu^2}{1 + \mu^2}
+%$$
+%où $ \mu = \frac{m_p}{A} $ est l'indice de modulation.
 
 
 
@@ -376,16 +376,16 @@ Le spectre d’un signal AM. Notez que seules les fréquences positives sont vis
 
 **Réponse :**  On observe une différence de puissance de **12 dB** entre la porteuse et les bandes latérales. En utilisant la relation logarithmique entre ces puissances :
 $$
-12 \text{ dB} = 10 \log \left( \frac{4}{m^2} \right)
+12 \text{ dB} = 10 \log \left( \frac{4}{\mu^2} \right)
 $$
 En résolvant cette équation, on obtient :
 $$
-m = \frac{A_m}{A_p} = 0.5
+\mu= \frac{A_m}{A_p} = 0.5
 $$
 
 L’efficacité énergétique,  est donnée par :
 $$
-\eta = \frac{2m^2}{4 + 2m^2}  = \frac{2(0.5)^2}{4 + 2(0.5)^2} = \frac{0.5}{4.5} \approx 11\%
+\eta = \frac{2\mu^2}{4 + 2\mu^2}  = \frac{2(0.5)^2}{4 + 2(0.5)^2} = \frac{0.5}{4.5} \approx 11\%
 $$ 
 :::
 
@@ -819,4 +819,6 @@ le reste est à venir
 %[Lahti&Ding 5e édition:  Équation 5.37, page 312]. 
 
 
-%Yapilacaklar - equation 3 - puissance totale 
+%Yapilacaklar - LSB-SSB sekil koy (yeni ciz)
+%Spectral efficiecny discussioni ekle  (SSB oncesinde)
+
