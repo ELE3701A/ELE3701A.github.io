@@ -89,7 +89,7 @@ Les deux critères de performance sont l'efficacité énergétique et l'efficaci
 Définition: L’efficacité énergétique
 :  **L'efficacité énergétique** (*energy efficiency*) est l'énergie (puissance) du signal de message divisée par l'énergie (puissance) du signal modulé 
 $$
-\eta_{\textrm{efficacité-énergétique}} = \frac{\textrm{Puissance utile}}{\textrm{Puissamce totale}}= \frac{E[ | m(t) |^2 ]}{E[ | \varphi(t) |^2 ]}
+\eta_{\textrm{efficacité-énergétique}} = \frac{\textrm{Puissance utile}}{\textrm{Puissance totale}}= \frac{E[ | m(t) |^2 ]}{E[ | \varphi(t) |^2 ]}
 $$
 L’efficacité énergétique mesure de la capabilité d’un système à utiliser efficacement l’énergie pour transmettre des signaux de message.  
 
@@ -265,7 +265,7 @@ $$
 $$  
  La porteuse générée peut **ne pas être parfaitement alignée** avec celle de l'émetteur, ce qui introduit un décalage de phase $ \theta $ (**problème de synchronisation**).  
 
-Après la multiplication avec la porteuse locale, le signal passe dans un **filtre passe-bas** avec une **fréquence de coupure $ f_0 \geq B$, et gain de **2** , qui supprime les hautes fréquences et ne conserve que la composante basse fréquence du signal.   
+Après la multiplication avec la porteuse locale, le signal passe dans un **filtre passe-bas** avec une fréquence de coupure $ f_0 \geq B$, et gain de **2**, qui supprime les hautes fréquences et ne conserve que la composante basse fréquence du signal.   
 
 
 
@@ -275,7 +275,7 @@ Après la multiplication avec la porteuse locale, le signal passe dans un **filt
 Schéma de la démodulation cohérente d'un signal DSB-SC. Un filtre passe-bande réduit le bruit avant la multiplication avec une porteuse locale. Un filtre passe-bas extrait ensuite le signal message, avec un effet de synchronisation dépendant du décalage de phase $\theta$.
 ``` 
 :::{warning} Effet de la synchronisation 
-  - **Idéalement**, $ \theta = 0 $ et le signal récupéré est **exactement \( m(t) \)**.
+  - **Idéalement**, $ \theta = 0 $ et le signal récupéré est  exactement $ m(t)$.
   - **En pratique**, $ \theta \neq 0 $, ce qui entraîne une atténuation proportionnelle à $ \cos(\theta)  \leq 1 $.  
 :::
 
@@ -817,3 +817,6 @@ le reste est à venir
  % B_{T,\min} = \frac{R_b}{\eta_{\text{spectrale-binaire, max}}} = NB \quad \text{Hz}
  % $$
 %[Lahti&Ding 5e édition:  Équation 5.37, page 312]. 
+
+
+%Yapilacaklar - equation 3 - puissance totale 
