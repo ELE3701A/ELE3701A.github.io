@@ -17,6 +17,8 @@ project:
       children:
         - file: C2_Numerisation.ipynb    
     - file: section4.md
+      children:
+        - file: C3_Modulation.ipynb
     - file: section5.md
     - file: section6.md
     - file: section7.md
