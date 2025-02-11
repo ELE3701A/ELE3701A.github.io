@@ -167,7 +167,7 @@ Ce type de modulation s'applique aux signaux numériques :
 
 Les types de modulation d’amplitude analogique peuvent être classés en fonction de la manière dont l’information est transmise à travers l’onde porteuse. **La modulation à double bande latérale sans porteuse** (*Double-Sideband Suppressed-Carrier*; DSB-SC) supprime la composante continue de l’onde porteuse pour améliorer l’efficacité énergétique et spectrale. **La modulation à double bande latérale** (*Amplitude Modulation*; AM), quant à elle, transmet l’information en modulant l’amplitude d’une onde porteuse et en ajoutant une petite partie de la porteuse tout en deux bandes latérales. **La modulation à bande latérale unique** (*Single Sideband*; SSB) optimise encore plus l’utilisation du spectre en supprimant l’une des deux bandes latérales, réduisant ainsi la largeur de bande requise. Enfin, **la modulation d’amplitude en quadrature** (*Quadrature Amplitude Modulation*; QAM) combine deux signaux modulés en amplitude, déphasés de 90°, permettant ainsi une transmission plus efficace de l’information analogique avec une meilleure utilisation du spectre.  Les détails de ces types de modulations analogiques sont expliqués ci-dessous.
 
-### Modulation à double bande latérale porteuse supprimée (DSB-SC)
+#### Modulation à double bande latérale porteuse supprimée (DSB-SC)
 
 Modulation à double bande latérale porteuse supprimée (*double sideband suppressed carrier*; DSB-SC)  implique la multiplication du signal du message, ($m(t)$ limité à une bande de fréquence de $B$ Hz), une porteuse (onde sinusoïdale) de fréquence $ f_p $, notée $ c(t)= \cos(2\pi f_p t)$.
 
@@ -287,7 +287,7 @@ Schéma de la démodulation cohérente d'un signal DSB-SC. Un filtre passe-bande
 
 
 
-###  Modulation à double bande latérale (*Amplitude Modulation*; AM)
+####  Modulation à double bande latérale (*Amplitude Modulation*; AM)
 
 - **Modulation**  
 
@@ -516,7 +516,7 @@ Une indication est également donnée concernant l’**extension récente** de l
 Modulations efficaces du point au vue de la largeur de bande sont la Modulation à bande latérale unique (*single sideband*; SSB) et la modulation d'amplitude en quadrature (analogique)  (*quadrature amplitude modulation - analog*; QAM-Analogique). Elles sont décrites ci-dessous.  
 
 
-###  Modulation à bande latérale unique (SSB)
+####  Modulation à bande latérale unique (SSB)
 
  Dans une modulation AM classique, l’information transmise est redondante, car elle est contenue à la fois dans la **bande latérale supérieure** et la **bande latérale inférieure**. Il est donc possible d’envoyer le même message en utilisant **seulement une des deux bandes**, réduisant ainsi de moitié la largeur de bande nécessaire. 
 
@@ -619,7 +619,7 @@ $$
 Finalement, $ v(t)$ est le signal démodulé en bande de base, qui peut être affecté par l’erreur de phase $ \theta $, entraînant une distorsion du message.
 
 
-###  Modulation d'amplitude en quadrature (analogique)  (QAM-Analogique)
+####  Modulation d'amplitude en quadrature (analogique)  (QAM-Analogique)
 
 La modulation d’amplitude en quadrature (QAM-Analogique),  permet la transmission simultanée de deux signaux distincts $m_1(t)$ et $m_2(t)$ en utilisant une onde  porteuses  avec deux phases (*inphase* et *quadrature*).
 
@@ -779,23 +779,31 @@ Donc chaque signal modulant est extrait grâce aux signaux de référence synchr
 
 le reste est à venir
 
-## Modulation d’angle (analogique) 
+### Modulation d’angle (analogique) 
 
-## Modulation numérique
+#### Modulation de fréquence (*frequency modulation*; FM) 
+
+####  maintenirodulation de phase (*phase modulation*; PM)
+
+### Modulation numérique (avec porteuse)
+
+
+#### ASK « Amplitude Shift Keying »
+#### FSK « Frequency Shift Keying »
+#### PSK « Phase Shift Keying »
+#### QAM : Frequency Shift Keying »
 
  %Modulation par onde porteuse
 %4.1. Modulation d'amplitude
 %4.2. Modulation d’angle
 %4.3. Modulation numérique
 
+
+## Catégories de modulation numérique par train d'impulsions (sans porteuse)
+
 ### Codage de ligne
 
-### Systèmes de communication avec porteuse
 
-#### ASK « Amplitude Shift Keying »
-#### FSK « Frequency Shift Keying »
-#### PSK « Phase Shift Keying »
-#### QAM : Frequency Shift Keying »
 
 
 %#### Largeur de Bande de Transmission - PCM Binaire
