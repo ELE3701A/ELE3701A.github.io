@@ -201,12 +201,12 @@ La transformée de Fourier exprime la composition
 fréquentielle d’un signal par une fonction de densité. Ce concept est essentiel, car nous utiliserons la transformation de Fourier pour calculer la largeur de bande d'un signal. 
 :::
 
-## Propriétés d’un signal 
+### Propriétés d’un signal 
 
  
 
 
-### Valeur moyenne
+#### Valeur moyenne
 
 :::{hint} Valeur moyenne d’un signal non périodiques
 La **valeur moyenne  d’un signal complexé non périodique**, $g(t)$,   est $\overline{g(t)}$ où  
@@ -236,7 +236,7 @@ $$\overline{g_1(t)+g_2(t)}=\overline{g_1(t)}+\overline{g_2(t).} $$
 
  
 
-### Énergie
+#### Énergie
 
 :::{hint} Énergie
 L’**énergie d’un signal complexé**, $g(t)$,   est $E_g$ où  
@@ -257,7 +257,7 @@ $$\int_{-\infty}^{\infty} |g(t)|^2 \, dt = \int_{-\infty}^{\infty} |G(f)|^2 \, d
  
  
 
-### Puissance
+#### Puissance
 :::{hint} Puissance d’un signal non périodiques
 La **puissance d’un signal non périodique**, $g(t)$,
 est définie par :
@@ -287,7 +287,7 @@ $$   [10 \times \log_{10}(P_g)] \, \text{dBW ou } [30 + 10 \times \log_{10}(P_g)
 
 
 
-### Tension efficace
+#### Tension efficace
 :::{hint} Tension efficace
 La **tension efficace** (*root mean square*; RMS) d’un
 signal périodiques  $g_P(t)$ est définie par
@@ -323,7 +323,7 @@ et pour le cas normalise, $R=1$, on obtient $|g(t)|^2 $.  En classe, nous nous i
 
 
 
-### Largeur de bande
+#### Largeur de bande
 
 (def-bandwith)=
 Définition: Largeur de bande 
@@ -385,9 +385,9 @@ bande des signaux.
 :::
 
 
-## Signaux utiles
+### Signaux utiles
 
-### Impulsion de Dirac (*Dirac impulse*)
+#### Impulsion de Dirac (*Dirac impulse*)
 (def-Dirac)=
 Définition: Impulsion de Dirac 
 : L’**impulsion de Dirac** est un outil mathématique idéal utilisé pour modéliser une impulsion infiniment brève et intense, qui ne peut pas être réalisée exactement dans la réalité physique.
@@ -429,7 +429,7 @@ Impulsion de Dirac (en domaine fréquentiel).
  
 
 
-### Train d'impulsions de Dirac (*Dirac impulse train*)
+#### Train d'impulsions de Dirac (*Dirac impulse train*)
 (def-sinc)=
 Définition: Train d'impulsions de Dirac
 : La fonction train d'impulsions de Dirac, notée $ \delta_T(t) $, est définie comme une somme infinie d'impulsions de Dirac espacées de $T$ secondes : 
@@ -449,7 +449,7 @@ Propriétés:
 
 
 
-### Fonction sinc (*Sinc function*)
+#### Fonction sinc (*Sinc function*)
 (def-sinc)=
 Définition: Fonction sinc 
 : La fonction $\textit{sinc}(t)$ est définie comme suit
@@ -487,7 +487,7 @@ Fonction sinc  (en domaine fréquentiel).
 
  
 
-### L’onde rectangulaire (*Rectangular pulse*)
+#### L’onde rectangulaire (*Rectangular pulse*)
 (def-rec)=
 Définition: L’onde rectangulaire
 : La fonction rectangulaire $ \text{rect}(t) $, définie sur l'intervalle  $ [-T_0/2, T_0/2] $ , avec une valeur constante  $  a  $ , est donnée par :
@@ -524,7 +524,7 @@ Onde rectangulaire  (en domaine temporel).
 
  
 
-### Ondes porteuses  (*Carrier waveforms*)
+#### Ondes porteuses  (*Carrier waveforms*)
 (def-carriers)=
 Définition: Ondes porteuses
 : La majorité des systèmes de communication utilisent les formes d’onde
@@ -615,11 +615,13 @@ Représentation d`un système
 :::{important} Exemple pratique : 
 Un circuit électrique avec une source de tension en entrée et un courant dans une certaine branche est un système.
 :::
- 
-Un système peut être **variant** ou  **invariant** dans le temps. De plus, un système peut être **linéaire** ou **non linéaire**. leurs explications sont données ci-dessous. 
+
+###  Catégories de systèmes
+
+Un système peut être **variant** ou  **invariant** dans le temps. De plus, un système peut être **linéaire** ou **non linéaire**. Leurs explications sont données ci-dessous. 
 
 
-### Système invariant dans le temps (*Time Invariant System*) 
+#### Système invariant dans le temps (*Time Invariant System*) 
 Un système est **invariant dans le temps** si sa réponse à une entrée  ne change pas lorsque l'entrée est décalée dans le temps. Si l'on considère un système $\mathcal{T}(\cdot)$ avec une entrée $x(t)$ et une sortie $y(t)$, (i.e. $y(t)=\mathcal{T}(x(t))$), le système est invariant dans le temps si 
 ```{math}
 :label: time-invariance
@@ -627,7 +629,7 @@ y(t-t_0) = \mathcal{T}(x(t- t_0))
 ```
 
 
-### Système variant dans le temps (*Time Varying System*) 
+#### Système variant dans le temps (*Time Varying System*) 
 
 Le système est **variant dans le temps** quand l'équation {eq}`time-invariance`  n'est pas applicable.
  
@@ -640,7 +642,7 @@ Le système est **variant dans le temps** quand l'équation {eq}`time-invariance
 
 
 
-### Système linéaire (*Linear System*)
+#### Système linéaire (*Linear System*)
 
 Un système $\mathcal{T(\cdot)}$ est linéaire s'il respecte les propriétés suivantes :
 
@@ -653,7 +655,7 @@ $$
 Notez que la transformée de Fourier peut être interprétée comme un système linéaire.
 
 
-#### Système linéaire invariant dans le temps (*Linear time invariant*; LTI) 
+##### Système linéaire invariant dans le temps (*Linear time invariant*; LTI) 
 
 Un système est **linéaire invariant dans le temps** (LTI) si les propriétés de linéarité et d'invariance dans le temps sont satisfaites. Ce système est défini simplement par sa **réponse impulsionnelle**, $h(t)$, ou sa **réponse fréquentielle** $H(F)$ où $$h(t) \iff H(f) $$.
 
@@ -709,7 +711,7 @@ avec la **bande passante :** $[f_c, \infty[$.
 :::
 
 
-### Système non linéaire (*Nonlinear System*)
+#### Système non linéaire (*Nonlinear System*)
 
   Si un système ne respecte pas l'une ou l'autre des propriétés d'homogénéité ou de superposition, il est non linéaire.Leur réponse peut varier de manière non proportionnelle ou non additive en fonction des entrées. 
 
@@ -733,7 +735,7 @@ Donc ce système  est non linéaire car il ne respecte pas les deux propriétés
 :::
 
 
-#### Modulation - un système non linéaire
+##### Modulation - un système non linéaire
 La modulation est le processus par lequel une onde portesue 
 $c(t) = A_p \cos(2 \pi f_p t)$
 est multiplié par un signal de message $ m(t)$. Cela permet d’intégrer l’information du message dans une onde porteuse adaptée à la transmission.
@@ -857,7 +859,7 @@ Propriétés :
 
 
 
-### Les moyennes statistiques
+#### Les moyennes statistiques
 
 Les moyennes statistiques sont des outils fondamentaux pour décrire et analyser les propriétés d'une variable aléatoire. Ces outils sont essentiels pour caractériser le comportement statistique des systèmes aléatoires. 
 
@@ -1065,7 +1067,7 @@ Une illustration de la puissance moyenne du signal dans la bande $[f_1, f_2] $
 
 
 
-### Relation entre autocorrélation et spectre de densité de puissance
+#### Relation entre autocorrélation et spectre de densité de puissance
 L’autocorrélation et le spectre de densité de puissance   d’un signal aléatoire sont reliés par une transformée de Fourier :
 $$
 R_g(\tau) \iff S_g(f),

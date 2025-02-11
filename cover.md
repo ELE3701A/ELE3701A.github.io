@@ -44,9 +44,9 @@ Informations sur le cours disponibles sur le site:  https://moodle.polymtl.ca/co
 
 4.  **Procédures de transmission** (13 heures) 
 
-    4.1.  Modulation d’amplitude
+    4.1.  Modulation d’amplitude (analogique)
 
-    4.2.  Modulation d'angle
+    4.2.  Modulation d'angle (analogique)
 
     4.3.  Modulation numérique
 
