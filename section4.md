@@ -1017,21 +1017,6 @@ La démodulation d’un signal FM par différentiation et détection d’envelop
 :::
 
 
-:::{important} Exemple pratique : 
-```{figure} images/sec4-radio-fm.png
-:label: sec4-radio-fm.png
-:align: center 
-Bande FM au Canada : répartition des fréquences et interaction avec la télévision
-```
- Au Québec et au Canada, la bande FM est définie par des fréquences comprises entre 88 MHz et 108 MHz, comme illustré dans la figure. La bande FM est subdivisée en 100 canaux, chacun ayant une largeur de bande de 200 kHz. Cette séparation permet aux stations de radio d’émettre sans interférences majeures entre elles.
-Les fréquences allouées aux stations de radio augmentent de 200 kHz en 200 kHz, à partir de 88 MHz jusqu’à 108 MHz.
-
-
-Dans la figure, il est aussi montré que le canal 6 de la télévision analogique chevauche en partie la bande FM. Plus précisément, le signal sonore associé à ce canal est transmis en FM sur une fréquence porteuse de 87,75 MHz. Cette fréquence se trouve juste avant le début officiel de la bande FM (88 MHz), ce qui explique pourquoi certaines radios peuvent capter ce signal télévisuel sur la bande FM.
-:::
-
-
- 
 
 :::{tip} Le multiplexage  fréquentiel
 Le multiplexage  fréquentiel  (*Frequency Division Multiplexing*; FDM) est une technique qui permet de transmettre plusieurs signaux simultanément sur un même canal en les modulant sur des fréquences porteuses distinctes. 
@@ -1050,6 +1035,24 @@ Soit $m_1(t), m_2(t), ..., m_N(t)$ plusieurs signaux avec une largeur de bande d
   :::
  
 
+
+
+
+:::{important} Exemple pratique : 
+```{figure} images/sec4-radio-fm.png
+:label: sec4-radio-fm.png
+:align: center 
+Bande FM au Canada : répartition des fréquences et interaction avec la télévision
+```
+ Au Québec et au Canada, la bande FM est définie par des fréquences comprises entre 88 MHz et 108 MHz, comme illustré dans la figure. La bande FM est subdivisée en 100 canaux, chacun ayant une largeur de bande de 200 kHz. Cette séparation permet aux stations de radio d’émettre sans interférences majeures entre elles.
+Les fréquences allouées aux stations de radio augmentent de 200 kHz en 200 kHz, à partir de 88 MHz jusqu’à 108 MHz.
+
+
+Dans la figure, il est aussi montré que le canal 6 de la télévision analogique chevauche en partie la bande FM. Plus précisément, le signal sonore associé à ce canal est transmis en FM sur une fréquence porteuse de 87,75 MHz. Cette fréquence se trouve juste avant le début officiel de la bande FM (88 MHz), ce qui explique pourquoi certaines radios peuvent capter ce signal télévisuel sur la bande FM.
+:::
+
+
+ 
 
 
 
