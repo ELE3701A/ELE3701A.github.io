@@ -38,7 +38,7 @@ Un signal de message en bande de base avec une largeur de bande de $B$ Hz.
 :::{warning} Attention
 Lorsque les signaux des messages sont aléatoires, nous devons utiliser leur spectre de densité de puissance, $S_m(f)$, pour déterminer sa largeur de bande. 
 :::
-
+ 
 La modulation peut être réalisée en utilisant soit une onde porteuse, soit un train d'impulsions.
 
 (def-OndePorteuse)=
@@ -97,7 +97,7 @@ L’efficacité énergétique mesure de la capabilité d’un système à utilis
 Définition: L’efficacité spectrale
 : **L’efficacité spectrale** (*spectral efficiency*) mesure la quantité de signaux de message transmises par unité de largeur de bande. Pour les systèmes de modulation analogiques, elle est obtenue en divisant la largeur de bande du signal de message par la largeur de bande du signal modulé.  
 $$
-\eta_{\textrm{efficacité-spectrale}} = \frac{B}{\textrm{Largeur de bande de } \varphi(t)}
+\eta_{\textrm{efficacité-spectrale}} = \frac{B}{\textrm{Largeur de bande de } \varphi(t)}  
 $$
 Pour les systèmes de modulation numérique, nous le définirons comme le nombre de bits transmis par Hertz [bits/sec/Hz], qui change en fonction du type d'image et du type de modulation sélectionnés (plus de détails à venir). 
 
@@ -106,10 +106,12 @@ Pour les systèmes de modulation numérique, nous le définirons comme le nombre
 La modulation par onde porteuse peut affecter **l’amplitude**, **la phase** ou **la fréquence** d’une onde porteuse pour transmettre un signal de message, qu’il soit **analogique** ou **numérique**. 
 
 Le signal modulé, $\varphi(t)$, par une onde porteuse  est exprimée sous la forme 
-$$
-\varphi(t) = A(t) \cos(2\pi f_p(t) t + \phi(t))
-$$
+ ```{math}
+:label:modulation
+\varphi(t) = A(t) \cos(2\pi f_p(t) t + \phi(t))   
+```
 où  $A(t) $ représente l’**amplitude** du signal modulé, $ f_p (t)$ est la **fréquence porteuse** qui peut varier en temp, et  $ \phi(t)$ correspond à la **phase** du signal modulé.
+
 
 
 
@@ -180,10 +182,10 @@ Le signal modulé $ \varphi_{DSB-SC}(t)$ est donné par :
 Ce signal ne contient plus la porteuse mais uniquement les bandes latérales.
 
 En transformée de Fourier, le spectre du signal modulé est :
-   $$
-   \Phi_{DSB-SC}(f) = \frac{1}{2} \left[ M(f + f_p) + M(f - f_p) \right]
-   $$
-   Cela montre que le spectre du signal est déplacé autour de $ \pm f_p $. 
+$$
+ \Phi_{DSB-SC}(f) = \frac{1}{2} \left[ M(f + f_p) + M(f - f_p) \right]
+$$
+Cela montre que le spectre du signal est déplacé autour de $ \pm f_p $. 
 
 
 
@@ -280,14 +282,32 @@ Schéma de la démodulation cohérente d'un signal DSB-SC. Un filtre passe-bande
 :::
 
 
+ :::{tip} Synchronisation et Circuit PLL (*Phase Locked Loop*)
+Le circuit PLL   est un système de synchronisation qui permet de verrouiller la phase d’un oscillateur sur celle d’un signal d’entrée.  
+ 
+
+```{figure} images/sec4-pll.png
+:label: sec4-pll
+:align: center 
+Schéma fonctionnel d’un circuit PLL utilisé pour la synchronisation des signaux.
+``` 
+
+
+Le signal d’entrée est mélangé avec le signal de l’oscillateur contrôlé en tension (*voltage controlled oscillator*; VCO).
+
+Étapes de Traitement: 
+- Point 1 : Signal d'entrée modulé $[A + m(t)]\cos(2\pi f_p t)$.
+- Point 2 : Signal après le mixage, contenant une composante de haute fréquence $\frac{1}{2}[A + m(t)]\sin(4\pi f_p t)$.
+- Point 3 :  Le signal résultant est filtré par un filtre passe-bas pour éliminer les hautes fréquences indésirables. En cas de syncronisation,  le signal est  nul après filtrage.
+- Point 4 : Le signal filtré est ensuite utilisé pour ajuster la fréquence du VCO.  En cas de syncronisation, on observe le signal sinusoïdal $\sin(2\pi f_p t)$ après le VCO.
+- Point 5 : Un déphaseur permet de générer un signal déphasé nécessaire à certaines applications. En cas de syncronisation, on observe le  signal cosinus $\cos(2\pi f_p t)$ après le déphaseur.
+ 
+ :::
 
 
 
 
-
-
-
-####  Modulation à double bande latérale (*Amplitude Modulation*; AM)
+####  Modulation à double bande latérale (*Amplitude modulation*; AM)
 
 - **Modulation**  
 
@@ -360,13 +380,12 @@ $$
 
 
 
-:::{note} Exemple  illustratif :  **Travail pratique - 3**
+:::{note} Exemple  illustratif :  **Travail pratique - 4**
  
 Un signal AM est observé à l'aide d'un analyseur de spectre avec une impédance d'entrée de  50Ω.  La porteuse a une fréquence de $f_p = 1 $ MHz, et les bandes latérales sont espacées de 2,5 kHz. L'affaiblissement des bandes latérales par rapport à la porteuse est de 12 dB.  
 
 Déterminez l’indice de modulation $\mu $ du signal AM.  
 
-%**Réponse  : ** \( \mu = 0.5 \), Efficacité énergétique **11\ %**.
 ```{figure} images/sec4-TP3.png
 :label: sec4-TP3
 :align: center 
@@ -383,9 +402,9 @@ $$
 \mu= \frac{A_m}{A_p} = 0.5
 $$
 
-L’efficacité énergétique,  est donnée par :
+Pour TP4, nous calculons  le rendement, qui implique la quantité d'énergie du signal du message dans l'onde modulée divisée par l'énergie totale. Et il est obtenu comme suit :
 $$
-\eta = \frac{2\mu^2}{4 + 2\mu^2}  = \frac{2(0.5)^2}{4 + 2(0.5)^2} = \frac{0.5}{4.5} \approx 11\%
+\textrm{Rendement} = \frac{2\mu^2}{4 + 2\mu^2}  = \frac{2(0.5)^2}{4 + 2(0.5)^2} = \frac{0.5}{4.5} \approx 11\%
 $$ 
 :::
 
@@ -530,7 +549,7 @@ Modulations efficaces du point au vue de la largeur de bande sont la Modulation 
 
 
 
-On utilise deux branches pour générer un signal modulé de SSB.    Dans la **première branche**, $m(t)$ est directement multiplié par la porteuse  $\cos(2\pi f_p t)$ pour obtenir 
+On utilise deux branches pour générer un signal modulé de SSB. Dans la **première branche**, $m(t)$ est directement multiplié par la porteuse  $\cos(2\pi f_p t)$ pour obtenir 
 $$
   s_1(t) = m(t) \cos(2\pi f_p t)
 $$
@@ -554,7 +573,7 @@ Finalement, les deux signaux obtenus sont combinés. Pour générer la **bande l
 $$
   \varphi_{SSB}^{USB}(t) = s_1(t) + s_3(t) = m(t) \cos(2\pi f_p t) + \hat{m}(t) \sin(2\pi f_p t)
 $$
-Pour générer la **bande latérale inférieure** (*lower sideband; LSB ), on effectue une soustraction :
+Pour générer la **bande latérale inférieure** (*lower sideband*; LSB ), on effectue une soustraction :
 $$
   \varphi_{SSB}^{LSB}(t) = s_1(t) - s_3(t) = m(t) \cos(2\pi f_p t) - \hat{m}(t) \sin(2\pi f_p t)
 $$
@@ -606,8 +625,8 @@ $$
 Démodulation d'un signal à bande latérale unique avec une erreur de phase dans l'oscillateur local. Un filtre passe-bas est utilisé pour récupérer le signal modulant, mais une erreur de phase $ \theta $ peut causer une distorsion du signal démodulé.
 ```
 
- Signal d'entrée est $ \varphi_{SSB}(t)$ est le signal modulé en bande latérale unique qui arrive au récepteur. Il est multiplié par une porteuse locale $\cos(2\pi f_p t + \theta) $, où $ \theta$  représente une erreur de phase potentielle 
-   $$
+ Signal d'entrée est $ \varphi_{SSB}(t)$ est le signal modulé en bande latérale unique qui arrive au récepteur. Il est multiplié par une porteuse locale $\cos(2\pi f_p t + \theta) $, où $\theta$  représente une erreur de phase potentielle 
+$$
    x(t) = \varphi_{SSB}(t) \cos(2\pi f_p t + \theta)
 $$
 
@@ -632,22 +651,22 @@ Nous avons **deux signaux messages** distincts, $ m_1(t)$ et $ m_2(t) $, chacun 
 :label: sec4-qam-mod
 :align: center 
 La modulation d’amplitude en quadrature (QAM-Analogique) permettant la transmission simultanée de deux signaux $m_1(t)$ et $m_2(t) $ grâce à l'utilisation de deux porteuses orthogonales en cosinus et en sinus avec $f_p$.
- ```
+```
 
- Le signal $ m_1(t)$ module une porteuse en cosinus :  
- $$
-     c_1(t) = \cos(2\pi f_p t)
+Le signal $ m_1(t)$ module une porteuse en cosinus :   
 $$
-Le signal modulé  est :  
+c_1(t) = \cos(2\pi f_p t)
 $$
-     m_1(t) \cos(2\pi f_p t)
+Le signal après le multiplexage est  :  
+$$
+m_1(t) \cos(2\pi f_p t)
 $$
 
 Dans la deuxième branche, le signal $m_2(t)$ module une porteuse en sinus, obtenue par un déphasage de $ -\pi/2 $ :  
 $$
      c_2(t) = \sin(2\pi f_p t)
 $$
-Le signal modulé correspondant est :  
+Le signal après le multiplexage avec $ c_2(t)$  est :  
 $$
      m_2(t) \sin(2\pi f_p t)
 $$
@@ -702,22 +721,22 @@ Le signal reçu est
 
 Multiplication avec $ c_1(t) = \cos(2\pi f_p t) $ donne
 $$
-   x_1(t) = \varphi_{\text{QAM-A}}(t) \cos(2\pi f_p t) = m_1(t) \cos^2(2\pi f_p t) + m_2(t) \sin(2\pi f_p t) \cos(2\pi f_p t) 
-  $$
-
-Après filtrage passe-bas on obtient
+   s_2(t) = \varphi_{\text{QAM-A}}(t) \cos(2\pi f_p t) = m_1(t) \cos^2(2\pi f_p t) + m_2(t) \sin(2\pi f_p t) \cos(2\pi f_p t) 
 $$
-   m_1(t) = \frac{1}{2} m_1(t)
-  $$
+
+Après filtrage passe-bas, gain de 2,  on obtient
+$$
+   s_3(t) =  m_1(t)
+$$
 
 
 En plus, la multiplication avec $c_2(t) = \sin(2\pi f_p t) $  
 $$
-   x_2(t) = \varphi_{\text{QAM-A}}(t) \sin(2\pi f_p t) = m_1(t) \cos(2\pi f_p t) \sin(2\pi f_p t) + m_2(t) \sin^2(2\pi f_p t)
+   s_3(t) = \varphi_{\text{QAM-A}}(t) \sin(2\pi f_p t) = m_1(t) \cos(2\pi f_p t) \sin(2\pi f_p t) + m_2(t) \sin^2(2\pi f_p t)
 $$
-  et après filtrage passe-bas on a 
+  et après filtrage passe-bas (gain de 2) on a 
 $$
-   m_2(t) = \frac{1}{2} m_2(t)
+   s_5(t) =  m_2(t)
 $$
 
  
@@ -733,12 +752,6 @@ Donc chaque signal modulant est extrait grâce aux signaux de référence synchr
 
 
 
-% - **Modulation**  
-%- **Efficacité énergétique** 
-
-%- **Efficacité spectrale**
-
-%- **Démodulation cohérente (synchrone)**
 
 
 
@@ -753,37 +766,325 @@ Donc chaque signal modulant est extrait grâce aux signaux de référence synchr
 
 
 
+:::{tip}  Conversion de fréquence 
+ La conversion de fréquence est un processus fondamental dans les récepteurs radio et les systèmes de communication. Elle permet de transférer un signal d’une fréquence radioélectrique (RF) à une fréquence intermédiaire (*intermediate frequency*; IF), facilitant ainsi le traitement du signal. Cette conversion est réalisée à l’aide d’un mélangeur, qui combine le signal RF avec un signal d’oscillateur local (LO) pour produire des composantes de fréquence somme et différence.
+```{figure} images/sec4-IF.png
+:label: sec4-IF
+:align: center 
+Processus de conversion de fréquence et filtrage des signaux RF et IF.
+```
+
+
+Le signal modulé est centré autour de la fréquence $f_p$. Un filtre RF (bande passante) est appliqué pour sélectionner la bande de fréquence désirée et atténuer les interférences et le bruit.  Une fréquence d’image $f_{\text{IMAGE}}$ peut apparaître symétriquement autour de l’oscillateur local et doit être éliminée.
+ 
+
+ Un oscillateur local de fréquence $f_0$ est utilisé pour mixer le signal RF. Deux nouvelles fréquences sont produites :
+ -  $f_{\text{IF}} = |f_p - f_0|$ (fréquence intermédiaire)
+ - $f_{\text{IMAGE}} = |f_{\text{IMAGE}} - f_0|$
+    
+Notez que la fréquence d’image peut interférer avec le signal souhaité si elle n’est pas correctement filtrée. 
+
+Après le mixage, le signal est déplacé à une fréquence intermédiaire $f_{\text{IF}}$. Un filtre IF est appliqué pour sélectionner uniquement la bande souhaitée et rejeter les fréquences parasites, y compris l’image.
+ 
+La conversion de fréquence est une technique essentielle dans les récepteurs radio et les systèmes de télécommunications. Elle permet de déplacer un signal d’une fréquence élevée à une fréquence intermédiaire où il est plus facile à traiter, tout en réduisant les interférences et le bruit.
+:::
+ 
+
+:::{tip}  Récepteur Superhétérodyne 
+
+La conversion de fréquence et l’architecture superhétérodyne sont des concepts fondamentaux dans les récepteurs radio et les systèmes de communication modernes. La conversion de fréquence permet de déplacer un signal d’une fréquence RF (radiofréquence) à une fréquence IF (intermédiaire) pour un traitement plus efficace. L'architecture superhétérodyne repose sur ce principe et a évolué au fil du temps, notamment avec l'avènement des technologies numériques.
+
+```{figure} images/sec4-suphet.png
+:label: sec4-suphet
+:align: center 
+Évolution du récepteur superhétérodyne vers une architecture entièrement numérique.
+```
+:::
+
+ 
+ 
 
 
 
-
-
-%L’information est contenue uniquement dans les **bandes latérales** (*side-bands*), nécessitant une démodulation synchrone pour la récupération du signal.
-
-%La modulation **DSB-SC** est donc plus efficace en **énergie** que la modulation AM standard, mais elle n’optimise pas l’usage du **spectre**, contrairement à la modulation à bande latérale unique (SSB).
-
-
-
-
- %  , sans inclure , contrairement à la modulation AM classique.
-
-
-
-
-%- Cette technique est utilisée dans certaines applications de radio et de transmission de données.
-
-
-
-
-
-
-le reste est à venir
 
 ### Modulation d’angle (analogique) 
+La modulation d’angle est une technique de modulation dans laquelle l’angle de la porteuse est modifié en fonction du signal message, comme noté dans [](#modulation). Elle inclut deux types principaux :
 
-#### Modulation de fréquence (*frequency modulation*; FM) 
+- Modulation de fréquence (FM)   où la fréquence instantanée varie proportionnellement au signal modulant.
+- Modulation de phase (PM)   où la phase de la porteuse est directement influencée par le signal modulant.
 
-####  maintenirodulation de phase (*phase modulation*; PM)
+
+  Nous avons besoin de la notion de fréquence instantanée pour pouvoir définir les types de modulation d’angle.
+
+
+
+(def-IF)= 
+Définition: Fréquence instantanée (*instantaneous frequency*)
+: Considerons un signal modulé, $\varphi(t)=A \cos(\phi(t))$, la **fréquence instantanée** d'un signal modulé est donnée par :
+\begin{equation}
+    f_i(t) = \frac{1}{2\pi} \frac{d\phi(t)}{dt}
+\end{equation}
+où $\phi(t)$ représente la phase du signal modulé.
+
+ 
+#### Modulation de Fréquence (*Frequency modulation*; FM)
+Dans la modulation de fréquence, l'expression du signal modulé est donnée par :
+$$
+    \varphi_{FM}(t) = A \cos \left( 2\pi f_p t + 2\pi k_f \int_0^t m(\tau) d\tau \right)
+$$
+où $A$ est l’amplitude du signal modulé, $f_p$ est la fréquence porteuse, $k_f$ est le coefficient de sensibilité en fréquence [Hz/V], $m(t)$ est le signal modulant (signal de message).
+
+La **fréquence instantanée** du signal modulé est définie par :
+$$
+    f_i(t) = f_p + k_f m(t)
+$$
+
+La **déviation maximale de fréquence** est donnée par :
+ $$
+    \Delta f = k_f |m(t)|_{MAX}
+$$
+ 
+#### Modulation de Phase  (*Phase modulation*; PM)
+Dans la modulation de phase, l'expression du signal modulé s’écrit :
+ $$
+    \varphi_{PM}(t) = A \cos \left( 2\pi f_p t + 2\pi k_p m(t) \right)
+ $$
+où $k_p$ est le coefficient de sensibilité en phase.
+
+La **fréquence instantanée** est :
+ $$
+    f_i(t) = f_p + k_p \frac{d m(t)}{dt}
+ $$
+
+La **déviation de fréquence maximale** est alors donnée par :
+ $$
+    \Delta f = k_p \left| \frac{d m(t)}{dt} \right|_{MAX}
+ $$
+
+:::{warning} Attention
+
+ - En **FM**, la fréquence instantanée varie en fonction de l’amplitude de $m(t)$.
+ - En **PM**, la fréquence instantanée dépend de la dérivée du signal modulant $m(t)$.
+
+```{figure} images/sec4-fm-pm.png
+:label: sec4-fm-pm
+:align: center 
+Illustration des modulations d’angle : une porteuse (en bleu), un signal modulant (en vert), et les signaux résultants en modulation de fréquence (FM, en rouge) et en modulation de phase (PM, en cyan).
+```
+:::
+
+  
+  
+####  **Analyse Spectrale de la FM** 
+
+L'analyse spectrale de la modulation de fréquence (FM) est essentielle pour comprendre la répartition de l'énergie du signal modulé en fréquence.  Tout d'abord, définissons la fonction de Bessel. 
+
+:::{tip} La fonction de Bessel
+La fonction de Bessel d’ordre $n$ est définie par :
+$$
+    J_n(\beta) = \frac{1}{\pi} \int_0^\pi \cos(n\theta - \beta \sin(\theta)) d\theta
+$$
+et peut être exprimée sous une autre forme en série infinie :
+$$
+    J_n(\beta) = \sum_{k=0}^{\infty} \frac{(-1)^k (\beta/2)^{2k+n}}{k! (k+n)!}
+$$
+
+Les valeurs de $J_n(\beta)$ déterminent **l’amplitude** des différentes composantes fréquentielles de la FM. 
+
+
+```{figure} images/sec4-bessel.png
+:label: sec4-bessel.png
+:align: center 
+Représentation des fonctions de Bessel de première espèce $J_n​(x)$ pour différents ordres $n$.
+```
+:::
+
+
+
+Soit un signal modulant sinusoïdal :
+$$
+    m(t) = A_m \cos(2\pi f_m t)
+$$
+
+Le signal FM correspondant est donné par :
+$$
+    \varphi_{FM}(t) = A \cos(2\pi f_p t + \beta \sin(2\pi f_m t))
+$$
+où  $f_p$ est la fréquence porteuse, $f_m$ est la fréquence du signal modulant, et  $\beta$ est l’indice de modulation.
+ 
+L'équation du signal FM peut être exprimée sous forme de série de **Bessel** :
+```{math}
+:label:FM-time
+    \varphi_{FM}(t) = A \sum_{n=-\infty}^{\infty} J_n(\beta) \cos(2\pi [f_p + n f_m] t)
+```
+Cela montre que le spectre FM est composé d'un **ensemble de fréquences discrètes**, situées à :
+$$
+    f_p + n f_m
+$$
+avec des amplitudes pondérées par les **fonctions de Bessel** $J_n(\beta)$.
+
+La densité spectrale du signal FM est obtenue par :
+```{math}
+:label:spectre-FM
+    \Phi_{FM}(f) = \frac{A}{2} \sum_{n=-\infty}^{\infty} J_n(\beta) \left\{ \delta(f + [f_p + n f_m]) + \delta(f - [f_p + n f_m]) \right\}
+```
+Cette équation signifie que l’énergie du signal est répartie sur **plusieurs raies spectrales** au lieu d’être concentrée sur une seule fréquence.
+
+```{figure} images/sec4-fm-spectre.png
+:label: sec4-fm-spectre.png
+:align: center 
+Spectre du signal FM de  [](#spectre-FM). raies spectrales situées aux fréquences $ f_p + n f_m $, avec des amplitudes pondérées par les fonctions de Bessel $ J_n(\beta) $
+```
+
+L’illustration montre les **composantes spectrales** aux différentes fréquences multiples de $f_m$, avec des amplitudes proportionnelles aux **valeurs des fonctions de Bessel** $J_n(\beta)$. Cette analyse est essentielle pour la conception de **systèmes de communication FM** et pour comprendre leur occupation spectrale. Notez que la bande passante théorique des signaux FM est **infinie**; cependant, elle est approximée selon la règle de Carson ci-dessous.
+ 
+
+
+ 
+
+-**Règle de Carson**
+La règle de Carson fournit une estimation pratique de la bande passante des signaux FM et PM en fonction de l’indice de modulation $\beta$, évitant ainsi l'hypothèse d'une bande passante infinie.
+ 
+  
+Pour la **modulation de fréquence (FM)**, la bande passante est donnée par :
+$$
+ B_{FM} = 2B (\beta + 1) \quad \text{Hz}
+$$
+où l'indice de modulation $\beta$ est défini comme :
+$$
+    \beta = \frac{\Delta f}{B}, \quad \Delta f = k_f \frac{m_{max} - m_{min}}{2 \times 2\pi}
+$$
+ 
+Pour la **modulation de phase (PM)**, la bande passante suit une expression similaire :
+$$
+    B_{PM} = 2B (\beta + 1) \quad \text{Hz}
+$$
+avec :
+$$
+    \beta = \frac{\Delta f}{B}, \quad \Delta f = k_p \frac{|m(t)|_{max} - |m(t)|_{min}}{2 \times 2\pi}
+$$
+
+
+- **Démodulation d’un Signal FM**
+
+```{figure} images/sec4-FM-demod.png
+:label: sec4-FM-demod 
+:align: center 
+Démodulation d’un signal FM par détection d’enveloppe après dérivation
+```
+
+
+ 
+La démodulation de la FM repose sur l’extraction du signal modulant $ m(t) $ à partir du signal reçu. Une approche classique consiste à utiliser un détecteur basé sur la dérivation suivie d’une détection d’enveloppe. 
+ 
+Un signal modulé en fréquence s’écrit sous la forme :
+$$
+    \varphi_{FM}(t) = A \cos \left( 2\pi f_p t + 2\pi k_f \int_{-\infty}^{t} m(\alpha) d\alpha \right)
+$$
+où $f_p $ est la fréquence porteuse et $ k_f $ représente le coefficient de sensibilité en fréquence.
+ 
+La dérivée du signal FM est donnée par :
+$$
+    \frac{d\varphi_{FM}(t)}{dt} = -A(2\pi f_p + 2\pi k_f m(t)) \sin \left( 2\pi f_p t + 2\pi k_f \int_{-\infty}^{t} m(\alpha) d\alpha \right)
+$$
+Cette expression met en évidence que l’amplitude de la fonction sinus est proportionnelle à la fréquence instantanée du signal.
+
+Le processus de démodulation ppour la FM suit les étapes suivantes :
+
+- **Dérivation** : L’application d’un dérivateur permet de transformer les variations de fréquence en variations d’amplitude. L’amplitude de la sortie est proportionnelle à la fréquence instantanée :
+    $$
+        |A(2\pi f_p + 2\pi k_f m(t))|
+   $$
+
+- **Détection d’enveloppe** :  L’amplitude extraite par le dérivateur est ensuite récupérée à l’aide d’un détecteur d’enveloppe qui permet de retrouver le signal modulant $ m(t) $.
+
+```{figure} images/sec4-fm-spectre.png
+:label: sec4-fm-spectre.png
+:align: center 
+Spectre du signal FM de  [](#spectre-FM). raies spectrales situées aux fréquences $ f_p + n f_m $, avec des amplitudes pondérées par les fonctions de Bessel $ J_n(\beta) $
+```
+
+:::{note} Exemple  illustratif : 
+
+
+```{figure} images/sec4-FM-demod-ex.png
+:label: sec4-FM-demod-ex.png
+:align: center 
+Un signal FM et de sa dérivée pour la démodulation
+```
+La démodulation d’un signal FM par différentiation et détection d’enveloppe exploite la relation entre la fréquence instantanée du signal reçu et l’amplitude du signal différentié. Cette technique est largement utilisée dans les récepteurs FM analogiques en raison de sa simplicité de mise en œuvre.
+
+:::
+
+
+:::{important} Exemple pratique : 
+```{figure} images/sec4-radio-fm.png
+:label: sec4-radio-fm.png
+:align: center 
+Bande FM au Canada : répartition des fréquences et interaction avec la télévision
+```
+ Au Québec et au Canada, la bande FM est définie par des fréquences comprises entre 88 MHz et 108 MHz, comme illustré dans la figure. La bande FM est subdivisée en 100 canaux, chacun ayant une largeur de bande de 200 kHz. Cette séparation permet aux stations de radio d’émettre sans interférences majeures entre elles.
+Les fréquences allouées aux stations de radio augmentent de 200 kHz en 200 kHz, à partir de 88 MHz jusqu’à 108 MHz.
+
+
+Dans la figure, il est aussi montré que le canal 6 de la télévision analogique chevauche en partie la bande FM. Plus précisément, le signal sonore associé à ce canal est transmis en FM sur une fréquence porteuse de 87,75 MHz. Cette fréquence se trouve juste avant le début officiel de la bande FM (88 MHz), ce qui explique pourquoi certaines radios peuvent capter ce signal télévisuel sur la bande FM.
+:::
+
+
+ 
+
+:::{tip} Le multiplexage  fréquentiel
+Le multiplexage  fréquentiel  (*Frequency Division Multiplexing*; FDM) est une technique qui permet de transmettre plusieurs signaux simultanément sur un même canal en les modulant sur des fréquences porteuses distinctes. 
+Le FDM est une technique essentielle dans les systèmes de communication modernes, notamment pour les transmissions analogiques et numériques, comme la  FM, la télévision et les réseaux de télécommunications.
+
+```{figure} images/sec4-fdm.png
+:label: sec4-fdm.png
+:align: center 
+Principe du multiplexage fréquentiel : transmission simultanée de plusieurs signaux sur un seul canal par attribution de bandes de fréquences distinctes.
+```
+
+Soit $m_1(t), m_2(t), ..., m_N(t)$ plusieurs signaux avec une largeur de bande de $B$ Hz.    Chaque signal est modulé sur une fréquence porteuse distincte $f_1, f_2, ..., f_N$ en utilisant une modulation d’amplitude ou de fréquence.  Les signaux modulés sont ensuite combinés (sommation) pour être transmis sur un seul canal.
+ 
+ Le signal composite est transmis à travers un canal unique contenant toutes les composantes fréquentielles modulées. À la réception, des filtres passe-bande sont appliqués pour extraire chaque signal modulé individuellement.
+  Chaque signal est ensuite démodulé à l’aide d’un oscillateur local afin de retrouver son contenu d’origine $m_1(t), m_2(t), ..., m_N(t)$.
+  :::
+ 
+
+
+
+
+
+
+%- La modulation FM génère un spectre composé de plusieurs raies fréquentielles au lieu d'une seule fréquence centrale.
+%- Les amplitudes des différentes composantes sont déterminées par les fonctions de Bessel.
+%- Plus l’indice de modulation $\beta$ est élevé, plus le spectre est large, ce qui explique pourquoi la FM utilise plus de bande passante que l’AM.
+ 
+
+
+ 
+
+
+
+
+% - **Modulation**  
+%- **Efficacité énergétique** 
+
+%- **Efficacité spectrale**
+
+%- **Démodulation cohérente (synchrone)**
+
+
+
+% - **Modulation**  
+%- **Efficacité énergétique** 
+
+%- **Efficacité spectrale**
+
+%- **Démodulation cohérente (synchrone)**
+
+
+
+
 
 ### Modulation numérique (avec porteuse)
 
@@ -821,4 +1122,14 @@ le reste est à venir
 
 %Yapilacaklar - LSB-SSB sekil koy (yeni ciz)
 %Spectral efficiecny discussioni ekle  (SSB oncesinde)
+
+
+
+
+%L’information est contenue uniquement dans les **bandes latérales** (*side-bands*), nécessitant une démodulation synchrone pour la récupération du signal.
+
+%La modulation **DSB-SC** est donc plus efficace en **énergie** que la modulation AM standard, mais elle n’optimise pas l’usage du **spectre**, contrairement à la modulation à bande latérale unique (SSB).
+
+
+
 

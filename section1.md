@@ -260,8 +260,8 @@ et la qualité des communications. Une utilisation efficace de la
 puissance et de la largeur de bande permet de minimiser les pertes et de
 réduire l'empreinte carbone pour une conception durable.
 
-:::{hint} Attention
-L'objectif du système de communication est de minimiser
+:::{tip}  L'objectif de conception
+L'objectif de conception d'un système de communication est de minimiser
 les erreurs de transmission tout en minimisant l'utilisation des
 ressources.
 :::
