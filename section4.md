@@ -380,7 +380,7 @@ $$
 
 
 
-:::{note} Exemple  illustratif :  **Travail pratique - 4**
+:::{note} Exemple illustratif :  **Travail pratique - 4**
  
 Un signal AM est observé à l'aide d'un analyseur de spectre avec une impédance d'entrée de  50Ω.  La porteuse a une fréquence de $f_p = 1 $ MHz, et les bandes latérales sont espacées de 2,5 kHz. L'affaiblissement des bandes latérales par rapport à la porteuse est de 12 dB.  
 
@@ -998,11 +998,7 @@ Le processus de démodulation ppour la FM suit les étapes suivantes :
 
 - **Détection d’enveloppe** :  L’amplitude extraite par le dérivateur est ensuite récupérée à l’aide d’un détecteur d’enveloppe qui permet de retrouver le signal modulant $ m(t) $.
 
-```{figure} images/sec4-fm-spectre.png
-:label: sec4-fm-spectre.png
-:align: center 
-Spectre du signal FM de  [](#spectre-FM). raies spectrales situées aux fréquences $ f_p + n f_m $, avec des amplitudes pondérées par les fonctions de Bessel $ J_n(\beta) $
-```
+
 
 :::{note} Exemple  illustratif : 
 
