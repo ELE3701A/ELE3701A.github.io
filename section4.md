@@ -943,6 +943,7 @@ L’illustration montre les **composantes spectrales** aux différentes fréquen
  
 
 -**Règle de Carson**
+
 La règle de Carson fournit une estimation pratique de la bande passante des signaux FM et PM en fonction de l’indice de modulation $\beta$, évitant ainsi l'hypothèse d'une bande passante infinie.
  
   
