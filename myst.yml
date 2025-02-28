@@ -2,21 +2,21 @@
 version: 1
 project:
   id: 95504c80-1bcd-40df-b447-739fa9214655
-   title:
-   description:
-   keywords: []
-   authors:
+  #  title:
+  #  description:
+  #  keywords: []
+  authors:
      - name: Gunes Karabulut Kurt
        roles: 
          - Contenu
      - name: Adam Osmani
        roles:
          - Programmation
-   - name: Mohamed Anis Mekkaoui
+     - name: Mohamed Anis Mekkaoui
        roles:
          - Exemples intéractifs
-   github: https://github.com/ELE3701A/ELE3701A.github.io
-   license:
+  github: https://github.com/ELE3701A/ELE3701A.github.io
+  license:
      content:
        id: CC-BY-4.0
      code:
