@@ -3,9 +3,9 @@
 exports:
   - format: pdf
     template: plain_latex
-    output: ./exports/section4.pdf
+    output: ./exports/section5.pdf
 downloads:
-  - file: ./exports/section4.pdf
+  - file: ./exports/section5.pdf
     title: PDF
 title: Section 5 - Supports de transmission
 abstract: |
