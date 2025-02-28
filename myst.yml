@@ -14,7 +14,7 @@ project:
          - Programmation
    - name: Mohamed Anis Mekkaoui
        roles:
-         - Exemples Intéractifs
+         - Exemples intéractifs
    github: https://github.com/ELE3701A/ELE3701A.github.io
    license:
      content:

@@ -68,9 +68,11 @@ Informations sur le cours disponibles sur le site:  https://moodle.polymtl.ca/co
 
 7.  **Codage de source** (3 heures)
 
-    7.1.  Introduction et entropie de Shannon
+    7.1.  Introduction  
+    
+    7.2. Entropie de Shannon
 
-    7.2.  Codage de Huffman
+    7.3.  Codage de Huffman
 
 
 :::{warning} Contrôle : 2 heures
