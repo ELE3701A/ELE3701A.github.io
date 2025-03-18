@@ -1460,10 +1460,10 @@ Le premier signal modulant $ s_1 $ (courbe verte) est issu des bits pairs. Le se
  $ s_2 $ module une porteuse en quadrature $ \sin(2\pi f_p t) $.  L'addition des deux donne le signal modulé en QPSK.
 ```
 
-```{figure} images/sec4-qpsk-mod.png
-:label: sec4-qpsk-mod.png
+```{figure} images/sec4-qpsk-demod.png
+:label: sec4-qpsk-demod.png
 :align: center 
-Schéma de modulation QPSK, combinant deux signaux modulants $ s_1(t) $ et $ s_2(t) $ sur des porteuses en quadrature $\cos(2\pi f_p t)$ et $\sin(2\pi f_p t)$.
+Schéma de démodulation du signal QPSK, utilisant des mélangeurs, des filtres passe-bas et un décodeur pour extraire les symboles transmis.
 ```
 
 
