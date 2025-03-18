@@ -1283,7 +1283,7 @@ où $n_k $ est le bruit affectant l’échantillon reçu.
 
 Chaque échantillon $ z_k$ est comparé aux **niveaux de décision** correspondant aux $M $symboles possibles. Une **règle de décision** est appliquée en utilisant un détecteur à seuil  pour déterminer le symbole $\hat{s_k}$ reçu :
 $$
-\hat{s_k} = s_i, \quad \text{si } z_k \in \left[ \Gamma_{i-1}, \Gamma_i \right]
+\hat{s}_k = s_i, \quad \text{si } z_k \in \left[ \Gamma_{i-1}, \Gamma_i \right]
 $$
 où $ \Gamma_i $ sont les seuils de décision définis par :
 $$
