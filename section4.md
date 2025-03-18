@@ -1066,6 +1066,433 @@ Dans la figure, il est aussi montré que le canal 6 de la télévision analogiqu
 
 
 
+## Modulation numérique  
+
+La modulation numérique peut être utilisée lorsque la source est numérique. Elle permet de convertir une séquence de bits en un signal modulé adapté à la transmission sur un canal de communication.
+Nous pouvons également utiliser la modulation numérique à la sortie d’un modulateur par impulsions codées (PCM). 
+
+Dans un système de communication numérique, le flux de bits représente une séquence temporelle de valeurs binaires ($\texttt{0}$ et $\texttt{1}$) qui doit être convertie en un signal physique pour la transmission. Ce flux peut être exprimé sous forme mathématique en utilisant une somme de fonctions impulsionnelles centrées sur les instants de temps où chaque bit est transmis.
+Le signal correspondant au flux de bits peut être modélisé comme :
+$$
+b(t) = \sum_{k} b_k \delta (t - kT_b)
+$$
+où  $b_k$ est la valeur du $ k$-ième bit, appartenant à l’ensemble $\{\texttt{0},\texttt{1}\}$,  $T_b$ est la  période de bit (l’intervalle de temps entre deux bits consécutifs),
+et finalement $\delta(t)$ est l'impulsion de Dirac, utilisée pour représenter un signal discret en un ensemble d’impulsions temporelles.
+
+### Modulation numérique sans porteuse  
+Nous commencerons la discussion par la transmission binaire, qui permet de générer deux symboles distincts. Pour utiliser la modulation numérique, il est indispensable d’employer un codeur de symboles. 
+Dans le cas binaire, cela implique deux symboles distincts. Nous représenterons le nombre de symboles par $M$. 
+
+(def-Modulation)=
+Définition: Codeur de symboles
+: Un **codeur de symboles** regroupe les bits ($\texttt{0}$ ou $\texttt{1}$) en séquences appelées **symboles** (en Volts), où chaque symbole peut représenter un ou plusieurs bits en fonction du schéma de modulation utilisé.
+```{figure} images/sec4-BinSymCod.png
+:label: sec4-BinSymCod.png
+:align: center 
+Le schéma représente un codeur de symboles qui transforme une séquence binaire en symboles ($M=2$).
+L'entrée du codeur est une séquence de bits $b_k$, $b(t)$ qui est ensuite transformée en un ensemble de signal de sortie $s(t)$, correspondant à des symboles spécifiques utilisés pour la transmission. Ce processus est essentiel dans les systèmes de communication numérique pour adapter les données binaires à un format compatible avec une modulation spécifique.
+```
+
+:::{note} Exemple illustratif : 
+
+Cet exemple illustre la conversion d’un bit d’entrée binaire en un symbole de sortie sous forme de tension. 
+
+```{list-table}
+:header-rows: 1
+
+* - $b_k$ (Bit d'entrée [Binaire])
+  - $s_k$ (Symbole de sortie [Tension])
+* - $\texttt{1}$
+  - 5V
+* - $\texttt{0}$
+  - 0V
+```
+
+Lorsqu’un bit d’entrée $\texttt{1}$ est reçu, la sortie correspondante est une tension de 5V, tandis que lorsqu’un bit d’entrée $\texttt{0}$ est reçu, la sortie est 0V.  
+
+```{figure} images/sec4-bits.png
+:label: sec4-bits.png
+:align: center 
+
+Représentation du signal $b(t)$, correspondant à la séquence binaire d’entrée où chaque bit est maintenu pendant une durée $T_b$ = 1 seconds
+```
+
+```{figure} images/sec4-symbols.png
+:label: sec4-symbols.png
+:align: center 
+
+Représentation du signal $b(t)$, correspondant à la séquence binaire d’entrée où chaque bit est maintenu pendant une durée $T_b$ = 1 seconds
+```
+
+:::
+
+
+ 
+
+
+Pour les codeurs de symboles **binaires** ($M=2$), le signal de sortie, composé de symboles toutes les $T_b$​ secondes, peut s'écrire comme
+\begin{equation}
+s(t) = \sum_{k} s_k \delta (t - kT_b)
+\end{equation}
+
+
+####  2-PAM « Binary Pulse Amplitude Modulation »
+
+La modulation d’amplitude par impulsions binaire (*Binary Pulse Amplitude Modulation* ; 2-PAM) est une technique de Modulation numérique  binaire   sans porteuse  dans laquelle l’amplitude d’une impulsion est modulée en fonction d’un signal binaire. Cela signifie que les symboles transmis ne prennent que **deux niveaux distincts**, généralement associés aux bits $\texttt{0}$ et $\texttt{1}$.
+
+
+
+Le signal modulé en **2-PAM** peut être exprimé comme suit :
+$$
+\varphi_{2-PAM}(t) = s(t) * p(t) = \sum_{k} s_k p(t - kT_b)
+$$ 
+où le codeur de symboles est
+```{list-table}
+:header-rows: 1
+* - $b_k$ (Bit d'entrée [Binaire])
+  - $s_k$ (Symbole de sortie [Tension])
+* - $\texttt{1}$
+  - $+ A $ Volts
+* - $\texttt{0}$
+  - $ -A$  Volts
+```
+
+
+```{figure} images/sec4-PAM-reception.png
+:label: sec4-PAM-reception.png
+:align: center 
+Schéma de réception d’un signal PAM : filtrage pour réduire le bruit, échantillonnage aux instants TbTb​, et prise de décision par comparaison avec un seuil $\Gamma$ pour récupérer les symboles d’information.
+```
+
+
+
+Le récepteur PAM doit extraire l’information binaire du signal reçu.  Le signal reçu $r(t)$ est souvent bruité après la transmission. 
+\begin{equation}
+r(t) = s(t) + n(t)
+\end{equation}
+où \( n(t) \) est le bruit ajouté par le canal.
+Un **filtre passe-bas** compatible avec la forme de l'impulsion  $p(t)$ (*matched filter*) est appliqué au  est utilisé pour atténuer le bruit et limiter l’interférence entre les impulsions/
+Le signal filtré est échantillonné à des intervalles de temps $ T_b $, correspondant aux instants où chaque impulsion doit être détectée :
+\begin{equation}
+z_k = z(kT_b) = s_k + n_k
+\end{equation}
+
+Le récepteur applique une **règle de décision** pour déterminer si le symbole reçu correspond à un $\texttt{0}$ ou un $\texttt{1}$. Une **comparaison avec un seuil** $ \Gamma $ est effectuée :
+\begin{equation}
+\hat{b}_k =
+\begin{cases}
+    \texttt{1}, & \text{si } z_k \geq \Gamma \\
+    \texttt{0}, & \text{si } z_k < \Gamma
+\end{cases}
+\end{equation}
+où $\hat{b}_k $ est la décision du récepteur.
+La synchronisation est nécessaire pour assurer l’alignement correct des échantillons avec les impulsions transmises.
+ 
+
+
+
+:::{note}  Conception des impulsions $p(t)$ - Propriétés Désirées
+
+La conception des signaux dans un système de communication repose sur plusieurs critères essentiels visant à optimiser les performances de transmission et de réception. L’un des objectifs fondamentaux est de minimiser la largeur de bande nécessaire pour transmettre l’information. En réduisant cette largeur de bande, on optimise l’utilisation du spectre et on diminue les interférences avec d’autres signaux. Le spectre de densité de puissance d’un signal reçu est donné par la relation suivante :
+$$
+S_y(f) = |P(f)|^2 S_x(f).
+$$
+
+Un autre critère important concerne la minimisation de la puissance requise. La puissance du signal doit être adaptée afin d’assurer un bon compromis entre la consommation énergétique et la performance du système. En particulier, la puissance transmise doit être suffisante pour garantir un faible taux d’erreurs tout en respectant les contraintes de bande passante.
+
+La synchronisation est un élément clé dans la transmission des signaux. Il est essentiel que les formes d’ondes utilisées facilitent la récupération de l’horloge du signal reçu. Une bonne synchronisation permet d’éviter les décalages temporels pouvant entraîner des erreurs de détection et de décodage des symboles.
+
+Un autre défi majeur dans la conception des signaux est d’éviter l’interférence entre symboles (*Inter-Symbol Interference*; ISI). Lorsque les symboles se chevauchent excessivement, la détection correcte des données devient difficile.
+:::
+
+
+
+#### Modulation numérique - $M$-aire - sans porteuse
+
+Pour augmenter le débit de bits, nous pouvons envoyer plus de deux symboles.  Une approche consiste à l'utiliser $M$ symboles. 
+
+```{figure} images/sec4-SymCod.png
+:label: sec4-SymCod.png
+:align: center 
+Le schéma représente un codeur de symboles qui transforme une séquence $M$-aire en  symboles.
+L'entrée du codeur est une séquence de bits $b_k$, $b(t)$ qui est ensuite transformée en un ensemble de signal de sortie $s(t)$, correspondant à des symboles spécifiques utilisés pour la transmission. Ce processus est essentiel dans les systèmes de communication numérique pour adapter les données binaires à un format compatible avec une modulation spécifique.
+```
+
+Le débit de bit entrant  et le débit de symboles sortant peuvent varier en fonction du nombre total de symboles uniques, $M$. Pour cette raison, deux indices temporels distincts sont utilisés :
+- $k$ représente le **$k$-ième bit** dans la séquence binaire d’entrée ($a_k$).
+- $n$ représente le **$n$-ième symbole** en sortie du codeur de symboles ($S_{1,n}$ et $S_{2,n}$).
+
+Les principaux objectifs du codeur de symboles sont :
+-  Regrouper les bits en symboles pour s’adapter aux techniques de modulation utilisées.
+-  Améliorer l’efficacité spectrale, en adaptant le débit binaire au canal de transmission disponible.
+-  Faciliter la démodulation et la récupération des données à la réception.
+
+:::{tip} 
+La période de bit correspond à la durée nécessaire pour transmettre un **bit unique** d'information. Elle est définie comme :
+```{math}
+T_b = \frac{1}{R_b}
+```
+où $R_b$ est le **débit de bits** (exprimé en bits par seconde, ou bps). La durée $T_b$ est directement liée à la fréquence de transmission des bits dans le système.
+Un **symbole** peut représenter un ou plusieurs bits en fonction du schéma de codage utilisé. La période de symbole est la durée requise pour transmettre un **symbole complet**. Elle est définie comme :
+```{math}
+T_s = \frac{1}{R_s}
+```
+où $R_s$ est le **débit de symbole** (en symboles par seconde, ou baud). La relation entre $T_s$ et $T_b$ dépend du nombre de bits par symbole $M$ :
+```{math}
+T_s = \frac{T_b}{\log_2 M}
+```
+où $M$ est le nombre de symboles distincts utilisés à la sortie du codeur de symboles (utilisés dans la modulation).
+- Si chaque symbole représente **un seul bit** ($M = 2$), alors $T_s = T_b$. La période de bit correspond à la durée nécessaire pour transmettre un **bit unique** d'information. Elle est définie comme :
+- Si chaque symbole représente **plusieurs bits** ($M > 2$), alors $T_s > T_b$, ce qui permet de transmettre plus d'informations avec une fréquence de symboles plus faible.
+:::
+
+
+
+
+ 
+#### M-PAM « M-ary Pulse Amplitude Modulation » 
+
+Le signal modulé en M-PAM (Modulation numérique  -  $M$-aire - sans porteuse) peut être exprimé mathématiquement par :
+$$
+\varphi_{M-PAM}(t) = \sum s_k p(t - kT_s)
+$$
+où $ s_k $ représente le symbole transmis appartenant à un ensemble de $ M$ symboles distincts ($ s_k \in \{s_1, s_2, \dots, s_M\} $), $ p(t)$ est la forme d’impulsion utilisée pour la transmission, et $ T_s$ est la période de symbole, définissant l’intervalle de temps entre chaque transmission de symbole. Cette modulation permet de transmettre une quantité d’information plus importante par unité de temps par rapport à une modulation binaire classique.
+
+Dans un système M-PAM, chaque symbole peut encoder plusieurs bits, avec un nombre de bits par symbole défini par :
+$$
+L = \log_2(M)
+$$
+
+La détection d’un signal modulé en M-PAM  consiste à extraire les symboles transmis à partir du signal reçu. Ce processus implique plusieurs étapes essentielles permettant de minimiser les erreurs et d’optimiser la récupération de l’information.
+
+Le signal reçu peut être modélisé comme  :
+$$
+r(t) = \varphi_{M-PAM}(t) + n(t) = \sum s_k p(t - kT_s) + n(t)
+$$
+
+où $ n(t) $ représente le bruit du canal.
+La première étape de détection consiste à appliquer un filtrage adapté pour maximiser le SNR. Le filtre optimal $h(t)$ est choisi en fonction de $p(t) $, de manière à minimiser l’ISI.
+
+Après le filtrage, le signal est échantillonné à des intervalles $ T_s $, produisant des valeurs discrètes :
+$$
+z_k = r(kT_s) = s_k + n_k
+$$
+où $n_k $ est le bruit affectant l’échantillon reçu.
+
+ 
+
+Chaque échantillon $ z_k$ est comparé aux **niveaux de décision** correspondant aux $M $symboles possibles. Une **règle de décision** est appliquée en utilisant un détecteur à seuil  pour déterminer le symbole $\hat{s_k}$ reçu :
+$$
+\hat{s_k} = s_i, \quad \text{si } z_k \in \left[ \Gamma_{i-1}, \Gamma_i \right]
+$$
+où $ \Gamma_i $ sont les seuils de décision définis par :
+$$
+\Gamma_i = \frac{s_{i} + s_{i+1}}{2}, \quad i = 1, 2, ..., M-1
+$$
+
+
+ 
+Lorsque les signaux des messages sont aléatoires, nous devons utiliser leur spectre de densité de puissance, $S_m(f)$, pour déterminer sa largeur de bande. 
+ 
+
+Le bruit introduit dans le canal peut entraîner des erreurs lorsque le signal reçu $ z_k $ est proche d’un seuil \( \tau_i \), conduisant à une **probabilité d’erreur de symbole** donnée par :
+$
+P_e = Q \left( \frac{d_{\text{min}}}{\sigma_n} \right)
+$
+où $ Q(\cdot) $ est la fonction de Q de Gauss, $d_{\text{min}} $ est la distance minimale entre deux niveaux de symboles, $ \sigma_n^2$est la variance du bruit.
+
+
+
+:::{warning} Attention
+Pour une puissance moyenne constante, plus le nombre de niveaux $ M $ augmente, plus les symboles sont rapprochés, ce qui augmente la sensibilité au bruit.  
+:::
+ 
+ 
+ ### Modulation numérique avec porteuse
+
+
+ 
+
+#### ASK « Amplitude Shift Keying » 
+
+ASK (modulation numérique  -  binaire - avec porteuse) est une technique  dans laquelle l’amplitude d’une onde porteuse varie en fonction des données binaires à transmettre avec un codeur de symboles :   
+```{list-table}
+:header-rows: 1
+* - $b_k$ (Bit d'entrée [Binaire])
+  - $s_k$ (Symbole de sortie [Tension])
+* - $\texttt{1}$
+  - $+ A $ Volts
+* - $\texttt{0}$
+  - $ 0$  Volts
+```
+Le signal modulé en **ASK** peut être exprimé comme suit :
+$$
+\varphi_{ASK}(t) = (s(t) * p(t) ) \times \cos(2\pi f_p t) = \sum_{k} s_k p(t - kT_b)\cos(2\pi f_p t) 
+$$ 
+ où $ \cos(2\pi f_p t) $ est la porteuse utilisée pour la modulation.
+
+```{figure} images/sec4-ASK.png
+:label: sec4-ASK.png
+:align: center 
+Dans la figure on peut observer ce processus en trois étapes distinctes. Une onde porteus est représentée comme un signal sinusoïdal continu, qui sera modulé en amplitude. Ensuite, la séquence binaire d’entrée est illustrée sous forme d’impulsions discrètes, correspondant aux bits transmis. Ces impulsions sont générées par le codeur de symboles, qui détermine comment chaque bit influencera le signal modulé. Enfin, la dernière partie de la figure montre le **signal modulé en ASK**, où la présence de la porteuse coïncide avec les bits **1**, tandis que son absence correspond aux bits **0**.
+```
+ 
+
+La démodulation du signal ASK  consiste à extraire le signal modulant binaire à partir du signal reçu. 
+Le signal reçu peut être exprimé sous la forme :
+\begin{equation}
+r(t) = s(t) \cos(2\pi f_p t) + n(t)
+\end{equation}
+
+ 
+Pour récupérer l’information binaire, on multiplie le signal reçu avec la porteuse $ \cos(2\pi f_p t)$.   Un filtre passe-bas compatible avec la forme de l'impulsion  $p(t)$ (*matched filter*)  utilisé pour lisser le signal détecté et éliminer les hautes fréquences indésirables. Après filtrage, le signal obtenu est une version adoucie de l’enveloppe détectée.
+Le signal filtré est échantillonné à des intervalles de temps $ T_b $ correspondant à la période des bits transmis,
+\begin{equation}
+z_k = z(kT_b) = s_k + n_k
+\end{equation}. Chaque échantillon est comparé à un seuil $\Gamma$  pour décider de la valeur du bit reçu :
+\begin{equation}
+\hat{b}_k =
+\begin{cases}
+    \texttt{1}, & \text{si } r_k \geq \Gamma \\
+   \texttt{0}, & \text{si } r_k  < \Gamma
+\end{cases}
+\end{equation}
+Après la prise de décision, une séquence de bits est reconstruite. Ces bits correspondent aux données transmises avant la modulation ASK.
+
+```{figure} images/sec-PSK-demod.png
+:label: sec-PSK-demod.png
+:align: center 
+Schéma de démodulation cohérente d'un signal ASK, incluant la multiplication par la porteuse, le filtrage, l’échantillonnage et la prise de décision basée sur un seuil $\Gamma$.
+```
+
+
+Une **constellation** est utilisée pour la démodulation en associant chaque symbole reçu à l’un des points de la constellation. Après démodulation cohérente, le signal reçu $ r(t) $ est projeté sur la base d’onde $ \psi_1(t) $, donnant $z_k$ :
+\begin{equation}
+z_k = \int_{0}^{T_b} r(t) \psi_1(t) dt
+\end{equation}
+et $z_k$ est ensuite comparé aux seuils de décision $ \Gamma $ pour déterminer le symbole transmis $\hat{s}_k$. 
+Ainsi, chaque point de la constellation permet une prise de décision robuste face au bruit, assurant une détection efficace du signal.
+
+
+```{figure} images/sec4-ask-cons.png
+:label: sec4-ask-cons.png
+:align: center 
+ Constellation du  ASK  avec seuil de décision $ \Gamma $. Les bits \texttt{1} et \textbf{0} sont représentés par $ A \cos(2\pi f_p t) $ et $ 0 $ respectivement.
+```
+
+
+
+
+
+
+####  PSK « Phase Shift Keying » 
+PSK (modulation numérique  -  binaire - avec porteuse) est une technique  dans laquelle l’amplitude d’une onde porteuse varie sélon
+```{list-table}
+:header-rows: 1
+* - $b_k$ (Bit d'entrée [Binaire])
+  - $s_k$ (Symbole de sortie [Tension])
+* - $\texttt{1}$
+  - $+ A $ Volts
+* - $\texttt{0}$
+  - $ -A$  Volts
+```
+et le signal modulé est écrit par 
+$$
+\varphi_{PSK}(t) =  \sum_{k} s_k p(t - kT_b)\cos(2\pi f_p t) 
+$$ 
+
+
+```{figure} images/sec4-PSK-ex.png
+:label: sec4-PSK-ex.png
+:align: center 
+Signal binaire (a) et signal modulé en phase (b) illustrant la modulation PSK.
+```
+
+
+
+La même règle de détection s'applique, mais le seuil doit être choisi en fonction du codeur de symboles. 
+```{figure} images/sec4-bpsk-cons.png
+:label: sec4-bpsk-cons.png
+:align: center 
+Constellation du BPSK avec seuil de décision $\Gamma$. Les bits $\texttt{1}$ et $\texttt{0}$ sont représentés par $ A \cos(2\pi f_p t) $ et $ -A \cos(2\pi f_p t) $ respectivement.
+```
+ 
+
+
+
+####  QPSK « Quandrature Phase Shift Keying »»
+
+
+QPSK (Quadrature Phase Shift Keying) (modulation numérique  -  $M$-aire - avec porteuse) utilise deux porteuses en quadrature pour transmettre deux bits par symbole. Le signal modulé en QPSK est exprimé comme :
+
+\begin{equation}
+\varphi_{QPSK}(t) = s_1(t)\cos(2\pi f_p t) + s_2(t) \sin(2\pi f_p t)
+\end{equation}
+où $ s_1(t) $ et $ s_2(t) $ sont les sorties du codeur de symboles, représentant les deux bits modulés indépendamment sur les axes en phase (*In-phase*) et en quadrature (*Quadrature*).
+Les deux signaux modulés sont additionnés pour former le signal $ \varphi_{QPSK}(t) $, qui peut transmettre deux bits par symbole, augmentant ainsi l’efficacité spectrale.
+
+:::{warning} Attention
+Notez qu'avec la présence d'une porteuse, deux flux de symboles indépendants peuvent être générés (pour le cosinus et le sinus).
+```{figure} images/sec-SymEnc-2D.png
+:label: sec-SymEnc-2D.png
+:align: center 
+Transformation d'une séquence binaire en une séquence de symboles bidimensionnels à l'aide d'un codeur. Chaque symbole est représenté par deux composantes indépendantes $s_1(t)$ et $s_2(t)$.
+```
+:::
+
+
+
+
+Les avantages du QPSK son l'efficacité spectrale améliorée (doublement du débit binaire par rapport au BPSK) et robustesse au bruit (car les symboles sont espacés de $ 90^\circ $, réduisant les erreurs en présence d’interférences).
+
+
+```{figure} images/sec4-qpsk-mod.png
+:label: sec4-qpsk-mod.png
+:align: center 
+Schéma de modulation QPSK, combinant deux signaux modulants $ s_1(t) $ et $ s_2(t) $ sur des porteuses en quadrature $\cos(2\pi f_p t)$ et $\sin(2\pi f_p t)$.
+```
+
+```{figure} images/sec4-qpsk-ex.png
+:label: sec4-qpsk-ex.png
+:align: center 
+La figure illustre le processus de génération d'un signal modulé en QPSK (2 bits par symboles).  La première courbe représente la séquence de bits d'entrée.
+Le premier signal modulant $ s_1 $ (courbe verte) est issu des bits pairs. Le second signal modulant $ s_2 $ (courbe rouge) est issu des bits impairs.  $ s_1 $ module une porteuse en phase $ \cos(2\pi f_p t) $.
+ $ s_2 $ module une porteuse en quadrature $ \sin(2\pi f_p t) $.  L'addition des deux donne le signal modulé en QPSK.
+```
+
+```{figure} images/sec4-qpsk-mod.png
+:label: sec4-qpsk-mod.png
+:align: center 
+Schéma de modulation QPSK, combinant deux signaux modulants $ s_1(t) $ et $ s_2(t) $ sur des porteuses en quadrature $\cos(2\pi f_p t)$ et $\sin(2\pi f_p t)$.
+```
+
+
+
+Pour la demodulation,  le signal reçu  est multiplié par deux signaux de référence : 
+     - Une porteuse en phase $ \cos(2\pi f_p t) $.
+     - Une porteuse en quadrature $ \sin(2\pi f_p t) $, qui est obtenue en déphasant $ \cos(2\pi f_p t) $ de $ -\frac{\pi}{2} $.
+ Après multiplication, chaque signal passe par un filtre passe-bas qui élimine les composantes haute fréquence et conserve uniquement les termes en bande de base.
+
+
+ Les signaux en sortie des filtres correspondent aux coefficients $ z_{k,1} $ et $ z_{k,2}$, représentant les deux symboles.
+Ses valeurs sont comparées à un seuil pour déterminer les bits correspondants.
+
+ 
+
+```{figure} images/sec4-qpsk-cons.png
+:label: sec4-qpsk-cons.png
+:align: center 
+Constellation du QPSK avec seuils de décision pour la détection des symboles.
+```
+
+
+
+%- **QAM « Frequency Shift Keying »»**
+
+
+%Modulation numérique  -  $M$-aire - avec porteuse
+
+
 % - **Modulation**  
 %- **Efficacité énergétique** 
 
@@ -1082,17 +1509,6 @@ Dans la figure, il est aussi montré que le canal 6 de la télévision analogiqu
 
 %- **Démodulation cohérente (synchrone)**
 
-
-
-
-
-### Modulation numérique (avec porteuse)
-
-
-#### ASK « Amplitude Shift Keying »
-#### FSK « Frequency Shift Keying »
-#### PSK « Phase Shift Keying »
-#### QAM : Frequency Shift Keying »
 
  %Modulation par onde porteuse
 %4.1. Modulation d'amplitude
@@ -1100,11 +1516,7 @@ Dans la figure, il est aussi montré que le canal 6 de la télévision analogiqu
 %4.3. Modulation numérique
 
 
-## Catégories de modulation numérique par train d'impulsions (sans porteuse)
-
-### Codage de ligne
-
-
+ 
 
 
 %#### Largeur de Bande de Transmission - PCM Binaire
