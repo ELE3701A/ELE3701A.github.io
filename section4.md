@@ -1485,6 +1485,9 @@ Ses valeurs sont comparées à un seuil pour déterminer les bits correspondants
 Constellation du QPSK avec seuils de décision pour la détection des symboles.
 ```
 
+## Resumé
+
+Cette section traite de  **O4.**  *Proposition des techniques de modulation appropriées en fonction des caractéristiques du canal et du type d'information*, qui concerne   l'encodage et de la modulation des signaux numériques. Elle explore la conversion des séquences binaires en séquences de symboles à l'aide de codeurs, la modulation d'amplitude et de phase (PAM, PSK, QPSK), ainsi que leur démodulation et détection via des constellations. L'impact du débit binaire et du débit symbolique sur les performances du système est également abordé.
 
 
 %- **QAM « Frequency Shift Keying »»**
