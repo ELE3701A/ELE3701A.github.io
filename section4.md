@@ -1295,7 +1295,7 @@ $$
 Lorsque les signaux des messages sont aléatoires, nous devons utiliser leur spectre de densité de puissance, $S_m(f)$, pour déterminer sa largeur de bande. 
  
 
-Le bruit introduit dans le canal peut entraîner des erreurs lorsque le signal reçu $ z_k $ est proche d’un seuil \( \tau_i \), conduisant à une **probabilité d’erreur de symbole** donnée par :
+Le bruit introduit dans le canal peut entraîner des erreurs lorsque le signal reçu $ z_k $ est proche d’un seuil $ \Gamma_i $, conduisant à une **probabilité d’erreur de symbole** donnée par :
 $
 P_e = Q \left( \frac{d_{\text{min}}}{\sigma_n} \right)
 $
