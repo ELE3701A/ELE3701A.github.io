@@ -157,8 +157,12 @@ x(t) = A \cos(2\pi f_0 t)
 $$
 
 la sortie obtenue après passage dans le système présente des composantes supplémentaires par rapport à l'entrée initiale. En effet, en développant les termes de sortie selon les puissances du signal d'entrée, on obtient explicitement :
+
 $$
-y(t) = \frac{\beta A^2}{2} + \left(\alpha A + \frac{3\gamma A^3}{4}\right)\cos(2\pi f_0 t) + \frac{\beta A^2}{2}\cos(4\pi f_0 t) + \frac{\gamma A^3}{4}\cos(6\pi f_0 t)
+\begin{aligned}
+y(t) = \frac{\beta A^2}{2} &+ \left(\alpha A + \frac{3\gamma A^3}{4}\right)\cos(2\pi f_0 t) \\
+&+ \frac{\beta A^2}{2}\cos(4\pi f_0 t) + \frac{\gamma A^3}{4}\cos(6\pi f_0 t)
+\end{aligned}
 $$
 
 Cette expression révèle clairement la présence de nouvelles fréquences (les « harmoniques »), qui sont des multiples entiers de la fréquence fondamentale $f_0$. Plus précisément, en plus de la fréquence fondamentale $f_0$, apparaissent désormais les fréquences $2f_0$ et $3f_0$. Ces fréquences additionnelles génèrent ce qu’on appelle la distorsion harmonique, typique d’un comportement non linéaire du système.
@@ -181,10 +185,12 @@ $$
 le signal de sortie obtenu après développement mathématique est donné par :
 
 $$
-y(t) = \frac{\beta A_1^2}{2} + \frac{\beta A_2^2}{2} + \alpha A_1\cos(2\pi f_1 t) + \alpha A_2\cos(2\pi f_2 t) 
-+ \frac{\beta A_1^2}{2}\cos(4\pi f_1 t) + \frac{\beta A_2^2}{2}\cos(4\pi f_2 t)
-+ \beta A_1 A_2 \cos[2\pi(f_1 - f_2)t] 
-+ \beta A_1 A_2 \cos[2\pi(f_1 + f_2)t]
+\begin{aligned}
+y(t) = \frac{\beta A_1^2}{2} + \frac{\beta A_2^2}{2} &+ \alpha A_1\cos(2\pi f_1 t) + \alpha A_2\cos(2\pi f_2 t) \\
+&+ \frac{\beta A_1^2}{2}\cos(4\pi f_1 t) + \frac{\beta A_2^2}{2}\cos(4\pi f_2 t) \\
+&+ \beta A_1 A_2 \cos[2\pi(f_1 - f_2)t] \\
+&+ \beta A_1 A_2 \cos[2\pi(f_1 + f_2)t] \\
+\end{aligned}
 $$
 
 On observe ainsi l’apparition de nouvelles fréquences : les harmoniques des signaux d’entrée ($2f_1$ et $2f_2$) et les combinaisons fréquentielles ($f_1 + f_2$ et $f_1 - f_2$). Ces nouvelles composantes issues de la combinaison des fréquences fondamentales sont caractéristiques de la distorsion d'intermodulation.
