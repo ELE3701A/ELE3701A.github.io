@@ -117,7 +117,7 @@ $$
 
 Le **codage de source** peut être interprété comme une technique d’étiquetage où chaque symbole produit par une source discrète est associé à une séquence binaire unique (un code). Ce processus vise à réduire la longueur moyenne des codes attribués aux symboles, en fonction de leurs probabilités d’occurrence.
 
-L'objectif est d'associer à chaque symbole $ s_k $ \textbf{un mot de code binaire},  exprimé par  $\bf{d}_k$  de longueur $ l_k $, comme:
+L'objectif est d'associer à chaque symbole $ s_k $ **un mot de (code binaire)**,  exprimé par  $\bf{d}_k$  de longueur $ l_k $, comme:
 
 ```{list-table}
 :header-rows: 1
