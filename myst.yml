@@ -36,8 +36,14 @@ project:
       children:
         - file: C3_Modulation.ipynb
     - file: section5.md
+      children:
+        - file: C4_Canaux.ipynb
     - file: section6.md
+      children:
+        - file: C5_ContrôleErreur.ipynb
     - file: section7.md
+      children:
+        - file: C6_CodageSource.ipynb
 site:
   template: book-theme
 

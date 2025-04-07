@@ -23,8 +23,8 @@ Le codage de source est une technique essentielle pour réduire les besoins en r
 
 
 
-En télécommunications, une source  génère des données qui doivent être transmises ou stockées. Ces sources peuvent être classées en sources continues et sources discrètes, selon la nature des données produites **(def-source dans Section 1 )**. 
-Le codage de source s’applique uniquement aux sources discrètes. Les sources continues, bien qu'importantes dans les communications, nécessitent une étape de numérisation pour être adaptées au codage de source **(## Numérisation-- Section 3 )**.  Cette distinction met en évidence le rôle central des données discrètes dans la conception des systèmes de communication modernes.
+En télécommunications, une [source](#def-source) génère des données qui doivent être transmises ou stockées. Ces sources peuvent être classées en sources continues et sources discrètes, selon la nature des données produites. 
+Le codage de source s’applique uniquement aux sources discrètes. Les sources continues, bien qu'importantes dans les communications, nécessitent une étape de [numérisation](#S3-numerisation) pour être adaptées au codage de source.  Cette distinction met en évidence le rôle central des données discrètes dans la conception des systèmes de communication modernes.
 
  
 

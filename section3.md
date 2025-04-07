@@ -15,7 +15,7 @@ abstract: |
 
  
 
-
+(S3-numerisation)=
 ## Introduction 
 
 La **numérisation** implique la transformation d'un signal du temps continu au temps discret (échantillonnage), puis en valeurs discrètes (quantification).  La numérisation est réalisée par un **convertisseur analogique-numérique** (*analog-to-digital converter*; ADC).
