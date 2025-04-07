@@ -17,7 +17,7 @@ abstract: |
  
 
 
-## Supports de transmission
+## Introduction 
 
 Un **canal de transmission** est le support permettant la transmission d’un signal entre un émetteur et un récepteur dans un système de communication. Ce canal peut être un médium physique, tel qu’un câble ou une fibre optique, ou encore un médium sans fil comme l’air ou l’espace. Quelle que soit sa nature, le canal influence le signal transmis en introduisant divers phénomènes perturbateurs, tels que du bruit, des interférences et de la distorsion.
 

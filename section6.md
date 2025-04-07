@@ -11,7 +11,7 @@ abstract: |
   Cette section traite des techniques de codage utilisées pour détecter et corriger les erreurs dans les systèmes de communication numériques. Elle aborde les catégories de codes, les fondements théoriques du codage, ainsi que les différences entre les codes blocs et les codes convolutionnels. Le but est de comprendre comment ces mécanismes assurent l'intégrité des données transmises, malgré les imperfections du canal de communication. L'objectif est de savoir appliquer les techniques de codage pour améliorer la fiabilité d’un lien de transmission.
 ---
 
-## Contrôle des erreurs
+## Introduction 
 Le codage pour le contrôle des erreurs est utilisé dans les systèmes de communication numériques pour garantir une transmission fiable des données malgré les perturbations du canal. Les données d'entrée, sous forme numérique (binaire), sont encodées en mots de code contenant des bits redondants qui permettent de détecter et corriger les erreurs. Ces systèmes (comme les codes blocs ou convolutionnels) jouent un rôle essentiel dans les applications telles que les réseaux sans fil, les systèmes de stockage ou les transmissions par satellite, réduisant ainsi les pertes de données et améliorant l'efficacité globale.
 
 

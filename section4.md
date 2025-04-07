@@ -16,7 +16,7 @@ abstract: |
  
 
 
-## Procédures de transmission
+## Introduction 
 
 La modulation est une étape essentielle des procédures de transmission dans les systèmes de communication modernes. Elle permet d’adapter le signal aux caractéristiques du canal, d'améliorer la qualité de transmission et d’optimiser l’utilisation du spectre. Différents types de modulation sont utilisés en fonction des besoins et des contraintes spécifiques de la transmission, qu'elle soit analogique ou numérique.
  
