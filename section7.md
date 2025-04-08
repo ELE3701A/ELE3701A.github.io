@@ -218,9 +218,9 @@ Avec $\bar{l} = 1.7$ et $H(\mathcal{S}) = 1.485$, la redondance est :
      $$
 :::
 
-\subsubsection{Efficacité de compression}
+- Efficacité de compression
  L’efficacité de compression est le rapport entre l’entropie et la longueur moyenne des codes :
- \FF{FF}{  $\text{Efficacité de compression} = \frac{H(\mathcal{S})}{\bar{l}} \times 100\%.$}
+$$\text{Efficacité de compression} = \frac{H(\mathcal{S})}{\bar{l}} \times 100\%.$$
     
     
     On veut maximiser l’efficacité de compression.
