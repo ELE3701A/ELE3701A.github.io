@@ -69,7 +69,8 @@ Avec sa théorie, Shannon a introduit une technique pour quantifier l'informatio
 
  
 (def-Info)=
-Définition: **L’information** apportée par une donnée $ s_i $, en bits, est inversément proportionnelle à sa probabilité d’occurrence. Elle est donnée par :
+Définition: L’information
+: **L’information** apportée par une donnée $ s_i $, en bits, est inversément proportionnelle à sa probabilité d’occurrence. Elle est donnée par :
 $$
 I(s_i) = \log_2 \frac{1}{p_i} = -\log_2 p_i  \;\;\;\; \textrm{ bits} 
 $$
@@ -85,8 +86,8 @@ Notez que les symboles fréquents contiennent moins d’information quand $I(s_i
 
   
 (def-Entropie)=
-Définition: 
-**L’entropie** (*entropy*) de la source $H(\mathcal{S})$ est la quantité moyenne d’information produite par symbole. Elle représente une mesure de l’incertitude ou de la redondance d’une source discrète. Elle est définie par :
+Définition: L’entropie
+: **L’entropie** (*entropy*) de la source $H(\mathcal{S})$ est la quantité moyenne d’information produite par symbole. Elle représente une mesure de l’incertitude ou de la redondance d’une source discrète. Elle est définie par :
 $$
 H(\mathcal{S}) = -\sum_{i=1}^{K} p_i \log_2 p_i  \;\;\;\; \textrm{ bits} 
 $$
