@@ -200,9 +200,9 @@ Avec les mêmes données :
 
 
 
-- Redondance 
-  La redondance mesure l’écart entre la longueur moyenne des codes et l’entropie 
-   $$ R = \bar{l} - H(\mathcal{S}) \hspace{1cm} \text{bits}$$
+- Redondance :
+    La redondance mesure l’écart entre la longueur moyenne des codes et l’entropie 
+     $$ R = \bar{l} - H(\mathcal{S}) \hspace{1cm} \text{bits}$$
 
 
     L'objectif est de  réduire la redondance pour se rapprocher de l’efficacité optimale ($\bar{l} \approx H(\mathcal{S})$).
@@ -219,7 +219,7 @@ Avec $\bar{l} = 1.7$ et $H(\mathcal{S}) = 1.485$, la redondance est :
      $$
 :::
 
-- Efficacité de compression
+- Efficacité de compression :
  L’efficacité de compression est le rapport entre l’entropie et la longueur moyenne des codes :
 $$\text{Efficacité de compression} = \frac{H(\mathcal{S})}{\bar{l}} \times 100\%.$$
     
