@@ -318,7 +318,7 @@ $$
 -  Décodage : 
 Si le mot reçu est $ \bm{r}  = [\texttt{1  0 1  1  1  1 0}] $, le syndrome est calculé comme :
 $$
-   \bm{s}&= \bm{rH}^T = [\texttt{0  1 0}].
+   \bm{s}&= \bm{rH}^T = [\texttt{1  0 0}].
 $$
 Notez qu'il s'agit simplement de la troisième colonne de $\bm{H}$.   Ce syndrome indique une erreur au troisième bit . Après correction, le mot de code devient :
 $$
