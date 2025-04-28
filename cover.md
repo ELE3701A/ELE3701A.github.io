@@ -58,7 +58,7 @@ Informations sur le cours disponibles sur le site:  https://moodle.polymtl.ca/co
 
     5.3.  Modèle statistique du canal
 
-6.  **Contrôle des erreurs** (3 heures)
+6.  **Contrôle des erreurs** (5 heures)
 
     6.1.  Introduction
 
