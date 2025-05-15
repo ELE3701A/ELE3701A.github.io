@@ -15,7 +15,7 @@ project:
      - name: Mohamed Anis Mekkaoui
        roles:
          - Exemples intéractifs
-  github: https://github.com/ELE3701A/ELE3701A.github.io
+  # github: https://github.com/ELE3701A/ELE3701A.github.io
   license:
      content:
        id: CC-BY-4.0
